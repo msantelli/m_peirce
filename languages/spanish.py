@@ -690,42 +690,121 @@ class SpanishTemplates(LanguageTemplates):
         """Create valid Material Conditional Introduction templates in Spanish."""
         templates = []
         
-        builder = TemplateBuilder()
-        builder.add_variable('P')
-        builder.add_static(' implica ')
-        builder.add_variable('q')
-        builder.add_static('. ')
-        builder.add_variable('Q')
-        builder.add_static(' implica ')
-        builder.add_variable('r')
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
+        # Plantilla 1: Estilo formal original
+        builder1 = TemplateBuilder()
+        builder1.add_static('Supongamos que ')
+        builder1.add_variable('p')
+        builder1.add_static(', podemos derivar que ')
+        builder1.add_variable('q')
+        builder1.add_static('. ')
+        builder1.add_variation('conclusion', [
             'Por lo tanto',
             'Así',
             'En consecuencia'
         ])
-        builder.add_static(', si ')
-        builder.add_variable('p')
-        builder.add_static(', entonces ')
-        builder.add_variable('r')
-        builder.add_static('.')
+        builder1.add_static(', ')
+        builder1.add_variation('conditional', [
+            'si {p}, entonces {q}',
+            '{p} implica {q}'
+        ])
+        builder1.add_static('.')
+        templates.append(builder1.build())
         
-        templates.append(builder.build())
+        # Plantilla 2: Estilo de suposición natural
+        builder2 = TemplateBuilder()
+        builder2.add_variation('suppose', [
+            'Cuando suponemos que {p}',
+            'Si aceptamos que {p}',
+            'Dado {p} como premisa'
+        ])
+        builder2.add_static(', ')
+        builder2.add_variation('follows', [
+            'se sigue que {q}',
+            'obtenemos {q}',
+            'resulta que {q}'
+        ])
+        builder2.add_static('. ')
+        builder2.add_variation('establishes', [
+            'Esto establece que',
+            'Podemos concluir que',
+            'Esto demuestra que'
+        ])
+        builder2.add_static(' ')
+        builder2.add_variation('conditional', [
+            '{p} implica {q}',
+            'si {p}, entonces {q}',
+            '{p} conduce a {q}'
+        ])
+        builder2.add_static('.')
+        templates.append(builder2.build())
+        
+        # Plantilla 3: Formato de prueba
+        builder3 = TemplateBuilder()
+        builder3.add_variation('proof_start', [
+            'Supongamos {p}',
+            'Sea {p} dado',
+            'Asumamos {p} por argumento'
+        ])
+        builder3.add_static('. ')
+        builder3.add_variation('derivation', [
+            'De esto, se sigue {q}',
+            'Entonces {q} debe ser cierto',
+            'Esto produce {q}'
+        ])
+        builder3.add_static('. ')
+        builder3.add_variation('conclusion', [
+            'Por lo tanto',
+            'En consecuencia',
+            'Así'
+        ])
+        builder3.add_static(', ')
+        builder3.add_variation('conditional', [
+            '{p} → {q}',
+            'si {p}, entonces {q}',
+            '{p} implica {q}'
+        ])
+        builder3.add_static('.')
+        templates.append(builder3.build())
+        
+        # Plantilla 4: Orden inverso (conclusión primero)
+        builder4 = TemplateBuilder()
+        builder4.add_static('Establecemos que ')
+        builder4.add_variation('conditional', [
+            '{p} implica {q}',
+            'si {p}, entonces {q}',
+            '{p} garantiza {q}'
+        ])
+        builder4.add_static(' ')
+        builder4.add_variation('justification', [
+            'porque suponer {p} conduce a {q}',
+            'ya que asumir {p} resulta en {q}',
+            'dado que {p} produce {q}'
+        ])
+        builder4.add_static('.')
+        templates.append(builder4.build())
+        
         return templates
     
     def _create_material_conditional_introduction_invalid(self) -> List[EnhancedTemplate]:
         """Create invalid Material Conditional Introduction templates (Non Sequitur) in Spanish."""
         templates = []
         
+        # Patrón inválido: Suponer P, pero concluir condicional no relacionado
         builder = TemplateBuilder()
-        builder.add_variable('P')
+        builder.add_static('Supongamos que ')
+        builder.add_variable('p')
+        builder.add_static(', observamos que ')
+        builder.add_variable('q')
         builder.add_static('. ')
         builder.add_variation('conclusion', [
             'Por lo tanto',
             'Así'
         ])
         builder.add_static(', ')
-        builder.add_variable('q')
+        builder.add_variation('conditional', [
+            'si {r}, entonces {s}',
+            '{r} implica {s}'
+        ])
         builder.add_static('.')
         
         templates.append(builder.build())
