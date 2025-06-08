@@ -666,7 +666,161 @@ def create_paired_comparison(good_arg: GeneratedArgument, bad_arg: GeneratedArgu
     }
 
 
-def generate_sample_dataset(sentences_file: str, num_arguments: int = 100, language: str = 'en', complexity_mix: str = 'mixed') -> List[GeneratedArgument]:
+def generate_with_shared_sentences(sentences_file: str, num_arguments: int = 100, language: str = 'en', complexity_mix: str = 'mixed') -> List[GeneratedArgument]:
+    """Generate arguments using shared sentence pools for valid/invalid pairs."""
+    from argument_generator_v2 import ArgumentGeneratorV2
+    from argument_strength import ArgumentStrengthAnalyzer
+    from linguistic_patterns import ComplexityLevel
+    from datetime import datetime
+    import random
+    
+    arguments = []
+    analyzer = ArgumentStrengthAnalyzer()
+    
+    # Create generator
+    try:
+        generator = ArgumentGeneratorV2(sentences_file, language=language, flexible_mode=True)
+        print(f"Successfully initialized {language} generator")
+    except Exception as e:
+        print(f"Error initializing generator for {language}: {e}")
+        return []
+    
+    # Get available rules
+    print("Testing available rule templates...")
+    available_rules = get_available_rules(generator)
+    
+    if not available_rules:
+        print("No working rule templates found!")
+        return []
+    
+    print(f"Using {len(available_rules)} available rules: {', '.join(available_rules)}")
+    
+    # Set up complexity selection strategy
+    complexity_map = {
+        'basic': ComplexityLevel.BASIC,
+        'intermediate': ComplexityLevel.INTERMEDIATE, 
+        'advanced': ComplexityLevel.ADVANCED,
+        'expert': ComplexityLevel.EXPERT,
+        'mixed': None
+    }
+    
+    if complexity_mix == 'mixed':
+        complexity_choices = [
+            ComplexityLevel.BASIC,      # 40% - premise-first structures
+            ComplexityLevel.BASIC,
+            ComplexityLevel.INTERMEDIATE,   # 40% - conclusion-first structures  
+            ComplexityLevel.INTERMEDIATE,
+            ComplexityLevel.ADVANCED    # 20% - complex patterns
+        ]
+    else:
+        complexity_choices = [complexity_map.get(complexity_mix, ComplexityLevel.BASIC)]
+    
+    # Generate pairs instead of individual arguments
+    successful_pairs = 0
+    target_pairs = num_arguments // 2  # Generate pairs, so half the number of pairs
+    max_attempts = target_pairs * 3
+    
+    for i in range(max_attempts):
+        if successful_pairs >= target_pairs:
+            break
+            
+        rule = available_rules[i % len(available_rules)]
+        selected_complexity = random.choice(complexity_choices)
+        
+        # Temporarily set generator complexity
+        old_complexity = generator.config['complexity_level']
+        generator.config['complexity_level'] = selected_complexity
+        
+        try:
+            # Generate valid/invalid pair with shared sentences
+            valid_text, invalid_text = generator.generate_argument_pair(rule)
+            
+            # Validate both texts
+            if (not valid_text or len(valid_text.strip()) < 10 or "No template" in valid_text or
+                not invalid_text or len(invalid_text.strip()) < 10 or "No template" in invalid_text):
+                continue
+            
+            # Get invalid rule name
+            invalid_rule = generator.rule_mappings.get(rule, f"{rule} (Invalid)")
+            
+            # Create valid argument
+            valid_strength = analyzer.analyze_argument(valid_text, rule, True)
+            valid_sentences = [s.strip() for s in valid_text.split('.') if s.strip()]
+            valid_premises = valid_sentences[:-1] if len(valid_sentences) > 1 else [valid_sentences[0] if valid_sentences else valid_text]
+            valid_conclusion = valid_sentences[-1] if len(valid_sentences) > 1 else ""
+            
+            valid_arg = GeneratedArgument(
+                text=valid_text,
+                rule_type=rule,
+                is_valid=True,
+                variables={},
+                language=language,
+                complexity=selected_complexity,
+                strength_analysis=valid_strength,
+                semantic_info={
+                    'premises': valid_premises,
+                    'conclusion': valid_conclusion,
+                    'semantic_coherence': 0.7,
+                    'domains': ['general']
+                },
+                generation_metadata={
+                    'timestamp': datetime.now().isoformat(),
+                    'plausibility_score': 0.7,
+                    'generation_attempt': i + 1,
+                    'available_rules': available_rules,
+                    'complexity_level': selected_complexity.name,
+                    'shared_sentences': True
+                }
+            )
+            
+            # Create invalid argument
+            invalid_strength = analyzer.analyze_argument(invalid_text, invalid_rule, False)
+            invalid_sentences = [s.strip() for s in invalid_text.split('.') if s.strip()]
+            invalid_premises = invalid_sentences[:-1] if len(invalid_sentences) > 1 else [invalid_sentences[0] if invalid_sentences else invalid_text]
+            invalid_conclusion = invalid_sentences[-1] if len(invalid_sentences) > 1 else ""
+            
+            invalid_arg = GeneratedArgument(
+                text=invalid_text,
+                rule_type=invalid_rule,
+                is_valid=False,
+                variables={},
+                language=language,
+                complexity=selected_complexity,
+                strength_analysis=invalid_strength,
+                semantic_info={
+                    'premises': invalid_premises,
+                    'conclusion': invalid_conclusion,
+                    'semantic_coherence': 0.7,
+                    'domains': ['general']
+                },
+                generation_metadata={
+                    'timestamp': datetime.now().isoformat(),
+                    'plausibility_score': 0.7,
+                    'generation_attempt': i + 1,
+                    'available_rules': available_rules,
+                    'complexity_level': selected_complexity.name,
+                    'shared_sentences': True
+                }
+            )
+            
+            arguments.extend([valid_arg, invalid_arg])
+            successful_pairs += 1
+            
+            if successful_pairs % 10 == 0:
+                print(f"Generated {successful_pairs * 2}/{num_arguments} arguments ({successful_pairs} pairs)...")
+                
+        except Exception as e:
+            print(f"Error generating argument pair {i + 1} ({rule}): {e}")
+        finally:
+            # Restore original complexity level
+            generator.config['complexity_level'] = old_complexity
+    
+    print(f"Successfully generated {len(arguments)} arguments in {language.upper()} with shared sentences")
+    print(f"Success rate: {successful_pairs}/{max_attempts} pairs = {successful_pairs/max_attempts*100:.1f}%")
+    return arguments
+
+
+def generate_sample_dataset(sentences_file: str, num_arguments: int = 100, language: str = 'en', complexity_mix: str = 'mixed', shared_sentences: bool = True) -> List[GeneratedArgument]:
     """Generate a sample dataset for testing."""
     print(f"Generating {num_arguments} sample arguments in {language.upper()}...")
     if complexity_mix == 'mixed':
@@ -674,6 +828,16 @@ def generate_sample_dataset(sentences_file: str, num_arguments: int = 100, langu
     else:
         print(f"Using {complexity_mix} complexity level")
     
+    if shared_sentences:
+        print("Using shared sentence pools for valid/invalid pairs")
+        return generate_with_shared_sentences(sentences_file, num_arguments, language, complexity_mix)
+    else:
+        print("Using separate sentence pools for each argument")
+        return generate_with_separate_sentences(sentences_file, num_arguments, language, complexity_mix)
+
+
+def generate_with_separate_sentences(sentences_file: str, num_arguments: int = 100, language: str = 'en', complexity_mix: str = 'mixed') -> List[GeneratedArgument]:
+    """Generate arguments using separate sentence pools for each argument (original behavior)."""
     from argument_generator_v2 import ArgumentGeneratorV2
     from argument_strength import ArgumentStrengthAnalyzer
     from linguistic_patterns import ComplexityLevel
@@ -792,7 +956,8 @@ def generate_sample_dataset(sentences_file: str, num_arguments: int = 100, langu
                     'plausibility_score': 0.7,
                     'generation_attempt': i + 1,
                     'available_rules': available_rules,
-                    'complexity_level': selected_complexity.name
+                    'complexity_level': selected_complexity.name,
+                    'shared_sentences': False
                 }
             )
             
@@ -808,7 +973,7 @@ def generate_sample_dataset(sentences_file: str, num_arguments: int = 100, langu
             # Restore original complexity level
             generator.config['complexity_level'] = old_complexity
     
-    print(f"Successfully generated {len(arguments)} arguments in {language.upper()}")
+    print(f"Successfully generated {len(arguments)} arguments in {language.upper()} with separate sentences")
     print(f"Success rate: {len(arguments)}/{max_attempts} = {len(arguments)/max_attempts*100:.1f}%")
     return arguments
 
@@ -818,10 +983,11 @@ def main():
     import sys
     
     if len(sys.argv) < 2:
-        print("Usage: python hf_dataset_converter.py <sentences_file> [num_arguments] [output_dir] [language] [format] [complexity]")
+        print("Usage: python hf_dataset_converter.py <sentences_file> [num_arguments] [output_dir] [language] [format] [complexity] [shared_sentences]")
         print("Languages: en (English), es (Spanish), fr (French), de (German)")
         print("Formats: individual (default), paired")
         print("Complexity: mixed (default - premise+conclusion-first), basic, intermediate, advanced, expert")
+        print("Shared sentences: true (default - pairs share sentences), false (separate sentences)")
         return
     
     sentences_file = sys.argv[1]
@@ -830,6 +996,8 @@ def main():
     language = sys.argv[4] if len(sys.argv) > 4 else "en"
     format_type = sys.argv[5] if len(sys.argv) > 5 else "individual"
     complexity_mix = sys.argv[6] if len(sys.argv) > 6 else "mixed"
+    shared_sentences_str = sys.argv[7] if len(sys.argv) > 7 else "true"
+    shared_sentences = shared_sentences_str.lower() in ['true', 't', '1', 'yes', 'y']
     
     # Validate language
     valid_languages = ['en', 'es', 'fr', 'de']
@@ -852,7 +1020,7 @@ def main():
     print(f"Generating dataset in {language.upper()} language")
     
     # Generate sample arguments
-    arguments = generate_sample_dataset(sentences_file, num_arguments, language, complexity_mix)
+    arguments = generate_sample_dataset(sentences_file, num_arguments, language, complexity_mix, shared_sentences)
     
     if not arguments:
         print("No arguments generated!")
