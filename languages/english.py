@@ -908,26 +908,99 @@ class EnglishTemplates(LanguageTemplates):
         """Create valid Material Conditional Introduction templates."""
         templates = []
         
-        # Pattern: Assume P, derive Q, therefore P → Q
-        builder = TemplateBuilder()
-        builder.add_static('Assuming ')
-        builder.add_variable('p')
-        builder.add_static(', we can derive ')
-        builder.add_variable('q')
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
+        # Template 1: Original formal style
+        builder1 = TemplateBuilder()
+        builder1.add_static('Assuming ')
+        builder1.add_variable('p')
+        builder1.add_static(', we can derive ')
+        builder1.add_variable('q')
+        builder1.add_static('. ')
+        builder1.add_variation('conclusion', [
             'Therefore',
             'Thus',
             'Hence'
         ])
-        builder.add_static(', ')
-        builder.add_variation('conditional', [
+        builder1.add_static(', ')
+        builder1.add_variation('conditional', [
             'if {p}, then {q}',
             '{p} implies {q}'
         ])
-        builder.add_static('.')
+        builder1.add_static('.')
+        templates.append(builder1.build())
         
-        templates.append(builder.build())
+        # Template 2: Natural supposition style
+        builder2 = TemplateBuilder()
+        builder2.add_variation('suppose', [
+            'When we suppose {p}',
+            'If we grant that {p}',
+            'Given {p} as a premise'
+        ])
+        builder2.add_static(', ')
+        builder2.add_variation('follows', [
+            'it follows that {q}',
+            'we get {q}',
+            'we obtain {q}'
+        ])
+        builder2.add_static('. ')
+        builder2.add_variation('establishes', [
+            'This establishes that',
+            'We can conclude that',
+            'This shows that'
+        ])
+        builder2.add_static(' ')
+        builder2.add_variation('conditional', [
+            '{p} implies {q}',
+            'if {p}, then {q}',
+            '{p} leads to {q}'
+        ])
+        builder2.add_static('.')
+        templates.append(builder2.build())
+        
+        # Template 3: Proof-style format
+        builder3 = TemplateBuilder()
+        builder3.add_variation('proof_start', [
+            'Suppose {p}',
+            'Let {p} be given',
+            'Assume {p} for argument'
+        ])
+        builder3.add_static('. ')
+        builder3.add_variation('derivation', [
+            'From this, {q} follows',
+            'Then {q} must hold',
+            'This yields {q}'
+        ])
+        builder3.add_static('. ')
+        builder3.add_variation('conclusion', [
+            'Therefore',
+            'Hence',
+            'Thus'
+        ])
+        builder3.add_static(', ')
+        builder3.add_variation('conditional', [
+            '{p} → {q}',
+            'if {p}, then {q}',
+            '{p} entails {q}'
+        ])
+        builder3.add_static('.')
+        templates.append(builder3.build())
+        
+        # Template 4: Reverse order (conclusion-first)
+        builder4 = TemplateBuilder()
+        builder4.add_static('We establish that ')
+        builder4.add_variation('conditional', [
+            '{p} implies {q}',
+            'if {p}, then {q}',
+            '{p} guarantees {q}'
+        ])
+        builder4.add_static(' ')
+        builder4.add_variation('justification', [
+            'because assuming {p} leads to {q}',
+            'since supposing {p} results in {q}',
+            'given that {p} yields {q}'
+        ])
+        builder4.add_static('.')
+        templates.append(builder4.build())
+        
         return templates
     
     def _create_material_conditional_introduction_invalid(self) -> List[EnhancedTemplate]:
