@@ -7,7 +7,8 @@ The generator creates a valid deductive argument like Modus Ponens and pairs it 
 **DISCLAIMER: This dataset generator prototype was made through extensive use of Claude Sonnet 3.7, 4, Claude Opus 4 and Claude Code (Sonnet). It is a work in progress.**
 
 //// This is how Claude describes the project (its intended use wasn't detailed to the different models used in the aid of producing different versions, so it can be interesting to read how the model described what it did), the readme was also drafted by Claude Code.
-Claude: "A sophisticated multi-language logical argument generation system with context-aware capabilities, comprehensive strength analysis, and educational features. This system generates valid and invalid logical arguments across multiple languages with rich metadata for educational and research applications." ////
+
+**Claude**: "A sophisticated multi-language logical argument generation system with context-aware capabilities, comprehensive strength analysis, and educational features. This system generates valid and invalid logical arguments across multiple languages with rich metadata for educational and research applications." ////
 
 ## 🌟 Features
 
@@ -738,7 +739,7 @@ if not is_valid:
 
 ## 📚 Research Applications 
 
-(as per Claude, we believe it is a bit fanciful, but we'll leave it as it is for now, none of these applications were mentioned during prompting)
+(as per Claude, we believe it is a bit fanciful, but we'll leave it as it is for now, none of these applications were mentioned during prompting so it's interesting to read the model's given description)
 
 This system has been designed for:
 - **Logic Education**: Teaching inference rules and fallacy detection
@@ -756,7 +757,7 @@ MIT License - see LICENSE file for details.
 - **Capitalization**: ✅ **FIXED** - All arguments now start with proper capitalization across all languages
 - **Rule Pairing**: ✅ **FIXED** - Disjunction Introduction correctly pairs with Invalid Conjunction Introduction
 - **Sentence Quality**: Basic placeholder sentences included; replace `data/sentences.txt` with domain-specific content as needed
-- **Template Variations**: Some natural language variations may appear artificial; refinements planned for production release
+- **Template Variations**: Some natural language variations may appear artificial; refinements planned before publishing results.
 
 
 ---
