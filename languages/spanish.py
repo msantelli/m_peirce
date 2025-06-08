@@ -375,10 +375,10 @@ class SpanishTemplates(LanguageTemplates):
         
         builder = TemplateBuilder()
         builder.add_variation('disjunction', [
-            '{p} o {q}',
-            'o {p} o {q}',
-            '{p}, o alternativamente {q}',
-            'bien {p} o bien {q}'
+            '{P} o {q}',
+            'O {p} o {q}',
+            '{P}, o alternativamente {q}',
+            'Bien {p} o bien {q}'
         ])
         builder.add_static('. ')
         builder.add_variable('not_P')
@@ -402,9 +402,9 @@ class SpanishTemplates(LanguageTemplates):
         
         builder = TemplateBuilder()
         builder.add_variation('disjunction', [
-            '{p} o {q}',
-            'o {p} o {q}',
-            '{p}, o alternativamente {q}'
+            '{P} o {q}',
+            'O {p} o {q}',
+            '{P}, o alternativamente {q}'
         ])
         builder.add_static('. ')
         builder.add_variable('P')
@@ -474,9 +474,9 @@ class SpanishTemplates(LanguageTemplates):
         
         builder = TemplateBuilder()
         builder.add_variation('conjunction', [
-            '{p} y {q}',
-            'tanto {p} como {q}',
-            '{p} junto con {q}'
+            '{P} y {q}',
+            'Tanto {p} como {q}',
+            '{P} junto con {q}'
         ])
         builder.add_static('. ')
         builder.add_variation('conclusion', [

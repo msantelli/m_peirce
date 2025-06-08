@@ -534,8 +534,8 @@ class FrenchTemplates(LanguageTemplates):
         builder = TemplateBuilder()
         builder.add_variation('conditional', [
             'Si {p}, alors {q}',
-            '{q} si {p}',
-            '{p} implique {q}'
+            '{Q} si {p}',
+            '{P} implique {q}'
         ])
         builder.add_static('. ')
         builder.add_variable('not_Q')
@@ -560,9 +560,9 @@ class FrenchTemplates(LanguageTemplates):
         # Basic: p ou q. Non p. Donc q.
         builder = TemplateBuilder()
         builder.add_variation('disjunction', [
-            '{p} ou {q}',
+            '{P} ou {q}',
             'Soit {p} soit {q}',
-            '{p} ou bien {q}'
+            '{P} ou bien {q}'
         ])
         builder.add_static('. ')
         builder.add_variable('not_P')
@@ -588,12 +588,12 @@ class FrenchTemplates(LanguageTemplates):
         builder = TemplateBuilder()
         builder.add_variation('conditional1', [
             'Si {p}, alors {q}',
-            '{p} implique {q}'
+            '{P} implique {q}'
         ])
         builder.add_static('. ')
         builder.add_variation('conditional2', [
             'Si {q}, alors {r}',
-            '{q} implique {r}'
+            '{Q} implique {r}'
         ])
         builder.add_static('. ')
         builder.add_variation('conclusion', [
