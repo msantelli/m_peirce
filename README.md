@@ -730,19 +730,11 @@ This system has been designed for:
 
 MIT License - see LICENSE file for details.
 
-## 🙏 Acknowledgments
+## Known bugs
 
-- Built on logical reasoning principles from formal logic
-- Multi-language support inspired by cross-cultural reasoning research
-- Educational features designed for logic pedagogy
-- Strength analysis based on argumentation theory
+- The generator doesn't capitalize arguments properly
+- The sentences list are grammaticaly weird and very basic and are just placeholders. Any .txt with sentences will work if you want to use your own.
 
-## 📞 Support
-
-For questions, issues, or contributions:
-- Open an issue on GitHub
-- Check the troubleshooting section
-- Review the demo scripts for usage examples
 
 ---
 
