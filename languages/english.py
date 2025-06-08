@@ -908,14 +908,12 @@ class EnglishTemplates(LanguageTemplates):
         """Create valid Material Conditional Introduction templates."""
         templates = []
         
+        # Pattern: Assume P, derive Q, therefore P → Q
         builder = TemplateBuilder()
-        builder.add_variable('P')
-        builder.add_static(' implies ')
+        builder.add_static('Assuming ')
+        builder.add_variable('p')
+        builder.add_static(', we can derive ')
         builder.add_variable('q')
-        builder.add_static('. ')
-        builder.add_variable('Q')
-        builder.add_static(' implies ')
-        builder.add_variable('r')
         builder.add_static('. ')
         builder.add_variation('conclusion', [
             'Therefore',
@@ -924,8 +922,8 @@ class EnglishTemplates(LanguageTemplates):
         ])
         builder.add_static(', ')
         builder.add_variation('conditional', [
-            'If {p}, then {r}',
-            '{P} implies {r}'
+            'if {p}, then {q}',
+            '{p} implies {q}'
         ])
         builder.add_static('.')
         
@@ -936,9 +934,11 @@ class EnglishTemplates(LanguageTemplates):
         """Create invalid Material Conditional Introduction templates (Non Sequitur)."""
         templates = []
         
+        # Invalid pattern: Assume P, but conclude unrelated conditional
         builder = TemplateBuilder()
-        builder.add_variable('P')
-        builder.add_static(' implies ')
+        builder.add_static('Assuming ')
+        builder.add_variable('p')
+        builder.add_static(', we observe ')
         builder.add_variable('q')
         builder.add_static('. ')
         builder.add_variation('conclusion', [
@@ -946,7 +946,10 @@ class EnglishTemplates(LanguageTemplates):
             'Thus'
         ])
         builder.add_static(', ')
-        builder.add_variable('r')
+        builder.add_variation('conditional', [
+            'if {r}, then {s}',
+            '{r} implies {s}'
+        ])
         builder.add_static('.')
         
         templates.append(builder.build())

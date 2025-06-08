@@ -787,6 +787,7 @@ MIT License - see LICENSE file for details.
 
 - **Capitalization**: ✅ **FIXED** - All arguments now start with proper capitalization across all languages
 - **Rule Pairing**: ✅ **FIXED** - Disjunction Introduction correctly pairs with Invalid Conjunction Introduction
+- **Material Conditional Introduction**: ✅ **FIXED** - Template now correctly implements conditional introduction instead of hypothetical syllogism
 - **Sentence Quality**: Basic placeholder sentences included; replace `data/sentences.txt` with domain-specific content as needed
 - **Template Variations**: Some natural language variations may appear artificial; refinements planned before publishing results.
 
