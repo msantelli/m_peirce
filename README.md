@@ -6,8 +6,8 @@ The generator creates a Valid Deductive Argument like Modus Ponens and pairs it 
 
 DISCLAIMER: This dataset generator prototype was made through extensive use of Claude Sonnet 3.7, 4, Claude Opus 4 and Claude Code (Sonnet). It is a work in progress. 
 
-// This is how Claude describes the project (its intended use wasn't detailed to the different models used in the aid of producing different versions, so it can be interesting to read how the model described what it did), the readme was also drafted by Claude Code.
-// Claude: "A sophisticated multi-language logical argument generation system with context-aware capabilities, comprehensive strength analysis, and educational features. This system generates valid and invalid logical arguments across multiple languages with rich // metadata for educational and research applications."
+//// This is how Claude describes the project (its intended use wasn't detailed to the different models used in the aid of producing different versions, so it can be interesting to read how the model described what it did), the readme was also drafted by Claude Code.
+Claude: "A sophisticated multi-language logical argument generation system with context-aware capabilities, comprehensive strength analysis, and educational features. This system generates valid and invalid logical arguments across multiple languages with rich metadata for educational and research applications." ////
 
 ## 🌟 Features
 
