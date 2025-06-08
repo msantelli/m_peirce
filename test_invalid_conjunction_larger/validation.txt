@@ -1,0 +1,36 @@
+Question 38:
+Option A: Knowledge empowers minds. Therefore, dreaming processes experiences.
+Option B: Garages shelter cars implies running improves fitness. Running improves fitness implies listening improves understanding. Thus, garages shelter cars implies listening improves understanding.
+Correct Answer: B
+Good Type: Material Conditional Introduction
+Bad Type: Non Sequitur
+
+--------------------------------------------------
+
+Question 39:
+Option A: If smelling detects odors, then agreeing shares opinions. independence maintains autonomy implies clouds drift slowly. either smelling detects odors or independence maintains autonomy. Hence, agreeing shares opinions or clouds drift slowly.
+Option B: If entering goes inside, then ice melts rapidly. If retreating moves backward, then snow covers mountains. entering goes inside or retreating moves backward. Therefore, ice melts rapidly or snow covers mountains.
+Correct Answer: A
+Good Type: Constructive Dilemma
+Bad Type: False Dilemma
+
+--------------------------------------------------
+
+Question 40:
+Option A: If objectivity eliminates bias, then independence maintains autonomy. kindness spreads goodness implies incorrectness invalidates responses. either objectivity eliminates bias or kindness spreads goodness. Thus, either independence maintains autonomy or incorrectness invalidates responses.
+Option B: change transforms situations implies unity brings together. abandonment releases obligations implies throwing projects items. either change transforms situations or abandonment releases obligations. Thus, unity brings together or throwing projects items.
+Correct Answer: A
+Good Type: Constructive Dilemma
+Bad Type: False Dilemma
+
+--------------------------------------------------
+
+Question 41:
+Option A: knives slice food implies thinking generates solutions. If forests provide oxygen, then hiking explores nature. either knives slice food or forests provide oxygen. Hence, either thinking generates solutions or hiking explores nature.
+Option B: answering responds questions implies stadiums host events. jars preserve foods implies exclusion denies access. answering responds questions or jars preserve foods. Thus, stadiums host events or exclusion denies access.
+Correct Answer: A
+Good Type: Constructive Dilemma
+Bad Type: False Dilemma
+
+--------------------------------------------------
+

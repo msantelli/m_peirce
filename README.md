@@ -41,7 +41,8 @@ Claude: "A sophisticated multi-language logical argument generation system with 
 - **Affirming the Consequent**: If P then Q, Q, therefore P
 - **Denying the Antecedent**: If P then Q, not P, therefore not Q
 - **Affirming a Disjunct**: P or Q, P, therefore not Q
-- **False Dilemma**: Presenting only two options when more exist (this is a placeholder rule, it is about to be replaced with a proper invalid argument)
+- **Invalid Conjunction Introduction**: Concluding "A and B" from just "A" (A / Therefore, A and B)
+- **False Dilemma**: Presenting only two options when more exist
 - **False Conjunction**: Concluding conjunction from single premise
 - **Composition Fallacy**: Attributing group properties to individuals
 - **Invalid Disjunction Elimination**: Improper elimination from disjunctions
@@ -141,7 +142,7 @@ python hf_dataset_converter.py data/sentences_english.txt 100 my_dataset en pair
 ```
 
 **Paired Format Features:**
-- Logical rule-to-fallacy mappings (Modus Ponens ↔ Affirming the Consequent)
+- Logical rule-to-fallacy mappings (Modus Ponens ↔ Affirming the Consequent, Disjunction Introduction ↔ Invalid Conjunction Introduction)
 - Randomized option order with mapping preservation
 - Reproducible seeds for consistent randomization
 - Both JSONL and human-readable TXT formats
@@ -493,6 +494,24 @@ python hf_dataset_converter.py data/sentences_german.txt 100 german_expert de pa
 | `format` | `individual`, `paired` (default: `individual`) | Output format type |
 | `complexity` | `mixed`, `basic`, `intermediate`, `advanced`, `expert` (default: `mixed`) | **NEW**: Argument structure complexity |
 
+### **Logical Rule-to-Fallacy Mappings**
+
+The system uses consistent logical pairings for paired comparison format:
+
+| Valid Rule | Corresponding Fallacy | Pattern |
+|------------|----------------------|---------|
+| **Modus Ponens** | Affirming the Consequent | If P→Q, P ∴ Q vs If P→Q, Q ∴ P |
+| **Modus Tollens** | Denying the Antecedent | If P→Q, ¬Q ∴ ¬P vs If P→Q, ¬P ∴ ¬Q |
+| **Disjunctive Syllogism** | Affirming a Disjunct | P∨Q, ¬P ∴ Q vs P∨Q, P ∴ ¬Q |
+| **Conjunction Introduction** | False Conjunction | P, Q ∴ P∧Q vs P ∴ P∧Q |
+| **Conjunction Elimination** | Composition Fallacy | P∧Q ∴ P vs Group has P ∴ All have P |
+| **Disjunction Introduction** | Invalid Conjunction Introduction | P ∴ P∨Q vs P ∴ P∧Q |
+| **Disjunction Elimination** | Invalid Disjunction Elimination | Complete vs Incomplete case analysis |
+| **Hypothetical Syllogism** | Non Sequitur | P→Q, Q→R ∴ P→R vs P ∴ Q |
+| **Material Conditional** | Non Sequitur | Valid conditional formation vs Invalid jump |
+| **Constructive Dilemma** | False Dilemma | Valid disjunction vs Limited options |
+| **Destructive Dilemma** | Non Sequitur | Valid complex reasoning vs Invalid conclusion |
+
 ### **Complexity Levels Explained**
 
 | Level | Structure | Example Output | Use Case |
@@ -735,8 +754,8 @@ MIT License - see LICENSE file for details.
 ## Known bugs
 
 - The generator doesn't capitalize arguments properly
-- The sentences list are grammaticaly weird and very basic and are just placeholders. Any .txt with sentences will work if you want to use your own.
-- The wrong rule is paired with Disjunction Introduction, it should be A / A and B
+- The sentences list are grammatically weird and very basic and are just placeholders. Any .txt with sentences will work if you want to use your own.
+- ~~The wrong rule is paired with Disjunction Introduction, it should be A / A and B~~ **FIXED**: Disjunction Introduction now correctly pairs with Invalid Conjunction Introduction (A / Therefore, A and B)
 - Very few Natural Language variations of the templates are a bit forced, confusing or artificial. This will be corrected or clarified before publishing results.
 
 

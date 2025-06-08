@@ -429,7 +429,7 @@ class FrenchTemplates(LanguageTemplates):
         # Disjunction Rules
         templates["Disjunction Introduction"] = {
             "valid": self._create_disjunction_introduction_valid(),
-            "invalid": self._create_disjunction_introduction_invalid()
+            "invalid": self._create_invalid_conjunction_introduction()
         }
         
         templates["Disjunction Elimination"] = {
