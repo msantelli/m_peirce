@@ -505,9 +505,9 @@ class FrenchTemplates(LanguageTemplates):
         builder = TemplateBuilder()
         builder.add_variation('conditional', [
             'Si {p}, alors {q}',
-            '{q} si {p}',
-            '{p} implique {q}',
-            '{p} entraîne {q}'
+            '{Q} si {p}',
+            '{P} implique {q}',
+            '{P} entraîne {q}'
         ])
         builder.add_static('. ')
         builder.add_variable('P')

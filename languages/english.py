@@ -451,10 +451,10 @@ class EnglishTemplates(LanguageTemplates):
         builder = TemplateBuilder()
         builder.add_variation('conditional', [
             'If {p}, then {q}',
-            '{q} if {p}',
-            '{p} implies {q}',
-            '{p} leads to {q}',
-            '{p} guarantees {q}'
+            '{Q} if {p}',
+            '{P} implies {q}',
+            '{P} leads to {q}',
+            '{P} guarantees {q}'
         ])
         builder.add_static('. ')
         builder.add_variable('P')
@@ -495,8 +495,8 @@ class EnglishTemplates(LanguageTemplates):
         builder2.add_static(', ')
         builder2.add_variation('conditional', [
             'if {p}, then {q}',
-            '{p} implies {q}',
-            '{p} leads to {q}'
+            '{P} implies {q}',
+            '{P} leads to {q}'
         ])
         builder2.add_static('.')
         builder2.set_metadata('complexity', ComplexityLevel.INTERMEDIATE)
@@ -512,8 +512,8 @@ class EnglishTemplates(LanguageTemplates):
         builder = TemplateBuilder()
         builder.add_variation('conditional', [
             'If {p}, then {q}',
-            '{q} if {p}',
-            '{p} implies {q}'
+            '{Q} if {p}',
+            '{P} implies {q}'
         ])
         builder.add_static('. ')
         builder.add_variable('Q')
@@ -539,8 +539,8 @@ class EnglishTemplates(LanguageTemplates):
         builder = TemplateBuilder()
         builder.add_variation('conditional', [
             'If {p}, then {q}',
-            '{q} if {p}',
-            '{p} implies {q}'
+            '{Q} if {p}',
+            '{P} implies {q}'
         ])
         builder.add_static('. ')
         builder.add_variable('not_Q')
@@ -565,8 +565,8 @@ class EnglishTemplates(LanguageTemplates):
         builder = TemplateBuilder()
         builder.add_variation('conditional', [
             'If {p}, then {q}',
-            '{q} if {p}',
-            '{p} implies {q}'
+            '{Q} if {p}',
+            '{P} implies {q}'
         ])
         builder.add_static('. ')
         builder.add_variable('not_P')
@@ -590,9 +590,9 @@ class EnglishTemplates(LanguageTemplates):
         
         builder = TemplateBuilder()
         builder.add_variation('disjunction', [
-            '{p} or {q}',
+            '{P} or {q}',
             'Either {p} or {q}',
-            '{p}, or alternatively {q}'
+            '{P}, or alternatively {q}'
         ])
         builder.add_static('. ')
         builder.add_variable('not_P')
@@ -615,7 +615,7 @@ class EnglishTemplates(LanguageTemplates):
         
         builder = TemplateBuilder()
         builder.add_variation('disjunction', [
-            '{p} or {q}',
+            '{P} or {q}',
             'Either {p} or {q}'
         ])
         builder.add_static('. ')

@@ -753,7 +753,7 @@ MIT License - see LICENSE file for details.
 
 ## Known bugs
 
-- The generator doesn't capitalize arguments properly
+- ~~The generator doesn't capitalize arguments properly~~ **PARTIALLY FIXED**: Capitalization issue identified and systematically fixed in Spanish Modus Ponens and Modus Tollens templates. Remaining templates in Spanish, French, and German may still have lowercase variables at sentence starts and need similar fixes.
 - The sentences list are grammatically weird and very basic and are just placeholders. Any .txt with sentences will work if you want to use your own.
 - ~~The wrong rule is paired with Disjunction Introduction, it should be A / A and B~~ **FIXED**: Disjunction Introduction now correctly pairs with Invalid Conjunction Introduction (A / Therefore, A and B)
 - Very few Natural Language variations of the templates are a bit forced, confusing or artificial. This will be corrected or clarified before publishing results.

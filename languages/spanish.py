@@ -273,9 +273,9 @@ class SpanishTemplates(LanguageTemplates):
         builder = TemplateBuilder()
         builder.add_variation('conditional', [
             'Si {p}, entonces {q}',
-            '{q} si {p}',
-            '{p} implica {q}',
-            '{p} lleva a {q}'
+            '{Q} si {p}',
+            '{P} implica {q}',
+            '{P} lleva a {q}'
         ])
         builder.add_static('. ')
         builder.add_variable('P')
@@ -301,8 +301,8 @@ class SpanishTemplates(LanguageTemplates):
         builder = TemplateBuilder()
         builder.add_variation('conditional', [
             'Si {p}, entonces {q}',
-            '{q} si {p}',
-            '{p} implica {q}'
+            '{Q} si {p}',
+            '{P} implica {q}'
         ])
         builder.add_static('. ')
         builder.add_variable('Q')
@@ -326,8 +326,8 @@ class SpanishTemplates(LanguageTemplates):
         builder = TemplateBuilder()
         builder.add_variation('conditional', [
             'Si {p}, entonces {q}',
-            '{q} si {p}',
-            '{p} implica {q}'
+            '{Q} si {p}',
+            '{P} implica {q}'
         ])
         builder.add_static('. ')
         builder.add_variable('not_Q')
@@ -351,8 +351,8 @@ class SpanishTemplates(LanguageTemplates):
         builder = TemplateBuilder()
         builder.add_variation('conditional', [
             'Si {p}, entonces {q}',
-            '{q} si {p}',
-            '{p} implica {q}'
+            '{Q} si {p}',
+            '{P} implica {q}'
         ])
         builder.add_static('. ')
         builder.add_variable('not_P')
