@@ -1,84 +1,84 @@
-Los perros ladran fuerte
-Los gatos duermen tranquilos
-Los pájaros vuelan sur
-Los peces nadan contracorriente
-Los árboles crecen altos
-Las flores florecen hermosas
-La lluvia cae suave
-La nieve cubre montañas
-El sol brilla intenso
-La luna aparece nocturna
-Las estrellas brillan tenues
-El viento sopla fuerte
-Las nubes derivan lentas
-El trueno retumba fuerte
-El rayo golpea rápido
-El fuego quema caliente
-El agua fluye corriente abajo
-El hielo derrite rápido
-El vapor sube arriba
-El humo ondea afuera
-Los niños juegan felices
-Los adultos trabajan diligentes
-Los estudiantes estudian duro
-Los maestros explican claro
-Los médicos curan pacientes
-Las enfermeras cuidan compasivas
-Los ingenieros construyen puentes
-Los artistas crean obras maestras
-Los músicos tocan instrumentos
-Los escritores componen historias
-Los chefs cocinan comidas deliciosas
-Los granjeros cultivan cosechas
-Los constructores edifican casas
-Los conductores navegan caminos
-Los pilotos vuelan aviones
-Los marineros navegan océanos
-Los corredores mueven rápido
-Los nadadores bucean profundo
-Los bailarines actúan gráciles
-Los cantantes entretienen audiencias
-Los libros contienen conocimiento
-Las bibliotecas almacenan información
-Las escuelas educan niños
-Los hospitales tratan enfermedades
-Los restaurantes sirven comida
-Las tiendas venden productos
-Los bancos manejan dinero
-Las oficinas postales entregan correo
-La policía protege ciudadanos
-Los bomberos extinguen llamas
-Los soldados defienden países
-Los autos viajan rápido
-Los trenes transportan pasajeros
-Los autobuses llevan gente
-Los camiones entregan mercancías
+Los perros ladran fuertemente
+Los gatos duermen tranquilamente
+Los pájaros vuelan hacia el sur
+Los peces nadan contra la corriente
+Los árboles crecen muy altos
+Las flores florecen hermosamente
+La lluvia cae suavemente
+La nieve cubre las montañas
+El sol brilla intensamente
+La luna aparece por la noche
+Las estrellas brillan débilmente
+El viento sopla fuertemente
+Las nubes se mueven lentamente
+El trueno retumba fuertemente
+El rayo golpea rápidamente
+El fuego arde caliente
+El agua fluye río abajo
+El hielo se derrite rápidamente
+El vapor sube hacia arriba
+El humo sale hacia afuera
+Los niños juegan felizmente
+Los adultos trabajan diligentemente
+Los estudiantes estudian con dedicación
+Los maestros explican claramente
+Los médicos curan a los pacientes
+Las enfermeras cuidan con compasión
+Los ingenieros construyen los puentes
+Los artistas crean obras de arte
+Los músicos tocan los instrumentos
+Los escritores componen las historias
+Los chefs cocinan comida deliciosa
+Los granjeros cultivan las cosechas
+Los constructores edifican las casas
+Los conductores navegan por los caminos
+Los pilotos vuelan los aviones
+Los marineros navegan por los océanos
+Los corredores se mueven rápidamente
+Los nadadores bucean profundamente
+Los bailarines actúan con gracia
+Los cantantes entretienen a las audiencias
+Los libros ofrecen conocimiento
+Las bibliotecas almacenan la información
+Las escuelas educan a los niños
+Los hospitales tratan las enfermedades
+Los restaurantes sirven la comida
+Las tiendas venden los productos
+Los bancos manejan el dinero
+Las oficinas postales entregan el correo
+La policía protege a los ciudadanos
+Los bomberos extinguen las llamas
+Los soldados defienden los países
+Los autos viajan rápidamente
+Los trenes transportan a los pasajeros
+Los autobuses llevan a la gente
+Los camiones entregan las mercancías
 Las bicicletas proporcionan ejercicio
-Las motocicletas mueven ágiles
-Los barcos cruzan océanos
+Las motocicletas se mueven ágilmente
+Los barcos cruzan los océanos
 Los aviones vuelan alto
-Los helicópteros flotan arriba
-Los cohetes alcanzan espacio
-Las computadoras procesan datos
-Los teléfonos conectan personas
-Los televisores transmiten programas
-Las radios reproducen música
-Las cámaras capturan imágenes
-Los relojes miden tiempo
-Los cronómetros muestran horas
-Los calendarios registran fechas
-Los mapas muestran ubicaciones
-Las brújulas indican direcciones
-Los termómetros miden temperatura
-Las balanzas pesan objetos
-Las reglas miden longitud
-Los lápices escriben palabras
-Las plumas marcan papel
-Los borradores eliminan errores
-Las tijeras cortan materiales
-El pegamento une superficies
-La cinta sostiene cosas
-Los clavos aseguran madera
+Los helicópteros flotan en el aire
+Los cohetes alcanzan el espacio
+Las computadoras procesan los datos
+Los teléfonos conectan a las personas
+Los televisores transmiten los programas
+Las radios reproducen la música
+Las cámaras capturan las imágenes
+Los relojes miden el tiempo
+Los cronómetros muestran las horas
+Los calendarios registran las fechas
+Los mapas muestran las ubicaciones
+Las brújulas indican las direcciones
+Los termómetros miden la temperatura
+Las balanzas pesan los objetos
+Las reglas miden la longitud
+Los lápices escriben las palabras
+Las plumas marcan el papel
+Los borradores eliminan los errores
+Las tijeras cortan los materiales
+El pegamento une las superficies
+La cinta sostiene las cosas
+Los clavos aseguran la madera
 Los tornillos sujetan partes
 Los martillos clavan clavos
 Las sierras cortan maderas
@@ -296,19 +296,19 @@ Preguntar busca información
 Pedir solicita información
 Decir comparte conocimiento
 Mentir engaña otros
-La veracidad mantiene honestidad
-La honestidad construye confianza
-El engaño destruye confianza
-La confianza permite relaciones
-La sospecha socava confianza
-El amor crea vínculos
-El odio destruye relaciones
-La amistad construye conexiones
-La enemistad crea divisiones
-La bondad difunde bien
-La crueldad inflige sufrimiento
-La generosidad comparte abundancia
-El egoísmo acumula recursos
+La gente prefiere la honestidad
+Los amigos construyen confianza mutua
+El engaño destruye las relaciones
+La confianza permite las amistades profundas
+Las sospechas dañan las amistades
+El amor une a las familias
+Los conflictos destruyen las parejas
+La amistad construye conexiones duraderas
+Las peleas crean divisiones familiares
+Los actos bondadosos alegran a otros
+La crueldad lastima a los niños
+Las personas generosas comparten sus recursos
+Los individuos egoístas acumulan riqueza
 La paciencia soporta dificultades
 La impaciencia apresura procesos
 El valor enfrenta miedos
@@ -355,16 +355,16 @@ La inteligencia resuelve problemas
 La ignorancia carece conocimiento
 El conocimiento empodera mentes
 La ignorancia limita comprensión
-La educación desarrolla capacidades
-La mala educación difunde falsedades
-La verdad revela realidad
-La falsedad distorsiona hechos
-Los hechos apoyan argumentos
-Las opiniones expresan creencias
-La evidencia apoya reclamos
-La especulación sugiere posibilidades
-La prueba establece certeza
-La duda cuestiona validez
+La educación desarrolla las capacidades mentales
+Las noticias falsas difunden información incorrecta
+Los periodistas revelan la verdad
+Los políticos a veces distorsionan los hechos
+Los científicos apoyan sus teorías con datos
+Las personas expresan sus creencias políticas
+La evidencia forense apoya las acusaciones
+Los expertos especulan sobre las posibilidades
+Las pruebas de ADN establecen la paternidad
+Los escépticos cuestionan las afirmaciones extraordinarias
 La certeza elimina preguntas
 La incertidumbre crea confusión
 La claridad elimina confusión
@@ -445,16 +445,16 @@ La investigación investiga preguntas
 El descubrimiento revela conocimiento
 La invención crea soluciones
 La innovación mejora métodos
-La creatividad genera ideas
-La imaginación visualiza posibilidades
-La realidad refleja verdad
-La fantasía crea irrealidad
-Los sueños inspiran visiones
-Las pesadillas crean miedos
-La esperanza sostiene espíritus
-El miedo inhibe acción
-El optimismo espera buenos resultados
-El pesimismo anticipa problemas
+Los artistas generan ideas creativas
+Los niños imaginan mundos fantásticos
+La televisión refleja la sociedad actual
+Los cuentos de hadas crean mundos irreales
+Los emprendedores sueñan con el éxito
+Las películas de terror provocan pesadillas
+La esperanza motiva a los enfermos
+El miedo al fracaso paraliza a los estudiantes
+Las personas optimistas esperan buenos resultados
+Los pesimistas siempre anticipan problemas
 La confianza permite acción audaz
 La ansiedad crea preocupación
 El estrés presiona mentes
