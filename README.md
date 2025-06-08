@@ -178,6 +178,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 # No external dependencies required (pure Python implementation)
 ```
 
+
 ## 🏗️ System Architecture
 
 | Component | Purpose |
