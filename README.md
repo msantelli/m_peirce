@@ -736,7 +736,8 @@ MIT License - see LICENSE file for details.
 
 - The generator doesn't capitalize arguments properly
 - The sentences list are grammaticaly weird and very basic and are just placeholders. Any .txt with sentences will work if you want to use your own.
-- The wrong rule is paired with Disjunction Introduction, it should be A / A and B 
+- The wrong rule is paired with Disjunction Introduction, it should be A / A and B
+- Very few Natural Language variations of the templates are a bit forced, confusing or artificial. This will be corrected or clarified before publishing results.
 
 
 ---
