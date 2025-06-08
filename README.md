@@ -2,6 +2,8 @@
 
 A sophisticated multi-language logical argument generation system with context-aware capabilities, comprehensive strength analysis, and educational features. This system generates valid and invalid logical arguments across multiple languages with rich metadata for educational and research applications.
 
+DISCLAIMER: This dataset generator prototype was made through extensive use of Claude Sonnet 3.7, 4, Claude Opus 4 and Claude Code (Sonnet). It is a work in progress. 
+
 ## 🌟 Features
 
 ### 🎯 Core Capabilities
