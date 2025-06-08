@@ -2,7 +2,7 @@
 
 A sophisticated multi-language logical argument generation system with context-aware capabilities, comprehensive strength analysis, and educational features. This system generates valid and invalid logical arguments across multiple languages with rich metadata for educational and research applications.
 
-This dataset intends to test basic logical deductive reasoning capabilities through the use of Reasoning Minimal Pairs, a free extension of the methodology used by linguists in testing linguistic competence through minimal pairs. This has been tried to test Language Models in the past (see https://github.com/alexwarstadt/blimp). 
+This dataset generator intends to produce synthetic datasets to test basic logical deductive reasoning capabilities through the use of Reasoning Minimal Pairs, a free extension of the methodology used by linguists in testing linguistic competence through minimal pairs. This has been tried to test Language Models in the past (see https://github.com/alexwarstadt/blimp). 
 
 The generator creates a Valid Deductive Argument like Modus Ponens and pairs it with an invalid form, in the case of MP, it pairs it with Affirming the Consequent Fallacy. Through these templates the generator grabs simple declarative sentences and forms Reasoning Minimal Pairs of eleven argument types (more coming soon) and renders natural language variants that involve different orderings of premises and conclusions like you would find in natural language argumentation of these forms. 
 
