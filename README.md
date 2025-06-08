@@ -717,7 +717,9 @@ if not is_valid:
     print(f"Configuration error: {message}")
 ```
 
-## 📚 Research Applications
+## 📚 Research Applications 
+
+(as per Claude, we believe it is a bit fanciful, but we'll leave it as it is for now, none of these applications were mentioned during prompting)
 
 This system has been designed for:
 - **Logic Education**: Teaching inference rules and fallacy detection
