@@ -4,7 +4,9 @@ This dataset generator intends to produce synthetic datasets to test basic logic
 
 The generator creates a valid deductive argument like Modus Ponens and pairs it with an invalid form, in the case of MP, it pairs it with Affirming the Consequent Fallacy. Through these templates the generator grabs simple declarative sentences and forms Reasoning Minimal Pairs of eleven argument types (more coming soon) and renders natural language variants that involve different orderings of premises and conclusions like you would find in natural language argumentation of these forms. 
 
-**DISCLAIMER: This dataset generator prototype was made through extensive use of Claude Sonnet 3.7, 4, Claude Opus 4 and Claude Code (Sonnet). It is a work in progress.**
+**DISCLAIMER: This dataset generator prototype was made through extensive use of Claude Sonnet 3.7, 4, Claude Opus 4 and Claude Code (Sonnet). It is a work in progress. These tools were used to flesh out the basic idea of generating arguments from inference frames and a sentence list and they worked wonders to test intuitions and check our work as we discussed the theoretical merits of our ideas. 
+
+We leave some preliminary comments on Claude's work as a side note regarding not only testing LLMs, but developing with them. Claude made some interesting choices that we comment in this readme. If you are interested you can check the relevant code for insights.**
 
 //// This is how Claude describes the project (its intended use wasn't detailed to the different models used in the aid of producing different versions, so it can be interesting to read how the model described what it did), the readme was also drafted by Claude Code.
 
@@ -276,7 +278,8 @@ All languages implement the same logical rules with language-specific patterns:
 - **Detailed**: Complete metadata and statistics
 - **JSON**: Structured data for programmatic use
 
-## 📊 Strength Analysis Features [This feature is a side project of Claude Opus 4 itself with no direct request from us, it is not needed and is not part of the methdology pursued here (and doesn't interact with the argument generator unless explicitly requested), but we'll leave it in this repository until we branch it to another project if it serves some purpose. Regardless, as an experiment in developing with the aid of LLMs, it's interesting to think about phenomenons as these. We found it after we finished a working version]
+## 📊 Strength Analysis Features 
+[This feature is a side project of Claude Opus 4 itself stemming from no direct request from us, it is not needed and is not part of the methodology pursued here (and doesn't interact with the argument generator unless explicitly requested), but we'll leave it in this repository until we branch it to another project if it serves some purpose. Regardless, as an experiment in developing with the aid of LLMs, it's interesting to think about phenomenons as these. We found it after we finished a working version]
 
 ### Multi-Dimensional Assessment
 - **Logical Validity** (0-1): Adherence to inference rules
