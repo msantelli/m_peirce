@@ -1,0 +1,509 @@
+Die Hunde bellen laut
+Die Katzen schlafen friedlich
+Die Vögel fliegen südwärts
+Die Fische schwimmen stromaufwärts
+Die Bäume wachsen hoch
+Die Blumen blühen schön
+Der Regen fällt sanft
+Der Schnee bedeckt Berge
+Die Sonne scheint hell
+Der Mond erscheint nachts
+Die Sterne funkeln leise
+Der Wind weht stark
+Die Wolken treiben langsam
+Der Donner grollt laut
+Der Blitz schlägt schnell
+Das Feuer brennt heiß
+Das Wasser fließt stromabwärts
+Das Eis schmilzt schnell
+Der Dampf steigt aufwärts
+Der Rauch quillt heraus
+Die Kinder spielen fröhlich
+Die Erwachsenen arbeiten fleißig
+Die Studenten lernen hart
+Die Lehrer erklären klar
+Die Ärzte heilen Patienten
+Die Krankenschwestern pflegen mitfühlend
+Die Ingenieure bauen Brücken
+Die Künstler schaffen Meisterwerke
+Die Musiker spielen Instrumente
+Die Schriftsteller verfassen Geschichten
+Die Köche kochen leckere Mahlzeiten
+Die Bauern züchten Pflanzen
+Die Bauarbeiter errichten Häuser
+Die Fahrer navigieren Straßen
+Die Piloten fliegen Flugzeuge
+Die Seeleute navigieren Ozeane
+Die Läufer bewegen sich schnell
+Die Schwimmer tauchen tief
+Die Tänzer treten anmutig auf
+Die Sänger unterhalten Zuschauer
+Die Bücher enthalten Wissen
+Die Bibliotheken speichern Informationen
+Die Schulen bilden Kinder aus
+Die Krankenhäuser behandeln Krankheiten
+Die Restaurants servieren Essen
+Die Geschäfte verkaufen Produkte
+Die Banken verwalten Geld
+Die Postämter liefern Post
+Die Polizei schützt Bürger
+Die Feuerwehr löscht Flammen
+Die Soldaten verteidigen Länder
+Die Autos fahren schnell
+Die Züge transportieren Passagiere
+Die Busse befördern Menschen
+Die Lastwagen liefern Waren
+Die Fahrräder bieten Bewegung
+Die Motorräder bewegen sich flink
+Die Schiffe überqueren Ozeane
+Die Flugzeuge schweben hoch
+Die Hubschrauber schweben oben
+Die Raketen erreichen den Weltraum
+Die Computer verarbeiten Daten
+Die Telefone verbinden Menschen
+Die Fernseher übertragen Programme
+Die Radios spielen Musik
+Die Kameras erfassen Bilder
+Die Uhren messen Zeit
+Die Armbanduhren zeigen Stunden
+Die Kalender verfolgen Daten
+Die Karten zeigen Standorte
+Die Kompasse weisen Richtungen
+Die Thermometer messen Temperatur
+Die Waagen wiegen Gegenstände
+Die Lineale messen Länge
+Die Bleistifte schreiben Wörter
+Die Stifte markieren Papier
+Die Radiergummis entfernen Fehler
+Die Scheren schneiden Materialien
+Der Kleber verbindet Oberflächen
+Das Klebeband hält Dinge
+Die Nägel sichern Holz
+Die Schrauben befestigen Teile
+Die Hämmer treiben Nägel
+Die Sägen schneiden Holz
+Die Bohrer machen Löcher
+Die Schraubenschlüssel drehen Bolzen
+Die Zangen greifen Gegenstände
+Die Messer schneiden Essen
+Die Gabeln nehmen Portionen
+Die Löffel schöpfen Flüssigkeiten
+Die Teller halten Mahlzeiten
+Die Schüsseln enthalten Suppe
+Die Tassen halten Getränke
+Die Gläser zeigen Klarheit
+Die Flaschen lagern Flüssigkeiten
+Die Gläser konservieren Lebensmittel
+Die Kisten enthalten Gegenstände
+Die Taschen tragen Besitztümer
+Die Rucksäcke halten Vorräte
+Die Handtaschen bewahren Wichtiges
+Die Geldbörsen behalten Geld
+Die Schlüssel öffnen Türen
+Die Schlösser sichern Eingänge
+Die Fenster bieten Licht
+Die Türen kontrollieren Zugang
+Die Wände bieten Struktur
+Die Dächer schützen Innenräume
+Die Böden tragen Gewicht
+Die Decken bedecken Räume
+Die Treppen verbinden Ebenen
+Die Aufzüge transportieren vertikal
+Die Rolltreppen bewegen Menschen
+Die Brücken überspannen Entfernungen
+Die Tunnel führen unterirdisch
+Die Straßen ermöglichen Reisen
+Die Bürgersteige beherbergen Fußgänger
+Die Parkplätze lagern Fahrzeuge
+Die Garagen beherbergen Autos
+Die Gärten züchten Pflanzen
+Die Parks bieten Erholung
+Die Spielplätze unterhalten Kinder
+Die Schwimmbäder bieten Erfrischung
+Die Strände ziehen Besucher an
+Die Berge fordern Kletterer heraus
+Die Täler beherbergen Gemeinden
+Die Flüsse liefern Wasser
+Die Seen bieten Erholung
+Die Ozeane enthalten Leben
+Die Wüsten fordern das Überleben heraus
+Die Wälder liefern Sauerstoff
+Die Dschungel wimmeln von Leben
+Die Grasländer unterstützen Tiere
+Die Arktisregionen bleiben gefroren
+Die Tropengebiete bleiben warm
+Die gemäßigten Zonen erleben Jahreszeiten
+Die Städte wimmeln von Aktivität
+Die Städte bieten Gemeinschaft
+Die Dörfer bieten Ruhe
+Die Vororte balancieren Bequemlichkeit
+Die Bauernhöfe produzieren Nahrung
+Die Ranches züchten Vieh
+Die Fabriken stellen Produkte her
+Die Büros koordinieren Geschäfte
+Die Lagerhäuser lagern Inventar
+Die Märkte verkaufen Waren
+Die Einkaufszentren beherbergen Einzelhändler
+Die Theater präsentieren Shows
+Die Museen zeigen Artefakte
+Die Zoos stellen Tiere aus
+Die Aquarien zeigen Meereslebewesen
+Die Stadien veranstalten Ereignisse
+Die Arenen beherbergen Sport
+Die Konzerte unterhalten Menschenmengen
+Die Festivals feiern Kultur
+Die Paraden marschieren durch Straßen
+Die Hochzeiten verbinden Paare
+Die Beerdigungen ehren Verstorbene
+Die Geburtstage feiern Leben
+Die Feiertage bringen Freude
+Die Ferien bieten Ruhe
+Das Reisen erweitert Perspektiven
+Das Abenteuer erregt Geister
+Die Erforschung entdeckt Neues
+Das Lernen erweitert Köpfe
+Das Lesen entwickelt Wortschatz
+Das Schreiben drückt Gedanken aus
+Das Sprechen kommuniziert Ideen
+Das Zuhören verbessert Verständnis
+Das Denken generiert Lösungen
+Das Schaffen produziert Kunst
+Das Bauen konstruiert Realität
+Das Zerstören entfernt Hindernisse
+Das Reparieren behebt Probleme
+Das Reinigen erhält Hygiene
+Das Organisieren verbessert Effizienz
+Das Planen verhindert Chaos
+Das Entscheiden formt Zukunft
+Das Handeln schafft Veränderung
+Das Warten testet Geduld
+Das Laufen verbessert Fitness
+Das Gehen fördert Gesundheit
+Das Schwimmen stärkt Muskeln
+Das Radfahren baut Ausdauer auf
+Das Wandern erkundet Natur
+Das Klettern fordert Grenzen heraus
+Das Springen zeigt Beweglichkeit
+Das Tanzen drückt Emotionen aus
+Das Singen bringt Freude
+Das Spielen ermutigt Kreativität
+Das Lachen löst Spannung
+Das Weinen drückt Trauer aus
+Das Lächeln verbreitet Glück
+Das Stirnrunzeln zeigt Missfallen
+Das Schlafen stellt Energie wieder her
+Das Träumen verarbeitet Erfahrungen
+Das Aufwachen beginnt Tage
+Das Essen liefert Ernährung
+Das Trinken erhält Hydration
+Das Atmen erhält Leben
+Das Sehen nimmt Realität wahr
+Das Hören verarbeitet Geräusche
+Das Riechen erkennt Gerüche
+Das Schmecken identifiziert Geschmäcker
+Das Berühren fühlt Texturen
+Das Denken verarbeitet Informationen
+Das Erinnern speichert Erfahrungen
+Das Vergessen befreit Erinnerungen
+Das Lernen erwirbt Wissen
+Das Lehren teilt Weisheit
+Das Studieren verbessert Verständnis
+Das Üben entwickelt Fähigkeiten
+Das Verbessern steigert Fähigkeiten
+Das Wachsen vergrößert Größe
+Das Schrumpfen verringert Volumen
+Das Expandieren vergrößert Umfang
+Das Zusammenziehen reduziert Ausdehnung
+Das Bewegen ändert Position
+Das Stoppen beendet Bewegung
+Das Beginnen initiiert Handlung
+Das Fortsetzen erhält Fortschritt
+Das Beenden vollendet Aufgaben
+Das Anfangen initiiert Prozesse
+Das Enden schließt Ereignisse ab
+Das Öffnen schafft Zugang
+Das Schließen beschränkt Eintritt
+Das Eintreten geht hinein
+Das Verlassen verlässt Räume
+Das Ankommen erreicht Ziele
+Das Abfahren beginnt Reisen
+Das Bleiben bleibt anwesend
+Das Weggehen geht weg
+Das Kommen nähert sich hier
+Das Gehen bewegt sich dorthin
+Das Steigen bewegt sich aufwärts
+Das Fallen steigt abwärts
+Das Klettern steigt Höhen
+Das Hinabsteigen bewegt sich niedriger
+Das Vorwärtsgehen bewegt sich vorwärts
+Das Zurückziehen bewegt sich rückwärts
+Das Nähern kommt näher
+Das Zurückziehen bewegt sich weg
+Das Drücken wendet Kraft an
+Das Ziehen zieht heran
+Das Heben hebt Gegenstände
+Das Senken reduziert Höhe
+Das Tragen transportiert Gegenstände
+Das Fallenlassen lässt Gegenstände los
+Das Werfen projiziert Gegenstände
+Das Fangen fängt Gegenstände ab
+Das Schlagen trifft Ziele
+Das Verfehlen verfehlt Kontakt
+Das Finden entdeckt Gegenstände
+Das Verlieren verlegt Gegenstände
+Das Suchen sucht Ziele
+Das Entdecken enthüllt Geheimnisse
+Das Verstecken verbirgt Anwesenheit
+Das Enthüllen enthüllt Wahrheit
+Das Zeigen zeigt Gegenstände
+Das Verbergen versteckt Gegenstände
+Das Geben überträgt Eigentum
+Das Empfangen akzeptiert Geschenke
+Das Nehmen erwirbt Besitz
+Das Teilen verteilt Ressourcen
+Das Behalten behält Eigentum
+Das Lagern bewahrt Gegenstände
+Das Sparen sammelt Ressourcen
+Das Ausgeben erschöpft Mittel
+Das Kaufen erwirbt Waren
+Das Verkaufen überträgt Eigentum
+Das Handeln tauscht Gegenstände
+Das Ausleihen benutzt temporär
+Das Verleihen gibt temporär
+Das Besitzen besitzt vollständig
+Das Mieten benutzt temporär
+Das Leasen vermietet Nutzung
+Das Gewinnen erreicht Sieg
+Das Verlieren akzeptiert Niederlage
+Das Konkurrieren strebt Exzellenz an
+Das Kooperieren arbeitet zusammen
+Das Helfen unterstützt andere
+Das Behindern schafft Hindernisse
+Das Unterstützen bietet Hilfe
+Das Widersetzen schafft Widerstand
+Das Zustimmen teilt Meinungen
+Das Widersprechen hält verschiedene Ansichten
+Das Verstehen begreift Bedeutung
+Das Missverstehen interpretiert Bedeutung falsch
+Das Erklären klärt Konzepte
+Das Verwirren schafft Unsicherheit
+Das Vereinfachen reduziert Komplexität
+Das Komplizieren erhöht Schwierigkeit
+Das Lösen löst Probleme
+Das Schaffen erzeugt Probleme
+Das Antworten beantwortet Fragen
+Das Fragen sucht Informationen
+Das Bitten bittet um Informationen
+Das Erzählen teilt Wissen
+Das Lügen täuscht andere
+Die Wahrhaftigkeit erhält Ehrlichkeit
+Die Ehrlichkeit baut Vertrauen auf
+Die Täuschung zerstört Vertrauen
+Das Vertrauen ermöglicht Beziehungen
+Der Verdacht untergräbt Vertrauen
+Die Liebe schafft Bindungen
+Der Hass zerstört Beziehungen
+Die Freundschaft baut Verbindungen auf
+Die Feindschaft schafft Spaltungen
+Die Freundlichkeit verbreitet Güte
+Die Grausamkeit fügt Leiden zu
+Die Großzügigkeit teilt Fülle
+Die Selbstsucht hortet Ressourcen
+Die Geduld erträgt Schwierigkeiten
+Die Ungeduld beschleunigt Prozesse
+Der Mut stellt sich Ängsten
+Die Feigheit vermeidet Herausforderungen
+Die Tapferkeit konfrontiert Gefahren
+Die Schüchternheit schreckt vor Handlung zurück
+Das Vertrauen ermöglicht Handlung
+Der Zweifel hemmt Fortschritt
+Die Hoffnung inspiriert Ausdauer
+Die Verzweiflung zerstört Motivation
+Die Freude erhebt Geister
+Die Traurigkeit lastet schwer
+Das Glück erhellt Tage
+Das Elend verdunkelt Stimmungen
+Die Aufregung energetisiert Aktivitäten
+Die Langeweile drainiert Enthusiasmus
+Das Interesse motiviert Lernen
+Die Apathie entmutigt Engagement
+Die Neugier treibt Erforschung an
+Die Gleichgültigkeit erstickt Wachstum
+Der Enthusiasmus nährt Leidenschaft
+Die Lethargie drainiert Energie
+Die Motivation treibt Handlung an
+Das Aufschieben verzögert Fortschritt
+Die Entschlossenheit erreicht Ziele
+Die Resignation akzeptiert Niederlage
+Die Beharrlichkeit überwindet Hindernisse
+Das Aufgeben verlässt Anstrengungen
+Das Engagement erhält Hingabe
+Das Aufgeben befreit Verpflichtungen
+Die Loyalität erhält Treue
+Der Verrat bricht Vertrauen
+Die Treue hält Versprechen
+Die Untreue bricht Verpflichtungen
+Die Zuverlässigkeit baut Vertrauen auf
+Die Unzuverlässigkeit zerstört Vertrauen
+Die Verantwortung akzeptiert Verpflichtungen
+Die Unverantwortlichkeit vermeidet Pflichten
+Die Reife zeigt Weisheit
+Die Unreife zeigt Unerfahrenheit
+Die Weisheit leitet Entscheidungen
+Die Torheit führt in die Irre
+Die Intelligenz löst Probleme
+Die Unwissenheit fehlt Wissen
+Das Wissen ermächtigt Köpfe
+Die Unwissenheit begrenzt Verständnis
+Die Bildung entwickelt Fähigkeiten
+Die Falschbildung verbreitet Unwahrheiten
+Die Wahrheit enthüllt Realität
+Die Falschheit verzerrt Fakten
+Die Fakten unterstützen Argumente
+Die Meinungen drücken Überzeugungen aus
+Die Beweise unterstützen Behauptungen
+Die Spekulation schlägt Möglichkeiten vor
+Der Beweis etabliert Gewissheit
+Der Zweifel stellt Gültigkeit in Frage
+Die Gewissheit eliminiert Fragen
+Die Ungewissheit schafft Verwirrung
+Die Klarheit eliminiert Verwirrung
+Die Mehrdeutigkeit schafft Ungewissheit
+Die Präzision sichert Genauigkeit
+Die Unbestimmtheit verschleiert Bedeutung
+Die Exaktheit eliminiert Fehler
+Die Annäherung schätzt Werte
+Die Genauigkeit reflektiert Realität
+Die Ungenauigkeit verzerrt Wahrheit
+Die Korrektheit validiert Antworten
+Die Inkorrektheit invalidiert Antworten
+Der Erfolg erreicht Ziele
+Das Versagen verfehlt Ziele
+Die Leistung realisiert Ziele
+Die Enttäuschung verfehlt Erwartungen
+Der Sieg erobert Herausforderungen
+Die Niederlage akzeptiert Verluste
+Der Fortschritt geht voran
+Der Rückschritt bewegt sich rückwärts
+Die Verbesserung steigert Qualität
+Die Verschlechterung reduziert Wert
+Das Wachstum steigert Kapazität
+Der Rückgang verringert Fähigkeit
+Die Entwicklung baut Fähigkeiten auf
+Die Stagnation verhindert Fortschritt
+Die Innovation schafft Lösungen
+Die Tradition erhält Bräuche
+Die Veränderung verwandelt Situationen
+Die Stabilität erhält Bedingungen
+Die Flexibilität passt Umstände an
+Die Starrheit widersteht Modifikation
+Die Anpassungsfähigkeit justiert Bedingungen
+Die Sturheit widersteht Veränderung
+Die Offenheit begrüßt neue Ideen
+Die Verschlossenheit lehnt Neuheit ab
+Die Akzeptanz umarmt Realität
+Die Ablehnung verweigert Angebote
+Die Zustimmung validiert Entscheidungen
+Die Missbilligung kritisiert Entscheidungen
+Das Lob erkennt Exzellenz
+Die Kritik identifiziert Mängel
+Die Ermutigung motiviert Handlung
+Die Entmutigung hemmt Anstrengung
+Die Unterstützung bietet Hilfe
+Der Widerstand schafft Widerstand
+Die Kooperation ermöglicht Teamarbeit
+Der Wettbewerb treibt Exzellenz an
+Die Zusammenarbeit baut zusammen
+Der Konflikt schafft Spannung
+Die Harmonie erhält Balance
+Die Zwietracht stört Frieden
+Die Einheit bringt zusammen
+Die Spaltung trennt Gruppen
+Die Integration kombiniert Elemente
+Die Segregation trennt Komponenten
+Die Inklusion begrüßt Teilnahme
+Die Exklusion verweigert Zugang
+Die Gleichheit sichert Fairness
+Die Ungleichheit schafft Ungleichgewicht
+Die Gerechtigkeit erhält Fairness
+Die Ungerechtigkeit schafft Unfairness
+Die Fairness behandelt gleich
+Die Voreingenommenheit bevorzugt unfair
+Die Neutralität erhält Objektivität
+Die Parteilichkeit zeigt Bevorzugung
+Die Objektivität eliminiert Voreingenommenheit
+Die Subjektivität schließt Voreingenommenheit ein
+Die Vernunft leitet Denken
+Die Emotion beeinflusst Entscheidungen
+Die Logik strukturiert Argumente
+Die Intuition leitet Instinkte
+Die Analyse untersucht Details
+Die Synthese kombiniert Elemente
+Die Beobachtung sammelt Informationen
+Das Experimentieren testet Hypothesen
+Die Forschung untersucht Fragen
+Die Entdeckung enthüllt Wissen
+Die Erfindung schafft Lösungen
+Die Innovation verbessert Methoden
+Die Kreativität generiert Ideen
+Die Fantasie stellt sich Möglichkeiten vor
+Die Realität reflektiert Wahrheit
+Die Fantasie schafft Unrealität
+Die Träume inspirieren Visionen
+Die Albträume schaffen Ängste
+Die Hoffnung erhält Geister
+Die Angst hemmt Handlung
+Der Optimismus erwartet gute Ergebnisse
+Der Pessimismus antizipiert Probleme
+Das Vertrauen ermöglicht mutige Handlung
+Die Angst schafft Sorge
+Der Stress belastet Köpfe
+Die Entspannung beruhigt Nerven
+Der Frieden bringt Ruhe
+Das Chaos schafft Verwirrung
+Die Ordnung organisiert Elemente
+Die Unordnung stört Systeme
+Die Sauberkeit erhält Hygiene
+Der Schmutz sammelt Dreck
+Die Reinheit erhält Unschuld
+Die Kontamination verbreitet Verschmutzung
+Die Gesundheit erhält Wohlbefinden
+Die Krankheit schafft Leiden
+Die Stärke ermöglicht Handlung
+Die Schwäche begrenzt Fähigkeit
+Die Energie treibt Aktivitäten an
+Die Müdigkeit drainiert Ressourcen
+Die Vitalität erhält Leben
+Die Erschöpfung erschöpft Reserven
+Die Energie stärkt Anstrengungen
+Die Lethargie schwächt Motivation
+Die Macht ermöglicht Kontrolle
+Die Schwäche lädt Ausbeutung ein
+Die Autorität kommandiert Respekt
+Die Unterwerfung gibt Kontrolle ab
+Die Führung leitet andere
+Das Folgen akzeptiert Führung
+Die Unabhängigkeit erhält Autonomie
+Die Abhängigkeit verlässt sich auf andere
+Die Freiheit ermöglicht Entscheidungen
+Die Knechtschaft beschränkt Optionen
+Die Freiheit schützt Rechte
+Die Unterdrückung verweigert Freiheiten
+Die Demokratie ermächtigt Bürger
+Die Tyrannei unterdrückt Menschen
+Die Rechte schützen Individuen
+Die Pflichten verpflichten Bürger
+Die Privilegien gewähren Vorteile
+Die Lasten verhängen Härten
+Die Vorteile bieten Vorteile
+Die Kosten erfordern Zahlungen
+Die Gewinne generieren Einkommen
+Die Verluste reduzieren Vermögen
+Die Gewinne steigern Besitztümer
+Die Ausgaben reduzieren Mittel
+Das Einkommen liefert Ressourcen
+Die Armut begrenzt Optionen
+Der Reichtum ermöglicht Entscheidungen
+Der Wohlstand bringt Fülle
+Die Knappheit schafft Beschränkungen
+Die Fülle bietet viel

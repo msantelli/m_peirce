@@ -1,0 +1,18 @@
+# Dependencies
+data/sentences_en_legacy.txt
+__pycache__/
+venv
+demos/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build outputs
+outputs/

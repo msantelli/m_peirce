@@ -1,0 +1,509 @@
+Les chiens aboient fort
+Les chats dorment paisiblement
+Les oiseaux volent vers le sud
+Les poissons nagent à contre-courant
+Les arbres poussent grands
+Les fleurs fleurissent magnifiquement
+La pluie tombe doucement
+La neige couvre les montagnes
+Le soleil brille intensément
+La lune apparaît la nuit
+Les étoiles scintillent doucement
+Le vent souffle fort
+Les nuages dérivent lentement
+Le tonnerre gronde fort
+La foudre frappe rapidement
+Le feu brûle chaud
+L'eau coule en aval
+La glace fond rapidement
+La vapeur monte vers le haut
+La fumée ondule vers l'extérieur
+Les enfants jouent joyeusement
+Les adultes travaillent diligemment
+Les étudiants étudient dur
+Les professeurs expliquent clairement
+Les médecins guérissent les patients
+Les infirmières soignent avec compassion
+Les ingénieurs construisent des ponts
+Les artistes créent des chefs-d'œuvre
+Les musiciens jouent des instruments
+Les écrivains composent des histoires
+Les chefs cuisinent des repas délicieux
+Les fermiers cultivent des récoltes
+Les constructeurs érigent des maisons
+Les conducteurs naviguent sur les routes
+Les pilotes volent des avions
+Les marins naviguent sur les océans
+Les coureurs bougent rapidement
+Les nageurs plongent profondément
+Les danseurs performent gracieusement
+Les chanteurs divertissent les audiences
+Les livres contiennent des connaissances
+Les bibliothèques stockent des informations
+Les écoles éduquent les enfants
+Les hôpitaux traitent les maladies
+Les restaurants servent de la nourriture
+Les magasins vendent des produits
+Les banques gèrent l'argent
+Les bureaux de poste livrent le courrier
+La police protège les citoyens
+Les pompiers éteignent les flammes
+Les soldats défendent les pays
+Les voitures voyagent vite
+Les trains transportent des passagers
+Les bus transportent des gens
+Les camions livrent des marchandises
+Les bicyclettes fournissent de l'exercice
+Les motos bougent agilement
+Les navires traversent les océans
+Les avions planent haut
+Les hélicoptères flottent au-dessus
+Les fusées atteignent l'espace
+Les ordinateurs traitent des données
+Les téléphones connectent les gens
+Les télévisions diffusent des programmes
+Les radios jouent de la musique
+Les appareils photo capturent des images
+Les horloges mesurent le temps
+Les montres montrent les heures
+Les calendriers suivent les dates
+Les cartes affichent les emplacements
+Les boussoles indiquent les directions
+Les thermomètres mesurent la température
+Les balances pèsent les objets
+Les règles mesurent la longueur
+Les crayons écrivent des mots
+Les stylos marquent le papier
+Les gommes enlèvent les erreurs
+Les ciseaux coupent les matériaux
+La colle lie les surfaces
+Le ruban tient les choses
+Les clous sécurisent le bois
+Les vis fixent les pièces
+Les marteaux enfoncent les clous
+Les scies coupent le bois
+Les perceuses font des trous
+Les clés tournent les boulons
+Les pinces saisissent les objets
+Les couteaux tranchent la nourriture
+Les fourchettes prennent des portions
+Les cuillères ramassent les liquides
+Les assiettes tiennent les repas
+Les bols contiennent la soupe
+Les tasses tiennent les boissons
+Les verres montrent la clarté
+Les bouteilles stockent les liquides
+Les pots préservent les aliments
+Les boîtes contiennent des articles
+Les sacs portent les affaires
+Les sacs à dos tiennent les fournitures
+Les sacs à main stockent l'essentiel
+Les portefeuilles gardent l'argent
+Les clés ouvrent les portes
+Les serrures sécurisent les entrées
+Les fenêtres fournissent de la lumière
+Les portes contrôlent l'accès
+Les murs fournissent la structure
+Les toits protègent les intérieurs
+Les sols supportent le poids
+Les plafonds couvrent les pièces
+Les escaliers connectent les niveaux
+Les ascenseurs transportent verticalement
+Les escalators bougent les gens
+Les ponts enjambent les distances
+Les tunnels passent sous terre
+Les routes permettent le voyage
+Les trottoirs accueillent les piétons
+Les parkings stockent les véhicules
+Les garages abritent les voitures
+Les jardins cultivent les plantes
+Les parcs fournissent la récréation
+Les terrains de jeu divertissent les enfants
+Les piscines offrent du rafraîchissement
+Les plages attirent les visiteurs
+Les montagnes défient les grimpeurs
+Les vallées abritent les communautés
+Les rivières fournissent de l'eau
+Les lacs offrent la récréation
+Les océans contiennent la vie
+Les déserts défient la survie
+Les forêts fournissent de l'oxygène
+Les jungles grouillent de vie
+Les prairies soutiennent les animaux
+Les régions arctiques restent gelées
+Les zones tropicales restent chaudes
+Les zones tempérées connaissent les saisons
+Les villes bourdonnent d'activité
+Les villes offrent la communauté
+Les villages fournissent la tranquillité
+Les banlieues équilibrent la commodité
+Les fermes produisent de la nourriture
+Les ranchs élèvent du bétail
+Les usines fabriquent des produits
+Les bureaux coordonnent les affaires
+Les entrepôts stockent l'inventaire
+Les marchés vendent des biens
+Les centres commerciaux abritent des détaillants
+Les théâtres présentent des spectacles
+Les musées exposent des artefacts
+Les zoos exhibent des animaux
+Les aquariums présentent la vie marine
+Les stades accueillent des événements
+Les arènes accueillent les sports
+Les concerts divertissent les foules
+Les festivals célèbrent la culture
+Les parades marchent dans les rues
+Les mariages unissent les couples
+Les funérailles honorent les décédés
+Les anniversaires célèbrent la vie
+Les vacances apportent la joie
+Les vacances fournissent du repos
+Les voyages élargissent les perspectives
+L'aventure excite les esprits
+L'exploration découvre du nouveau
+L'apprentissage élargit les esprits
+La lecture développe le vocabulaire
+L'écriture exprime les pensées
+La parole communique les idées
+L'écoute améliore la compréhension
+La pensée génère des solutions
+La création produit de l'art
+La construction construit la réalité
+La destruction enlève les obstacles
+La réparation corrige les problèmes
+Le nettoyage maintient l'hygiène
+L'organisation améliore l'efficacité
+La planification prévient le chaos
+La décision façonne l'avenir
+L'action crée le changement
+L'attente teste la patience
+Courir améliore la forme physique
+Marcher promeut la santé
+Nager renforce les muscles
+Faire du vélo développe l'endurance
+Randonner explore la nature
+Grimper défie les limites
+Sauter démontre l'agilité
+Danser exprime l'émotion
+Chanter apporte la joie
+Jouer encourage la créativité
+Rire libère la tension
+Pleurer exprime le chagrin
+Sourire répand le bonheur
+Froncer montre le mécontentement
+Dormir restaure l'énergie
+Rêver traite les expériences
+Se réveiller commence les journées
+Manger fournit la nutrition
+Boire maintient l'hydratation
+Respirer soutient la vie
+Voir perçoit la réalité
+Entendre traite les sons
+Sentir détecte les odeurs
+Goûter identifie les saveurs
+Toucher sent les textures
+Penser traite l'information
+Se rappeler stocke les expériences
+Oublier libère les souvenirs
+Apprendre acquiert la connaissance
+Enseigner partage la sagesse
+Étudier améliore la compréhension
+Pratiquer développe les compétences
+Améliorer augmente les capacités
+Grandir augmente la taille
+Rétrécir diminue le volume
+Étendre augmente la portée
+Contracter réduit l'étendue
+Bouger change la position
+Arrêter termine le mouvement
+Commencer initie l'action
+Continuer maintient le progrès
+Finir complète les tâches
+Commencer initie les processus
+Terminer conclut les événements
+Ouvrir crée l'accès
+Fermer restreint l'entrée
+Entrer va à l'intérieur
+Sortir quitte les espaces
+Arriver atteint les destinations
+Partir commence les voyages
+Rester demeure présent
+Partir va au loin
+Venir approche ici
+Aller bouge là-bas
+Monter bouge vers le haut
+Tomber descend vers le bas
+Grimper monte les hauteurs
+Descendre bouge plus bas
+Avancer bouge en avant
+Reculer bouge en arrière
+Approcher vient plus près
+Se retirer bouge au loin
+Pousser applique la force
+Tirer tire vers
+Soulever élève les objets
+Abaisser réduit la hauteur
+Porter transporte les articles
+Lâcher libère les objets
+Lancer projette les articles
+Attraper intercepte les objets
+Frapper frappe les cibles
+Manquer rate le contact
+Trouver découvre les objets
+Perdre égare les articles
+Chercher cherche les cibles
+Découvrir révèle les secrets
+Cacher dissimule la présence
+Révéler expose la vérité
+Montrer affiche les articles
+Dissimuler cache les objets
+Donner transfère la propriété
+Recevoir accepte les cadeaux
+Prendre acquiert la possession
+Partager distribue les ressources
+Garder conserve la propriété
+Stocker préserve les articles
+Économiser accumule les ressources
+Dépenser épuise les fonds
+Acheter acquiert les biens
+Vendre transfère la propriété
+Échanger échange les articles
+Emprunter utilise temporairement
+Prêter donne temporairement
+Posséder possède complètement
+Louer utilise temporairement
+Louer contracte l'usage
+Gagner atteint la victoire
+Perdre accepte la défaite
+Concourir vise l'excellence
+Coopérer travaille ensemble
+Aider assiste les autres
+Entraver crée des obstacles
+Soutenir fournit l'assistance
+S'opposer crée la résistance
+Être d'accord partage les opinions
+Être en désaccord tient des vues différentes
+Comprendre saisit le sens
+Mal comprendre interprète mal le sens
+Expliquer clarifie les concepts
+Confondre crée l'incertitude
+Simplifier réduit la complexité
+Compliquer augmente la difficulté
+Résoudre résout les problèmes
+Créer génère les problèmes
+Répondre répond aux questions
+Questionner cherche l'information
+Demander demande l'information
+Dire partage la connaissance
+Mentir trompe les autres
+La véracité maintient l'honnêteté
+L'honnêteté construit la confiance
+La tromperie détruit la confiance
+La confiance permet les relations
+La suspicion sape la confiance
+L'amour crée des liens
+La haine détruit les relations
+L'amitié construit des connexions
+L'inimitié crée des divisions
+La gentillesse répand la bonté
+La cruauté inflige la souffrance
+La générosité partage l'abondance
+L'égoïsme thésaurise les ressources
+La patience endure les difficultés
+L'impatience précipite les processus
+Le courage fait face aux peurs
+La lâcheté évite les défis
+La bravoure confronte les dangers
+La timidité recule devant l'action
+La confiance permet l'action
+Le doute inhibe le progrès
+L'espoir inspire la persévérance
+Le désespoir détruit la motivation
+La joie élève les esprits
+La tristesse pèse lourdement
+Le bonheur illumine les jours
+La misère assombrit les humeurs
+L'excitation énergise les activités
+L'ennui draine l'enthousiasme
+L'intérêt motive l'apprentissage
+L'apathie décourage l'engagement
+La curiosité stimule l'exploration
+L'indifférence étouffe la croissance
+L'enthousiasme nourrit la passion
+La léthargie draine l'énergie
+La motivation stimule l'action
+La procrastination retarde le progrès
+La détermination atteint les objectifs
+La résignation accepte la défaite
+La persistance surmonte les obstacles
+Abandonner abandonne les efforts
+L'engagement maintient la dévotion
+L'abandon libère les obligations
+La loyauté maintient l'allégeance
+La trahison brise la confiance
+La fidélité tient les promesses
+L'infidélité brise les engagements
+La fiabilité construit la confiance
+L'irréliabilité détruit la confiance
+La responsabilité accepte les obligations
+L'irresponsabilité évite les devoirs
+La maturité démontre la sagesse
+L'immaturité montre l'inexpérience
+La sagesse guide les décisions
+La folie égare
+L'intelligence résout les problèmes
+L'ignorance manque de connaissance
+La connaissance donne du pouvoir aux esprits
+L'ignorance limite la compréhension
+L'éducation développe les capacités
+La mauvaise éducation répand les faussetés
+La vérité révèle la réalité
+Le mensonge déforme les faits
+Les faits soutiennent les arguments
+Les opinions expriment les croyances
+La preuve soutient les revendications
+La spéculation suggère les possibilités
+La preuve établit la certitude
+Le doute questionne la validité
+La certitude élimine les questions
+L'incertitude crée la confusion
+La clarté élimine la confusion
+L'ambiguïté crée l'incertitude
+La précision assure l'exactitude
+Le vague obscurcit le sens
+L'exactitude élimine l'erreur
+L'approximation estime les valeurs
+La précision reflète la réalité
+L'imprécision déforme la vérité
+La correction valide les réponses
+L'incorrection invalide les réponses
+Le succès atteint les objectifs
+L'échec rate les cibles
+L'accomplissement réalise les objectifs
+La déception échoue aux attentes
+La victoire conquiert les défis
+La défaite accepte les pertes
+Le progrès avance
+La régression recule
+L'amélioration augmente la qualité
+La détérioration réduit la valeur
+La croissance augmente la capacité
+Le déclin diminue l'habileté
+Le développement construit les capacités
+La stagnation empêche le progrès
+L'innovation crée les solutions
+La tradition maintient les coutumes
+Le changement transforme les situations
+La stabilité maintient les conditions
+La flexibilité adapte les circonstances
+La rigidité résiste à la modification
+L'adaptabilité ajuste les conditions
+L'entêtement résiste au changement
+L'ouverture accueille les nouvelles idées
+La fermeture rejette la nouveauté
+L'acceptation embrasse la réalité
+Le rejet refuse les offres
+L'approbation valide les choix
+La désapprobation critique les décisions
+L'éloge reconnaît l'excellence
+La critique identifie les défauts
+L'encouragement motive l'action
+Le découragement inhibe l'effort
+Le soutien fournit l'assistance
+L'opposition crée la résistance
+La coopération permet le travail d'équipe
+La compétition stimule l'excellence
+La collaboration construit ensemble
+Le conflit crée la tension
+L'harmonie maintient l'équilibre
+La discorde perturbe la paix
+L'unité rassemble
+La division sépare les groupes
+L'intégration combine les éléments
+La ségrégation sépare les composants
+L'inclusion accueille la participation
+L'exclusion refuse l'accès
+L'égalité assure l'équité
+L'inégalité crée le déséquilibre
+La justice maintient l'équité
+L'injustice crée l'iniquité
+L'équité traite également
+Le parti pris favorise injustement
+La neutralité maintient l'objectivité
+La partialité montre le favoritisme
+L'objectivité élimine le parti pris
+La subjectivité inclut le parti pris
+La raison guide la pensée
+L'émotion influence les décisions
+La logique structure les arguments
+L'intuition guide les instincts
+L'analyse examine les détails
+La synthèse combine les éléments
+L'observation rassemble l'information
+L'expérimentation teste les hypothèses
+La recherche investigue les questions
+La découverte révèle la connaissance
+L'invention crée les solutions
+L'innovation améliore les méthodes
+La créativité génère les idées
+L'imagination envisage les possibilités
+La réalité reflète la vérité
+La fantaisie crée l'irréalité
+Les rêves inspirent les visions
+Les cauchemars créent les peurs
+L'espoir soutient les esprits
+La peur inhibe l'action
+L'optimisme attend de bons résultats
+Le pessimisme anticipe les problèmes
+La confiance permet l'action audacieuse
+L'anxiété crée l'inquiétude
+Le stress presse les esprits
+La relaxation calme les nerfs
+La paix apporte la tranquillité
+Le chaos crée la confusion
+L'ordre organise les éléments
+Le désordre perturbe les systèmes
+La propreté maintient l'hygiène
+La saleté accumule la crasse
+La pureté maintient l'innocence
+La contamination répand la pollution
+La santé maintient le bien-être
+La maladie crée la souffrance
+La force permet l'action
+La faiblesse limite la capacité
+L'énergie alimente les activités
+La fatigue draine les ressources
+La vitalité soutient la vie
+L'épuisement épuise les réserves
+La vigueur renforce les efforts
+La léthargie affaiblit la motivation
+Le pouvoir permet le contrôle
+La faiblesse invite l'exploitation
+L'autorité commande le respect
+La soumission cède le contrôle
+Le leadership guide les autres
+Suivre accepte la guidance
+L'indépendance maintient l'autonomie
+La dépendance compte sur les autres
+La liberté permet les choix
+L'esclavage restreint les options
+La liberté protège les droits
+L'oppression refuse les libertés
+La démocratie donne du pouvoir aux citoyens
+La tyrannie opprime les gens
+Les droits protègent les individus
+Les devoirs obligent les citoyens
+Les privilèges accordent les avantages
+Les fardeaux imposent les difficultés
+Les bénéfices fournissent les avantages
+Les coûts exigent les paiements
+Les profits génèrent les revenus
+Les pertes réduisent les actifs
+Les gains augmentent les possessions
+Les dépenses réduisent les fonds
+Les revenus fournissent les ressources
+La pauvreté limite les options
+La richesse permet les choix
+La prospérité apporte l'abondance
+La rareté crée les limitations
+L'abondance fournit beaucoup
