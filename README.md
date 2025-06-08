@@ -125,8 +125,14 @@ python hf_dataset_converter.py data/sentences_german.txt 200 dataset de paired e
 {
   "question_id": 1,
   "test_options": {
-    "original": ["Valid argument text", "Invalid argument text"],
-    "randomized": ["Invalid argument text", "Valid argument text"], 
+    "original": [
+      "Misunderstanding misinterprets meaning implies rejection refuses offers. Misunderstanding misinterprets meaning. Hence, rejection refuses offers.",
+      "If misunderstanding misinterprets meaning, then rejection refuses offers. Rejection refuses offers. Thus, misunderstanding misinterprets meaning."
+    ],
+    "randomized": [
+      "If misunderstanding misinterprets meaning, then rejection refuses offers. Rejection refuses offers. Thus, misunderstanding misinterprets meaning.",
+      "Misunderstanding misinterprets meaning implies rejection refuses offers. Misunderstanding misinterprets meaning. Hence, rejection refuses offers."
+    ],
     "mapping": {"0": 1, "1": 0}
   },
   "correct_answer": {
@@ -251,22 +257,30 @@ MIT License - see LICENSE file for details.
 
 ### Example 1: Shared vs. Separate Sentences Comparison
 
-**Shared Sentences Mode:**
+**Shared Sentences Mode (English):**
+```
+Question 5:
+Option A: Grasslands support animals if eating provides nutrition. Eating provides nutrition. 
+         Consequently, grasslands support animals.
+Option B: Grasslands support animals if eating provides nutrition. Grasslands support animals. 
+         So, eating provides nutrition.
+Good Type: Modus Ponens, Bad Type: Affirming the Consequent
+```
+
+**Shared Sentences Mode (Spanish):**
 ```
 Question 148:
 Option A: El flan casero es mejor que el comprado. Los programadores escriben código. 
          Así, el flan casero es mejor que el comprado y los programadores escriben código.
 Option B: El flan casero es mejor que el comprado. Por lo tanto, tanto el flan casero es 
          mejor que el comprado como los programadores escriben código.
+Good Type: Conjunction Introduction, Bad Type: False Conjunction
 ```
 
 **Separate Sentences Mode:**
 ```
-Question 148:  
-Option A: El flan casero es mejor que el comprado. Los programadores escriben código. 
-         Así, el flan casero es mejor que el comprado y los programadores escriben código.
-Option B: Los hinchas de boca viven en la boca. Por lo tanto, tanto los hinchas de boca 
-         viven en la boca como los del oeste son trabajadores.
+Valid:   "Grasslands support animals if eating provides nutrition..."
+Invalid: "Reality reflects truth. Thus, dropping releases objects."
 ```
 
 ### Advanced Command Examples
