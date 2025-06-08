@@ -741,4 +741,4 @@ MIT License - see LICENSE file for details.
 
 ---
 
-*This system represents a comprehensive tool for logical argument generation, combining advanced NLP techniques with pedagogical principles to create contextually appropriate, linguistically rich logical arguments across multiple languages and domains.*
+* Claude: This system represents a comprehensive tool for logical argument generation, combining advanced NLP techniques with pedagogical principles to create contextually appropriate, linguistically rich logical arguments across multiple languages and domains.*
