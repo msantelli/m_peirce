@@ -1,4 +1,4 @@
-# Logical Argument Generation System for Minimal Peirce - a Minimal Reasoning Pairs Benchmark to test Basic Deductive Reasoning (m-peirce-a)
+**v0.1.5** # Logical Argument Generation System for Minimal Peirce - a Minimal Reasoning Pairs Benchmark to test Basic Deductive Reasoning (m-peirce-a)
 
 This dataset generator intends to produce synthetic datasets to test basic logical deductive reasoning capabilities through the use of Reasoning Minimal Pairs, a free extension of the methodology used by linguists in testing linguistic competence through minimal pairs. This has been tried to test Language Models in the past (see https://github.com/alexwarstadt/blimp). 
 
