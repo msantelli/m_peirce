@@ -751,12 +751,12 @@ This system has been designed for:
 
 MIT License - see LICENSE file for details.
 
-## Known bugs
+## Known Issues
 
-- ~~The generator doesn't capitalize arguments properly~~ **FIXED**: Capitalization issue systematically resolved across all languages. Template variations now properly use uppercase variables ({P}, {Q}) when they appear at sentence beginnings, ensuring grammatically correct capitalization in all generated arguments.
-- The sentences list are grammatically weird and very basic and are just placeholders. Any .txt with sentences will work if you want to use your own.
-- ~~The wrong rule is paired with Disjunction Introduction, it should be A / A and B~~ **FIXED**: Disjunction Introduction now correctly pairs with Invalid Conjunction Introduction (A / Therefore, A and B)
-- Very few Natural Language variations of the templates are a bit forced, confusing or artificial. This will be corrected or clarified before publishing results.
+- **Capitalization**: ✅ **FIXED** - All arguments now start with proper capitalization across all languages
+- **Rule Pairing**: ✅ **FIXED** - Disjunction Introduction correctly pairs with Invalid Conjunction Introduction
+- **Sentence Quality**: Basic placeholder sentences included; replace `data/sentences.txt` with domain-specific content as needed
+- **Template Variations**: Some natural language variations may appear artificial; refinements planned for production release
 
 
 ---

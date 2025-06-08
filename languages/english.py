@@ -684,9 +684,9 @@ class EnglishTemplates(LanguageTemplates):
         
         builder = TemplateBuilder()
         builder.add_variation('conjunction', [
-            '{p} and {q}',
-            'both {p} and {q}',
-            '{p} as well as {q}'
+            '{P} and {q}',
+            'Both {p} and {q}',
+            '{P} as well as {q}'
         ])
         builder.add_static('. ')
         builder.add_variation('conclusion', [
@@ -707,8 +707,8 @@ class EnglishTemplates(LanguageTemplates):
         
         builder = TemplateBuilder()
         builder.add_variation('conjunction', [
-            '{p} and {q}',
-            'both {p} and {q}'
+            '{P} and {q}',
+            'Both {p} and {q}'
         ])
         builder.add_static('. ')
         builder.add_variation('conclusion', [
@@ -797,12 +797,12 @@ class EnglishTemplates(LanguageTemplates):
         builder = TemplateBuilder()
         builder.add_variation('conditional1', [
             'If {p}, then {q}',
-            '{p} implies {q}'
+            '{P} implies {q}'
         ])
         builder.add_static('. ')
         builder.add_variation('conditional2', [
             'If {q}, then {r}',
-            '{q} implies {r}'
+            '{Q} implies {r}'
         ])
         builder.add_static('. ')
         builder.add_variation('conclusion', [
@@ -812,8 +812,8 @@ class EnglishTemplates(LanguageTemplates):
         ])
         builder.add_static(', ')
         builder.add_variation('conditional3', [
-            'if {p}, then {r}',
-            '{p} implies {r}'
+            'If {p}, then {r}',
+            '{P} implies {r}'
         ])
         builder.add_static('.')
         
@@ -827,12 +827,12 @@ class EnglishTemplates(LanguageTemplates):
         builder = TemplateBuilder()
         builder.add_variation('conditional1', [
             'If {p}, then {q}',
-            '{p} implies {q}'
+            '{P} implies {q}'
         ])
         builder.add_static('. ')
         builder.add_variation('conditional2', [
             'If {q}, then {r}',
-            '{q} implies {r}'
+            '{Q} implies {r}'
         ])
         builder.add_static('. ')
         builder.add_variation('conclusion', [
@@ -852,18 +852,18 @@ class EnglishTemplates(LanguageTemplates):
         
         builder = TemplateBuilder()
         builder.add_variation('disjunction', [
-            '{p} or {q}',
-            'either {p} or {q}'
+            '{P} or {q}',
+            'Either {p} or {q}'
         ])
         builder.add_static('. ')
         builder.add_variation('conditional1', [
             'If {p}, then {r}',
-            '{p} implies {r}'
+            '{P} implies {r}'
         ])
         builder.add_static('. ')
         builder.add_variation('conditional2', [
             'If {q}, then {r}',
-            '{q} implies {r}'
+            '{Q} implies {r}'
         ])
         builder.add_static('. ')
         builder.add_variation('conclusion', [
@@ -884,13 +884,13 @@ class EnglishTemplates(LanguageTemplates):
         
         builder = TemplateBuilder()
         builder.add_variation('disjunction', [
-            '{p} or {q}',
-            'either {p} or {q}'
+            '{P} or {q}',
+            'Either {p} or {q}'
         ])
         builder.add_static('. ')
         builder.add_variation('conditional1', [
             'If {p}, then {r}',
-            '{p} implies {r}'
+            '{P} implies {r}'
         ])
         builder.add_static('. ')
         builder.add_variation('conclusion', [
@@ -924,8 +924,8 @@ class EnglishTemplates(LanguageTemplates):
         ])
         builder.add_static(', ')
         builder.add_variation('conditional', [
-            'if {p}, then {r}',
-            '{p} implies {r}'
+            'If {p}, then {r}',
+            '{P} implies {r}'
         ])
         builder.add_static('.')
         
@@ -959,17 +959,17 @@ class EnglishTemplates(LanguageTemplates):
         builder = TemplateBuilder()
         builder.add_variation('conditional1', [
             'If {p}, then {q}',
-            '{p} implies {q}'
+            '{P} implies {q}'
         ])
         builder.add_static('. ')
         builder.add_variation('conditional2', [
             'If {r}, then {s}',
-            '{r} implies {s}'
+            '{R} implies {s}'
         ])
         builder.add_static('. ')
         builder.add_variation('disjunction', [
-            '{p} or {r}',
-            'either {p} or {r}'
+            '{P} or {r}',
+            'Either {p} or {r}'
         ])
         builder.add_static('. ')
         builder.add_variation('conclusion', [
@@ -980,7 +980,7 @@ class EnglishTemplates(LanguageTemplates):
         builder.add_static(', ')
         builder.add_variation('conclusion_disjunction', [
             '{q} or {s}',
-            'either {q} or {s}'
+            'Either {q} or {s}'
         ])
         builder.add_static('.')
         
@@ -1018,17 +1018,17 @@ class EnglishTemplates(LanguageTemplates):
         builder = TemplateBuilder()
         builder.add_variation('conditional1', [
             'If {p}, then {q}',
-            '{p} implies {q}'
+            '{P} implies {q}'
         ])
         builder.add_static('. ')
         builder.add_variation('conditional2', [
             'If {r}, then {s}',
-            '{r} implies {s}'
+            '{R} implies {s}'
         ])
         builder.add_static('. ')
         builder.add_variation('disjunction', [
             '{not_q} or {not_s}',
-            'either {not_q} or {not_s}'
+            'Either {not_q} or {not_s}'
         ])
         builder.add_static('. ')
         builder.add_variation('conclusion', [
@@ -1039,7 +1039,7 @@ class EnglishTemplates(LanguageTemplates):
         builder.add_static(', ')
         builder.add_variation('conclusion_disjunction', [
             '{not_p} or {not_r}',
-            'either {not_p} or {not_r}'
+            'Either {not_p} or {not_r}'
         ])
         builder.add_static('.')
         
@@ -1053,12 +1053,12 @@ class EnglishTemplates(LanguageTemplates):
         builder = TemplateBuilder()
         builder.add_variation('conditional1', [
             'If {p}, then {q}',
-            '{p} implies {q}'
+            '{P} implies {q}'
         ])
         builder.add_static('. ')
         builder.add_variation('conditional2', [
             'If {r}, then {s}',
-            '{r} implies {s}'
+            '{R} implies {s}'
         ])
         builder.add_static('. ')
         builder.add_variation('conclusion', [
