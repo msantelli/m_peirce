@@ -3,6 +3,7 @@ data/sentences_en_legacy.txt
 __pycache__/
 venv
 demos/
+.claude
 
 # IDE files
 .vscode/

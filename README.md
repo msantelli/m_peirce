@@ -279,7 +279,7 @@ All languages implement the same logical rules with language-specific patterns:
 - **JSON**: Structured data for programmatic use
 
 ## 📊 Strength Analysis Features 
-[This feature is a side project of Claude Opus 4 itself stemming from no direct request from us, it is not needed and is not part of the methodology pursued here (and doesn't interact with the argument generator unless explicitly requested), but we'll leave it in this repository until we branch it to another project if it serves some purpose. Regardless, as an experiment in developing with the aid of LLMs, it's interesting to think about phenomenons as these. We found it after we finished a working version]
+[This feature is a side project of Claude Opus 4 itself stemming from no direct request from us, it is not needed and is not part of the methodology pursued here (and doesn't interact with the argument generator unless explicitly requested), but we'll leave it in this repository until we branch it to another project if it serves some purpose. Regardless, as an experiment in developing with the aid of LLMs, it's interesting to think about phenomena such as these. We found it after we finished a working version]
 
 ### 🤖 Commentary on Emergent LLM Development Behavior
 
@@ -540,7 +540,7 @@ The system uses consistent logical pairings for paired comparison format:
 | **Disjunction Introduction** | Invalid Conjunction Introduction | P ∴ P∨Q vs P ∴ P∧Q |
 | **Disjunction Elimination** | Invalid Disjunction Elimination | Complete vs Incomplete case analysis |
 | **Hypothetical Syllogism** | Non Sequitur | P→Q, Q→R ∴ P→R vs P ∴ Q |
-| **Material Conditional** | Non Sequitur | Valid conditional formation vs Invalid jump |
+| **Material Conditional Introduction** | Invalid Material Conditional Introduction | Valid conditional formation vs Adding unwarranted variables |
 | **Constructive Dilemma** | False Dilemma | Valid disjunction vs Limited options |
 | **Destructive Dilemma** | Non Sequitur | Valid complex reasoning vs Invalid conclusion |
 
@@ -787,7 +787,7 @@ MIT License - see LICENSE file for details.
 
 - **Capitalization**: ✅ **FIXED** - All arguments now start with proper capitalization across all languages
 - **Rule Pairing**: ✅ **FIXED** - Disjunction Introduction correctly pairs with Invalid Conjunction Introduction
-- **Material Conditional Introduction**: ✅ **FIXED** in English and Spanish - Templates now correctly implement conditional introduction instead of hypothetical syllogism; French and German still need fixing
+- **Material Conditional Introduction**: ✅ **FIXED** - All languages now use "Invalid Material Conditional Introduction" pattern instead of generic Non Sequitur, creating minimal invalid variations with unwarranted additional variables
 - **Sentence Quality**: Basic placeholder sentences included; replace `data/sentences.txt` with domain-specific content as needed
 - **Template Variations**: Some natural language variations may appear artificial; refinements planned before publishing results.
 

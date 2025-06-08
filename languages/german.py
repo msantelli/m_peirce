@@ -426,7 +426,7 @@ class GermanTemplates(LanguageTemplates):
         
         templates["Material Conditional Introduction"] = {
             "valid": self._create_simple_valid("{P} impliziert {q}. {Q} impliziert {r}. Also wenn {p}, dann {r}."),
-            "invalid": self._create_simple_invalid("{P}. Also {q}.")
+            "invalid": self._create_material_conditional_introduction_invalid()
         }
         
         templates["Constructive Dilemma"] = {
@@ -476,6 +476,10 @@ class GermanTemplates(LanguageTemplates):
             "invalid": self._create_simple_invalid("{P}. Also {q}.")
         }
         
+        templates["Invalid Material Conditional Introduction"] = {
+            "invalid": self._create_material_conditional_introduction_invalid()
+        }
+        
         return templates
     
     def _create_simple_valid(self, template_text: str) -> List[EnhancedTemplate]:
@@ -489,6 +493,32 @@ class GermanTemplates(LanguageTemplates):
         builder = TemplateBuilder()
         builder.add_static(template_text)
         return [builder.build()]
+    
+    def _create_material_conditional_introduction_invalid(self) -> List[EnhancedTemplate]:
+        """Create invalid Material Conditional Introduction templates in German."""
+        templates = []
+        
+        # Ungültiges Muster: P annehmen, Q ableiten, aber ungültiges Konditional mit zusätzlicher Variable schließen
+        builder = TemplateBuilder()
+        builder.add_static('Angenommen ')
+        builder.add_variable('p')
+        builder.add_static(', ')
+        builder.add_variable('q')
+        builder.add_static(' ist ableitbar. ')
+        builder.add_variation('conclusion', [
+            'Also',
+            'Daher',
+            'Somit'
+        ])
+        builder.add_static(', ')
+        builder.add_variation('conditional', [
+            'wenn {p} dann {q} und {r}',
+            'wenn {p}, dann {q} und {r}'
+        ])
+        builder.add_static('.')
+        
+        templates.append(builder.build())
+        return templates
     
     def _create_modus_ponens_valid(self) -> List[EnhancedTemplate]:
         """Create valid Modus Ponens templates in German."""

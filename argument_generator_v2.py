@@ -92,7 +92,7 @@ class ArgumentGeneratorV2:
             "Disjunction Introduction": "Invalid Conjunction Introduction",
             "Hypothetical Syllogism": "Non Sequitur",
             "Disjunction Elimination": "Invalid Disjunction Elimination",
-            "Material Conditional Introduction": "Non Sequitur",
+            "Material Conditional Introduction": "Invalid Material Conditional Introduction",
             "Constructive Dilemma": "False Dilemma",
             "Destructive Dilemma": "Non Sequitur"
         }

@@ -218,7 +218,7 @@ class HuggingFaceDatasetConverter:
             "Disjunction Introduction": "Invalid Conjunction Introduction",
             "Disjunction Elimination": "Invalid Disjunction Elimination",
             "Hypothetical Syllogism": "Non Sequitur",
-            "Material Conditional Introduction": "Non Sequitur",
+            "Material Conditional Introduction": "Invalid Material Conditional Introduction",
             "Constructive Dilemma": "False Dilemma", 
             "Destructive Dilemma": "Non Sequitur"
         }

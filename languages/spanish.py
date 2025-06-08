@@ -261,7 +261,11 @@ class SpanishTemplates(LanguageTemplates):
         }
         
         templates["Non Sequitur"] = {
-            "invalid": self._create_hypothetical_syllogism_invalid() + self._create_material_conditional_introduction_invalid() + self._create_destructive_dilemma_invalid()
+            "invalid": self._create_hypothetical_syllogism_invalid() + self._create_destructive_dilemma_invalid()
+        }
+        
+        templates["Invalid Material Conditional Introduction"] = {
+            "invalid": self._create_material_conditional_introduction_invalid()
         }
         
         return templates
@@ -786,24 +790,25 @@ class SpanishTemplates(LanguageTemplates):
         return templates
     
     def _create_material_conditional_introduction_invalid(self) -> List[EnhancedTemplate]:
-        """Create invalid Material Conditional Introduction templates (Non Sequitur) in Spanish."""
+        """Create invalid Material Conditional Introduction templates in Spanish."""
         templates = []
         
-        # Patrón inválido: Suponer P, pero concluir condicional no relacionado
+        # Patrón inválido: Suponer P, derivar Q, pero concluir condicional inválido con variable extra
         builder = TemplateBuilder()
         builder.add_static('Supongamos que ')
         builder.add_variable('p')
-        builder.add_static(', observamos que ')
+        builder.add_static(', ')
         builder.add_variable('q')
-        builder.add_static('. ')
+        builder.add_static(' es derivable. ')
         builder.add_variation('conclusion', [
+            'Así',
             'Por lo tanto',
-            'Así'
+            'En consecuencia'
         ])
         builder.add_static(', ')
         builder.add_variation('conditional', [
-            'si {r}, entonces {s}',
-            '{r} implica {s}'
+            'si {p} entonces {q} y {r}',
+            'si {p}, entonces {q} y {r}'
         ])
         builder.add_static('.')
         

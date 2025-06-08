@@ -492,7 +492,11 @@ class FrenchTemplates(LanguageTemplates):
         }
         
         templates["Non Sequitur"] = {
-            "invalid": self._create_hypothetical_syllogism_invalid() + self._create_material_conditional_introduction_invalid() + self._create_destructive_dilemma_invalid()
+            "invalid": self._create_hypothetical_syllogism_invalid() + self._create_destructive_dilemma_invalid()
+        }
+        
+        templates["Invalid Material Conditional Introduction"] = {
+            "invalid": self._create_material_conditional_introduction_invalid()
         }
         
         return templates
@@ -949,18 +953,26 @@ class FrenchTemplates(LanguageTemplates):
         return templates
     
     def _create_material_conditional_introduction_invalid(self) -> List[EnhancedTemplate]:
-        """Create invalid Material Conditional Introduction templates (Non Sequitur) in French."""
+        """Create invalid Material Conditional Introduction templates in French."""
         templates = []
         
+        # Modèle invalide: Supposer P, dériver Q, mais conclure conditionnel invalide avec variable supplémentaire
         builder = TemplateBuilder()
-        builder.add_variable('P')
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Donc',
-            'Ainsi'
-        ])
+        builder.add_static('En supposant que ')
+        builder.add_variable('p')
         builder.add_static(', ')
         builder.add_variable('q')
+        builder.add_static(' est dérivable. ')
+        builder.add_variation('conclusion', [
+            'Ainsi',
+            'Donc',
+            'Par conséquent'
+        ])
+        builder.add_static(', ')
+        builder.add_variation('conditional', [
+            'si {p} alors {q} et {r}',
+            'si {p}, alors {q} et {r}'
+        ])
         builder.add_static('.')
         
         templates.append(builder.build())

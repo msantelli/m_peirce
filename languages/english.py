@@ -441,6 +441,10 @@ class EnglishTemplates(LanguageTemplates):
             "invalid": self._create_disjunction_elimination_invalid()
         }
         
+        templates["Invalid Material Conditional Introduction"] = {
+            "invalid": self._create_material_conditional_introduction_invalid()
+        }
+        
         return templates
     
     def _create_modus_ponens_valid(self) -> List[EnhancedTemplate]:
@@ -1004,24 +1008,25 @@ class EnglishTemplates(LanguageTemplates):
         return templates
     
     def _create_material_conditional_introduction_invalid(self) -> List[EnhancedTemplate]:
-        """Create invalid Material Conditional Introduction templates (Non Sequitur)."""
+        """Create invalid Material Conditional Introduction templates."""
         templates = []
         
-        # Invalid pattern: Assume P, but conclude unrelated conditional
+        # Invalid pattern: Assume P, derive Q, but conclude invalid conditional with extra variable
         builder = TemplateBuilder()
         builder.add_static('Assuming ')
         builder.add_variable('p')
-        builder.add_static(', we observe ')
+        builder.add_static(', ')
         builder.add_variable('q')
-        builder.add_static('. ')
+        builder.add_static(' is derivable. ')
         builder.add_variation('conclusion', [
+            'Thus',
             'Therefore',
-            'Thus'
+            'Hence'
         ])
         builder.add_static(', ')
         builder.add_variation('conditional', [
-            'if {r}, then {s}',
-            '{r} implies {s}'
+            'if {p} then {q} and {r}',
+            'if {p}, then {q} and {r}'
         ])
         builder.add_static('.')
         
