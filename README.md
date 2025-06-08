@@ -41,7 +41,7 @@ Claude: "A sophisticated multi-language logical argument generation system with 
 - **Affirming the Consequent**: If P then Q, Q, therefore P
 - **Denying the Antecedent**: If P then Q, not P, therefore not Q
 - **Affirming a Disjunct**: P or Q, P, therefore not Q
-- **False Dilemma**: Presenting only two options when more exist
+- **False Dilemma**: Presenting only two options when more exist (this is a placeholder rule, it is about to be replaced with a proper invalid argument)
 - **False Conjunction**: Concluding conjunction from single premise
 - **Composition Fallacy**: Attributing group properties to individuals
 - **Invalid Disjunction Elimination**: Improper elimination from disjunctions
@@ -734,6 +734,7 @@ MIT License - see LICENSE file for details.
 
 - The generator doesn't capitalize arguments properly
 - The sentences list are grammaticaly weird and very basic and are just placeholders. Any .txt with sentences will work if you want to use your own.
+- The wrong rule is paired with Disjunction Introduction, it should be A / A and B 
 
 
 ---
