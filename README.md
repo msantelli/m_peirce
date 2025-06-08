@@ -2,10 +2,10 @@
 
 This dataset generator intends to produce synthetic datasets to test basic logical deductive reasoning capabilities through the use of Reasoning Minimal Pairs, a free extension of the methodology used by linguists in testing linguistic competence through minimal pairs. This has been tried to test Language Models in the past (see https://github.com/alexwarstadt/blimp). 
 
-The generator creates a Valid Deductive Argument like Modus Ponens and pairs it with an invalid form, in the case of MP, it pairs it with Affirming the Consequent Fallacy. Through these templates the generator grabs simple declarative sentences and forms Reasoning Minimal Pairs of eleven argument types (more coming soon) and renders natural language variants that involve different orderings of premises and conclusions like you would find in natural language argumentation of these forms. 
+The generator creates a valid deductive argument like Modus Ponens and pairs it with an invalid form, in the case of MP, it pairs it with Affirming the Consequent Fallacy. Through these templates the generator grabs simple declarative sentences and forms Reasoning Minimal Pairs of eleven argument types (more coming soon) and renders natural language variants that involve different orderings of premises and conclusions like you would find in natural language argumentation of these forms. 
 
-DISCLAIMER: This dataset generator prototype was made through extensive use of Claude Sonnet 3.7, 4, Claude Opus 4 and Claude Code (Sonnet). It is a work in progress. 
-
+**DISCLAIMER: This dataset generator prototype was made through extensive use of Claude Sonnet 3.7, 4, Claude Opus 4 and Claude Code (Sonnet). It is a work in progress. 
+**
 //// This is how Claude describes the project (its intended use wasn't detailed to the different models used in the aid of producing different versions, so it can be interesting to read how the model described what it did), the readme was also drafted by Claude Code.
 Claude: "A sophisticated multi-language logical argument generation system with context-aware capabilities, comprehensive strength analysis, and educational features. This system generates valid and invalid logical arguments across multiple languages with rich metadata for educational and research applications." ////
 
