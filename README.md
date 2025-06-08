@@ -276,7 +276,7 @@ All languages implement the same logical rules with language-specific patterns:
 - **Detailed**: Complete metadata and statistics
 - **JSON**: Structured data for programmatic use
 
-## 📊 Strength Analysis Features
+## 📊 Strength Analysis Features [This feature is a side project of Claude Opus 4 itself with no direct request from us, it is not needed and is not part of the methdology pursued here (and doesn't interact with the argument generator unless explicitly requested), but we'll leave it in this repository until we branch it to another project if it serves some purpose. Regardless, as an experiment in developing with the aid of LLMs, it's interesting to think about phenomenons as these. We found it after we finished a working version]
 
 ### Multi-Dimensional Assessment
 - **Logical Validity** (0-1): Adherence to inference rules
