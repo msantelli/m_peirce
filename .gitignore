@@ -4,7 +4,7 @@ __pycache__/
 venv
 demos/
 .claude
-evaluation/
+evaluation/evaluation_results/
 
 # IDE files
 .vscode/
