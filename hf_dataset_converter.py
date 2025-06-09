@@ -263,22 +263,36 @@ class HuggingFaceDatasetConverter:
             print("Warning: No valid logical pairings found in the generated arguments")
             return {}
         
-        # Apply splits to paired questions
+        # Apply stratified splits to maintain rule balance across all splits
         if split_config is None:
             split_config = DatasetSplit()
         
-        total_pairs = len(paired_questions)
-        train_size = int(total_pairs * split_config.train)
-        val_size = int(total_pairs * split_config.validation)
+        # Group questions by good argument type for stratified splitting
+        questions_by_rule = {}
+        for question in paired_questions:
+            rule = question['good_argument_type']
+            if rule not in questions_by_rule:
+                questions_by_rule[rule] = []
+            questions_by_rule[rule].append(question)
         
-        # Add split information
-        for i, question in enumerate(paired_questions):
-            if i < train_size:
-                question['split'] = 'train'
-            elif i < train_size + val_size:
-                question['split'] = 'validation'
-            else:
-                question['split'] = 'test'
+        # Apply stratified splitting within each rule group
+        for rule, rule_questions in questions_by_rule.items():
+            total_rule_pairs = len(rule_questions)
+            rule_train_size = int(total_rule_pairs * split_config.train)
+            rule_val_size = int(total_rule_pairs * split_config.validation)
+            
+            # Shuffle questions within rule to avoid patterns
+            import random
+            random.shuffle(rule_questions)
+            
+            # Assign splits within this rule group
+            for i, question in enumerate(rule_questions):
+                if i < rule_train_size:
+                    question['split'] = 'train'
+                elif i < rule_train_size + rule_val_size:
+                    question['split'] = 'validation'
+                else:
+                    question['split'] = 'test'
         
         # Group by split
         splits = {}
@@ -287,6 +301,20 @@ class HuggingFaceDatasetConverter:
             if split_name not in splits:
                 splits[split_name] = []
             splits[split_name].append(question)
+        
+        # Print stratified split summary
+        print(f"\nStratified split distribution:")
+        for split_name in ['train', 'validation', 'test']:
+            if split_name in splits:
+                split_by_rule = {}
+                for question in splits[split_name]:
+                    rule = question['good_argument_type']
+                    split_by_rule[rule] = split_by_rule.get(rule, 0) + 1
+                
+                print(f"{split_name.upper()}: {len(splits[split_name])} total")
+                for rule, count in sorted(split_by_rule.items()):
+                    print(f"  {rule}: {count}")
+                print()
         
         output_files = {}
         
@@ -666,7 +694,7 @@ def create_paired_comparison(good_arg: GeneratedArgument, bad_arg: GeneratedArgu
     }
 
 
-def generate_with_shared_sentences(sentences_file: str, num_arguments: int = 100, language: str = 'en', complexity_mix: str = 'mixed') -> List[GeneratedArgument]:
+def generate_with_shared_sentences(sentences_file: str, num_arguments: int = 100, language: str = 'en', complexity_mix: str = 'mixed', balanced: bool = True) -> List[GeneratedArgument]:
     """Generate arguments using shared sentence pools for valid/invalid pairs."""
     from argument_generator_v2 import ArgumentGeneratorV2
     from argument_strength import ArgumentStrengthAnalyzer
@@ -715,16 +743,46 @@ def generate_with_shared_sentences(sentences_file: str, num_arguments: int = 100
     else:
         complexity_choices = [complexity_map.get(complexity_mix, ComplexityLevel.BASIC)]
     
+    # Create stratified sampling plan for pairs
+    target_pairs = num_arguments // 2  # Generate pairs, so half the number of pairs
+    
+    if balanced:
+        # Calculate how many pairs per rule type
+        total_rule_types = len(available_rules)
+        pairs_per_rule = target_pairs // total_rule_types
+        remaining_pairs = target_pairs % total_rule_types
+        
+        # Create generation plan for pairs
+        generation_plan = []
+        for i, rule in enumerate(available_rules):
+            # Base allocation
+            rule_pairs = pairs_per_rule
+            # Distribute remaining pairs to first N rules
+            if i < remaining_pairs:
+                rule_pairs += 1
+            
+            generation_plan.extend([rule] * rule_pairs)
+        
+        # Shuffle the plan to avoid patterns
+        random.shuffle(generation_plan)
+        
+        print(f"Balanced pair generation plan:")
+        for rule in available_rules:
+            rule_pairs = generation_plan.count(rule)
+            print(f"  {rule}: {rule_pairs} pairs ({rule_pairs * 2} arguments)")
+    else:
+        # Use original round-robin approach
+        generation_plan = [available_rules[i % len(available_rules)] for i in range(target_pairs)]
+    
     # Generate pairs instead of individual arguments
     successful_pairs = 0
-    target_pairs = num_arguments // 2  # Generate pairs, so half the number of pairs
-    max_attempts = target_pairs * 3
+    max_attempts = len(generation_plan) * 2
     
     for i in range(max_attempts):
-        if successful_pairs >= target_pairs:
+        if successful_pairs >= len(generation_plan):
             break
             
-        rule = available_rules[i % len(available_rules)]
+        rule = generation_plan[successful_pairs % len(generation_plan)]
         selected_complexity = random.choice(complexity_choices)
         
         # Temporarily set generator complexity
@@ -820,7 +878,7 @@ def generate_with_shared_sentences(sentences_file: str, num_arguments: int = 100
     return arguments
 
 
-def generate_sample_dataset(sentences_file: str, num_arguments: int = 100, language: str = 'en', complexity_mix: str = 'mixed', shared_sentences: bool = True) -> List[GeneratedArgument]:
+def generate_sample_dataset(sentences_file: str, num_arguments: int = 100, language: str = 'en', complexity_mix: str = 'mixed', shared_sentences: bool = True, balanced: bool = True) -> List[GeneratedArgument]:
     """Generate a sample dataset for testing."""
     print(f"Generating {num_arguments} sample arguments in {language.upper()}...")
     if complexity_mix == 'mixed':
@@ -828,15 +886,18 @@ def generate_sample_dataset(sentences_file: str, num_arguments: int = 100, langu
     else:
         print(f"Using {complexity_mix} complexity level")
     
+    if balanced:
+        print("Using balanced stratified sampling across all argument types")
+    
     if shared_sentences:
         print("Using shared sentence pools for valid/invalid pairs")
-        return generate_with_shared_sentences(sentences_file, num_arguments, language, complexity_mix)
+        return generate_with_shared_sentences(sentences_file, num_arguments, language, complexity_mix, balanced)
     else:
         print("Using separate sentence pools for each argument")
-        return generate_with_separate_sentences(sentences_file, num_arguments, language, complexity_mix)
+        return generate_with_separate_sentences(sentences_file, num_arguments, language, complexity_mix, balanced)
 
 
-def generate_with_separate_sentences(sentences_file: str, num_arguments: int = 100, language: str = 'en', complexity_mix: str = 'mixed') -> List[GeneratedArgument]:
+def generate_with_separate_sentences(sentences_file: str, num_arguments: int = 100, language: str = 'en', complexity_mix: str = 'mixed', balanced: bool = True) -> List[GeneratedArgument]:
     """Generate arguments using separate sentence pools for each argument (original behavior)."""
     from argument_generator_v2 import ArgumentGeneratorV2
     from argument_strength import ArgumentStrengthAnalyzer
@@ -891,15 +952,50 @@ def generate_with_separate_sentences(sentences_file: str, num_arguments: int = 1
         # Single complexity level
         complexity_choices = [complexity_map.get(complexity_mix, ComplexityLevel.BASIC)]
     
+    # Create stratified sampling plan
+    if balanced:
+        # Calculate how many arguments per rule type
+        total_rule_types = len(available_rules)
+        args_per_rule = num_arguments // total_rule_types
+        remaining_args = num_arguments % total_rule_types
+        
+        # Create generation plan: [("rule_name", is_valid), ...]
+        generation_plan = []
+        for i, rule in enumerate(available_rules):
+            # Base allocation
+            rule_count = args_per_rule
+            # Distribute remaining arguments to first N rules
+            if i < remaining_args:
+                rule_count += 1
+            
+            # Ensure even split between valid/invalid for each rule
+            valid_count = rule_count // 2
+            invalid_count = rule_count - valid_count
+            
+            # Add to plan
+            generation_plan.extend([(rule, True)] * valid_count)
+            generation_plan.extend([(rule, False)] * invalid_count)
+        
+        # Shuffle the plan to avoid patterns
+        random.shuffle(generation_plan)
+        
+        print(f"Balanced generation plan:")
+        for rule in available_rules:
+            valid_count = sum(1 for r, v in generation_plan if r == rule and v)
+            invalid_count = sum(1 for r, v in generation_plan if r == rule and not v)
+            print(f"  {rule}: {valid_count} valid + {invalid_count} invalid = {valid_count + invalid_count} total")
+    else:
+        # Use original round-robin approach
+        generation_plan = [(available_rules[i % len(available_rules)], i % 2 == 0) for i in range(num_arguments)]
+    
     successful_generations = 0
-    max_attempts = num_arguments * 3  # Allow more attempts
+    max_attempts = len(generation_plan) * 2  # Allow more attempts
     
     for i in range(max_attempts):
-        if successful_generations >= num_arguments:
+        if successful_generations >= len(generation_plan):
             break
             
-        rule = available_rules[i % len(available_rules)]
-        is_valid = successful_generations % 2 == 0  # Alternate valid/invalid
+        rule, is_valid = generation_plan[successful_generations % len(generation_plan)]
         
         # Select complexity level for this generation
         selected_complexity = random.choice(complexity_choices)
@@ -983,11 +1079,12 @@ def main():
     import sys
     
     if len(sys.argv) < 2:
-        print("Usage: python hf_dataset_converter.py <sentences_file> [num_arguments] [output_dir] [language] [format] [complexity] [shared_sentences]")
+        print("Usage: python hf_dataset_converter.py <sentences_file> [num_arguments] [output_dir] [language] [format] [complexity] [shared_sentences] [balanced]")
         print("Languages: en (English), es (Spanish), fr (French), de (German)")
         print("Formats: individual (default), paired")
         print("Complexity: mixed (default - premise+conclusion-first), basic, intermediate, advanced, expert")
         print("Shared sentences: true (default - pairs share sentences), false (separate sentences)")
+        print("Balanced: true (default - stratified sampling), false (round-robin)")
         return
     
     sentences_file = sys.argv[1]
@@ -998,6 +1095,8 @@ def main():
     complexity_mix = sys.argv[6] if len(sys.argv) > 6 else "mixed"
     shared_sentences_str = sys.argv[7] if len(sys.argv) > 7 else "true"
     shared_sentences = shared_sentences_str.lower() in ['true', 't', '1', 'yes', 'y']
+    balanced_str = sys.argv[8] if len(sys.argv) > 8 else "true"
+    balanced = balanced_str.lower() in ['true', 't', '1', 'yes', 'y']
     
     # Validate language
     valid_languages = ['en', 'es', 'fr', 'de']
@@ -1020,7 +1119,7 @@ def main():
     print(f"Generating dataset in {language.upper()} language")
     
     # Generate sample arguments
-    arguments = generate_sample_dataset(sentences_file, num_arguments, language, complexity_mix, shared_sentences)
+    arguments = generate_sample_dataset(sentences_file, num_arguments, language, complexity_mix, shared_sentences, balanced)
     
     if not arguments:
         print("No arguments generated!")
