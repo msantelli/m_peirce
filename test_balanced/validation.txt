@@ -1,0 +1,45 @@
+Question 41:
+Option A: Assuming leasing contracts usage, we can derive poverty limits options. Therefore, leasing contracts usage implies poverty limits options.
+Option B: Assuming leasing contracts usage, poverty limits options is derivable. Therefore, if leasing contracts usage then poverty limits options and tyranny suppresses people.
+Correct Answer: A
+Good Type: Material Conditional Introduction
+Bad Type: Invalid Material Conditional Introduction
+
+--------------------------------------------------
+
+Question 42:
+Option A: Assuming education develops capabilities, deciding shapes futures is derivable. Thus, if education develops capabilities, then deciding shapes futures and remembering stores experiences.
+Option B: Assuming education develops capabilities, we can derive deciding shapes futures. Thus, if education develops capabilities, then deciding shapes futures.
+Correct Answer: B
+Good Type: Material Conditional Introduction
+Bad Type: Invalid Material Conditional Introduction
+
+--------------------------------------------------
+
+Question 43:
+Option A: If leasing contracts usage, then smelling detects odors. If discord disrupts peace, then backpacks carry unnecessary textbooks. Either leasing contracts usage or discord disrupts peace. Therefore, smelling detects odors or backpacks carry unnecessary textbooks.
+Option B: Leasing contracts usage implies smelling detects odors. Discord disrupts peace implies backpacks carry unnecessary textbooks. Leasing contracts usage or discord disrupts peace. Thus, smelling detects odors or backpacks carry unnecessary textbooks.
+Correct Answer: B
+Good Type: Constructive Dilemma
+Bad Type: False Dilemma
+
+--------------------------------------------------
+
+Question 44:
+Option A: If facts support arguments, then elevators transport vertically. Incorrectness invalidates responses implies deciding shapes futures. Either facts support arguments or incorrectness invalidates responses. Therefore, elevators transport vertically or deciding shapes futures.
+Option B: Facts support arguments implies elevators transport vertically. If incorrectness invalidates responses, then deciding shapes futures. Facts support arguments or incorrectness invalidates responses. Therefore, Either elevators transport vertically or deciding shapes futures.
+Correct Answer: A
+Good Type: Constructive Dilemma
+Bad Type: False Dilemma
+
+--------------------------------------------------
+
+Question 45:
+Option A: Harmony maintains balance implies precision ensures accuracy. Development builds capabilities implies elevators transport vertically. Either harmony maintains balance or development builds capabilities. Hence, Either precision ensures accuracy or elevators transport vertically.
+Option B: Harmony maintains balance implies precision ensures accuracy. If development builds capabilities, then elevators transport vertically. Either harmony maintains balance or development builds capabilities. Hence, precision ensures accuracy or elevators transport vertically.
+Correct Answer: A
+Good Type: Constructive Dilemma
+Bad Type: False Dilemma
+
+--------------------------------------------------
+

@@ -57,7 +57,7 @@ class OllamaEvaluator:
     
     def __init__(self, 
                  ollama_url: str = "http://localhost:11434",
-                 timeout: int = 30,
+                 timeout: int = 60,
                  max_retries: int = 3):
         """
         Initialize evaluator.
@@ -90,6 +90,21 @@ class OllamaEvaluator:
         except requests.RequestException:
             pass
         return []
+    
+    def warm_up_model(self, model_name: str) -> bool:
+        """Warm up model by sending a simple test request."""
+        print(f"Warming up model {model_name}...")
+        test_prompt = "Answer with just the letter A: A or B?"
+        
+        try:
+            response, _ = self.query_model(test_prompt, model_name)
+            if response and response != "ERROR":
+                print(f"✓ Model {model_name} warmed up successfully")
+                return True
+        except Exception as e:
+            print(f"✗ Model warm-up failed: {e}")
+        
+        return False
     
     def query_model(self, prompt: str, model_name: str) -> Tuple[str, float]:
         """
@@ -126,9 +141,15 @@ class OllamaEvaluator:
                     print(f"HTTP {response.status_code} on attempt {attempt + 1}")
                     
             except requests.RequestException as e:
-                print(f"Request failed on attempt {attempt + 1}: {e}")
+                if "timeout" in str(e).lower():
+                    print(f"Timeout on attempt {attempt + 1}/{self.max_retries} (consider increasing --timeout)")
+                else:
+                    print(f"Request failed on attempt {attempt + 1}/{self.max_retries}: {e}")
+                
                 if attempt < self.max_retries - 1:
-                    time.sleep(1)  # Brief delay before retry
+                    delay = min(2 ** attempt, 10)  # Exponential backoff, max 10s
+                    print(f"Retrying in {delay}s...")
+                    time.sleep(delay)
         
         return "ERROR", 0.0
     
@@ -364,8 +385,13 @@ Answer: """
         """Save summary statistics."""
         output_file.parent.mkdir(parents=True, exist_ok=True)
         
+        from datetime import datetime
+        
         with open(output_file, 'w', encoding='utf-8') as f:
             f.write("# LLM Evaluation Results Summary\n\n")
+            f.write(f"**Evaluation Date**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            f.write(f"**Evaluator**: ollama_evaluator.py\n")
+            f.write(f"**Total Evaluations**: {len(all_stats)}\n\n")
             
             for stats in all_stats:
                 f.write(f"## {stats.model_name} - {stats.dataset_name}\n\n")
@@ -421,11 +447,20 @@ def main():
                        default="standard", help="Prompt style to use")
     parser.add_argument("--ollama-url", default="http://localhost:11434",
                        help="Ollama API URL")
+    parser.add_argument("--timeout", type=int, default=60,
+                       help="Request timeout in seconds (default: 60)")
+    parser.add_argument("--max-retries", type=int, default=3,
+                       help="Maximum retry attempts (default: 3)")
     
     args = parser.parse_args()
     
+    # Create timestamped results directory
+    from datetime import datetime
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    timestamped_results_dir = args.results_dir / f"evaluation_{timestamp}"
+    
     # Initialize evaluator
-    evaluator = OllamaEvaluator(ollama_url=args.ollama_url)
+    evaluator = OllamaEvaluator(ollama_url=args.ollama_url, timeout=args.timeout, max_retries=args.max_retries)
     
     # Check Ollama connection
     if not evaluator.check_ollama_connection():
@@ -470,6 +505,10 @@ def main():
         print(f"Evaluating model: {model_name}")
         print(f"{'='*50}")
         
+        # Warm up model before evaluation
+        if not evaluator.warm_up_model(model_name):
+            print(f"⚠ Warning: Model warm-up failed, continuing anyway...")
+        
         for jsonl_file in jsonl_files:
             print(f"\nProcessing: {jsonl_file}")
             
@@ -482,7 +521,7 @@ def main():
                     all_stats.append(stats)
                     
                     # Save detailed results
-                    result_file = args.results_dir / f"{model_name}_{jsonl_file.parent.name}_{jsonl_file.stem}.csv"
+                    result_file = timestamped_results_dir / f"{model_name}_{jsonl_file.parent.name}_{jsonl_file.stem}.csv"
                     evaluator.save_detailed_results(results, result_file)
                     
                     print(f"✓ Accuracy: {stats.accuracy:.1f}% ({stats.correct_answers}/{stats.total_questions})")
@@ -493,7 +532,7 @@ def main():
     
     # Save summary
     if all_stats:
-        summary_file = args.results_dir / "evaluation_summary.md"
+        summary_file = timestamped_results_dir / "evaluation_summary.md"
         evaluator.save_summary_stats(all_stats, summary_file)
         print(f"\n📊 Summary saved to: {summary_file}")
         

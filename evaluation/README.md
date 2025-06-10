@@ -48,70 +48,51 @@ python ollama_evaluator.py --models llama3.1 --splits test validation
 - **Unclear Response Detection**: Identifies ambiguous model outputs
 
 ### **Output Formats**
+- **Timestamped Folders**: Each evaluation creates a new folder (e.g., `evaluation_20241210_143052`)
 - **Detailed CSV**: Per-question results with timing and raw responses
 - **Summary Report**: Markdown summary with statistics and breakdowns
 - **Progress Console**: Real-time evaluation progress
 
-## 📁 Example Output
+## 📁 Output Format
 
-### Console Output
+### Console Output Format
+Shows real-time progress and results summary:
+- Lists available models
+- Progress bars for each evaluation
+- Accuracy percentages (higher is better)
+- File paths where results are saved
+- Final summary table
+
+For instance (not real data):
 ```
-Available models: ['llama3.1', 'qwen2.5:7b', 'mistral:latest']
-Testing models: ['llama3.1']
-Found 6 dataset files
+Available models: ['model1', 'model2']
+Testing models: ['model1']
 
-==================================================
-Evaluating model: llama3.1  
-==================================================
-
-Processing: outputs/english_new_8-6-8/test.jsonl
-Evaluating 100 questions with llama3.1...
-100%|████████████| 100/100 [02:15<00:00,  1.35s/it]
-✓ Accuracy: 87.0% (87/100)
-  Results saved to: evaluation_results/llama3.1_english_new_8-6-8_test.csv
-
-Processing: outputs/spanish_new_8-6-7/test.jsonl  
-Evaluating 100 questions with llama3.1...
-100%|████████████| 100/100 [02:18<00:00,  1.38s/it]
-✓ Accuracy: 82.0% (82/100)
-  Results saved to: evaluation_results/llama3.1_spanish_new_8-6-7_test.csv
-
-============================================================
-EVALUATION SUMMARY
-============================================================
-llama3.1        | english_new_8-6-8    | 87.0% |   3 unclear
-llama3.1        | spanish_new_8-6-7    | 82.0% |   5 unclear
-
-🎉 Evaluation complete!
+Processing: outputs/dataset_name/test.jsonl
+Evaluating X questions with model1...
+✓ Accuracy: XX.X% (correct/total)
+  Results saved to: evaluation_results/evaluation_TIMESTAMP/model_dataset_split.csv
 ```
 
-### Detailed CSV Output
-```csv
-question_id,model_answer,correct_answer,is_correct,good_argument_type,bad_argument_type,response_time,raw_response
-1,A,A,True,Modus Ponens,Affirming the Consequent,1.23,"A. The first argument follows valid..."
-2,B,B,True,Modus Tollens,Denying the Antecedent,1.45,"The correct answer is B because..."
-3,UNCLEAR,A,False,Disjunctive Syllogism,Affirming a Disjunct,2.11,"Both arguments seem plausible but..."
-```
+### Detailed CSV Output Format
+Per-question results with these columns:
+- `question_id`: Unique identifier for each question
+- `model_answer`: Model's response (A, B, UNCLEAR, or ERROR)
+- `correct_answer`: Expected correct answer (A or B)
+- `is_correct`: Boolean indicating if model was right
+- `good_argument_type`: Valid logical rule being tested
+- `bad_argument_type`: Corresponding fallacy
+- `response_time`: Time in seconds (lower is better)
+- `raw_response`: Full model output for debugging
 
-### Summary Report (Markdown)
-```markdown
-# LLM Evaluation Results Summary
-
-## llama3.1 - english_new_8-6-8
-
-**Overall Accuracy**: 87.0% (87/100)
-**Average Response Time**: 1.34s
-**Unclear Responses**: 3
-
-**Accuracy by Logical Rule**:
-- Modus Ponens: 92.3% (12/13)
-- Modus Tollens: 88.9% (8/9)  
-- Disjunctive Syllogism: 80.0% (8/10)
-- Conjunction Introduction: 90.9% (10/11)
-- Material Conditional Introduction: 75.0% (6/8)
-
-**95% Confidence Interval**: [79.1%, 94.9%]
-```
+### Summary Report Format (Markdown)
+Comprehensive statistics including:
+- **Evaluation metadata**: Date, evaluator, total runs
+- **Overall accuracy**: Percentage correct (higher is better)
+- **Response time**: Average seconds per question (lower is better)
+- **Unclear responses**: Count of ambiguous answers (lower is better)
+- **By-rule breakdown**: Performance on each logical rule type
+- **Confidence intervals**: 95% confidence interval for true accuracy (wider intervals indicate less certainty, narrower intervals with larger sample sizes indicate more reliable estimates)
 
 ## ⚙️ Command Line Options
 
@@ -126,6 +107,8 @@ Options:
   --results-dir PATH          Output directory (default: evaluation_results)
   --prompt-style STYLE        Prompt style: standard, formal, instructional, enhanced, analytical
   --ollama-url URL           Ollama API endpoint (default: http://localhost:11434)
+  --timeout SECONDS          Request timeout in seconds (default: 60)
+  --max-retries COUNT        Maximum retry attempts (default: 3)
 ```
 
 ## 🔧 Configuration
@@ -206,7 +189,7 @@ Answer:
 - **Temperature**: 0.1 (low for consistency)
 - **Top-p**: 0.9
 - **Max tokens**: 10 (we only need A or B)
-- **Timeout**: 30 seconds per request
+- **Timeout**: 60 seconds per request
 - **Retries**: 3 attempts for failed requests
 
 ## 🧪 Testing Different Models
@@ -224,19 +207,20 @@ ollama pull deepseek-coder:6.7b
 python ollama_evaluator.py --models llama3.1:8b qwen2.5:7b mistral:7b deepseek-coder:6.7b
 ```
 
-## 📈 Performance Expectations
+## 📈 Performance Notes
 
-**Typical Results** (based on initial testing):
-- **Llama 3.1 8B**: ~85-90% accuracy on English, ~80-85% on Spanish
-- **Qwen 2.5 7B**: ~82-87% accuracy on English, ~78-83% on Spanish  
-- **Response Time**: 1-3 seconds per question depending on model size
-- **Throughput**: ~100 questions in 2-4 minutes
+**Response Time**: Varies by model size (smaller models are faster)
+**Throughput**: Depends on model complexity and system resources
 
-**By Logical Rule** (typical difficulty ranking):
-1. **Easiest**: Modus Ponens, Conjunction Introduction (~90%+)
-2. **Medium**: Modus Tollens, Disjunctive Syllogism (~85-90%)
-3. **Harder**: Material Conditional Introduction, Hypothetical Syllogism (~75-85%)
-4. **Hardest**: Complex dilemmas, subtle fallacies (~70-80%)
+**Expected Behavior**:
+- First request per model is slower (model loading)
+- Subsequent requests are faster
+- Larger models (13B+) take significantly longer than smaller ones (7B)
+
+**Model Recommendations for Speed**:
+- Fast evaluation: `llama3.1:8b`, `qwen2.5:7b`
+- Balanced: `mistral:7b`
+- Accuracy-focused: Larger models (if you have the resources)
 
 ## 🐛 Troubleshooting
 
@@ -258,15 +242,34 @@ ollama list
 ollama pull llama3.1
 ```
 
+**"Read timed out" / Timeout errors**:
+```bash
+# Increase timeout (default 60s)
+python ollama_evaluator.py --timeout 120 --datasets your_dataset
+
+# For very large models (13B+), use even longer timeout
+python ollama_evaluator.py --timeout 300 --datasets your_dataset
+
+# Check system resources
+htop  # Monitor CPU/RAM usage
+nvidia-smi  # Monitor GPU usage (if applicable)
+```
+
 **High unclear response rate**:
-- Try different prompt styles: `--prompt-style formal`
+- Try different prompt styles: `--prompt-style enhanced`
 - Check if model is appropriate for logical reasoning
-- Increase timeout for slower models
+- Increase timeout for slower models: `--timeout 120`
 
 **Memory issues**:
 - Use smaller models (7B instead of 13B+)
 - Reduce batch sizes by testing fewer datasets at once
 - Close other applications using GPU/RAM
+- Free up disk space (models need temporary space)
+
+**Slow evaluation**:
+- Model warm-up happens automatically (first request is slowest)
+- Use faster models: `ollama pull llama3.1:8b` instead of larger variants
+- Check if other processes are using Ollama: `ps aux | grep ollama`
 
 ## 📦 Dependencies
 

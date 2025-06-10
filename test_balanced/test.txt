@@ -1,0 +1,45 @@
+Question 46:
+Option A: Adaptability adjusts conditions implies glue sticks to fingers. If concerts entertain crowds, then watches stop working underwater. Either adaptability adjusts conditions or concerts entertain crowds. Thus, glue sticks to fingers or watches stop working underwater.
+Option B: If adaptability adjusts conditions, then glue sticks to fingers. If concerts entertain crowds, then watches stop working underwater. Either adaptability adjusts conditions or concerts entertain crowds. Therefore, Either glue sticks to fingers or watches stop working underwater.
+Correct Answer: A
+Good Type: Constructive Dilemma
+Bad Type: False Dilemma
+
+--------------------------------------------------
+
+Question 47:
+Option A: Ambiguity creates uncertainty. Thus, elevators transport vertically.
+Option B: Ambiguity creates uncertainty implies elevators transport vertically. Lying deceives others implies drills make holes too big. elevators transport vertically is false or not drills make holes too big. Therefore, ambiguity creates uncertainty is false or not lying deceives others.
+Correct Answer: B
+Good Type: Destructive Dilemma
+Bad Type: Non Sequitur
+
+--------------------------------------------------
+
+Question 48:
+Option A: If teaching shares wisdom, then bowls hide under mountains of dishes. If smelling detects odors, then continuing maintains progress. Either bowls hide under mountains of dishes is not the case or continuing maintains progress is false. Therefore, Either teaching shares wisdom doesn't hold or not smelling detects odors.
+Option B: Teaching shares wisdom. Thus, bowls hide under mountains of dishes.
+Correct Answer: A
+Good Type: Destructive Dilemma
+Bad Type: Non Sequitur
+
+--------------------------------------------------
+
+Question 49:
+Option A: Progress advances forward. Thus, intuition guides instincts.
+Option B: If health maintains wellness, then cruelty inflicts suffering. If motivation drives action, then stadiums host events. Either cruelty inflicts suffering is not the case or stadiums host events is false. Therefore, Either health maintains wellness doesn't hold or motivation drives action is not true.
+Correct Answer: B
+Good Type: Destructive Dilemma
+Bad Type: Non Sequitur
+
+--------------------------------------------------
+
+Question 50:
+Option A: Contracting reduces extent implies buses skip stops occasionally. If sickness creates suffering, then bowls hide under mountains of dishes. Either buses skip stops occasionally is not the case or bowls hide under mountains of dishes is false. Hence, contracting reduces extent is not true or not sickness creates suffering.
+Option B: Keys unlock doors. Therefore, ignorance lacks knowledge.
+Correct Answer: A
+Good Type: Destructive Dilemma
+Bad Type: Non Sequitur
+
+--------------------------------------------------
+

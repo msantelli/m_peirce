@@ -1,0 +1,360 @@
+Question 1:
+Option A: Stores close during lunch breaks implies phones die at crucial moments. Phones die at crucial moments. Therefore, stores close during lunch breaks.
+Option B: Phones die at crucial moments because stores close during lunch breaks. Moreover, if stores close during lunch breaks, then phones die at crucial moments.
+Correct Answer: B
+Good Type: Modus Ponens
+Bad Type: Affirming the Consequent
+
+--------------------------------------------------
+
+Question 2:
+Option A: Erasers smudge more than erase if warehouses store inventory. Warehouses store inventory. So, erasers smudge more than erase.
+Option B: Erasers smudge more than erase if warehouses store inventory. Erasers smudge more than erase. Thus, warehouses store inventory.
+Correct Answer: A
+Good Type: Modus Ponens
+Bad Type: Affirming the Consequent
+
+--------------------------------------------------
+
+Question 3:
+Option A: Holidays bring joy if losing misplaces items. Holidays bring joy. Therefore, losing misplaces items.
+Option B: Holidays bring joy given that losing misplaces items. Additionally, Losing misplaces items leads to holidays bring joy.
+Correct Answer: B
+Good Type: Modus Ponens
+Bad Type: Affirming the Consequent
+
+--------------------------------------------------
+
+Question 4:
+Option A: Discouragement inhibits effort implies leasing contracts usage. Leasing contracts usage. So, discouragement inhibits effort.
+Option B: Leasing contracts usage if discouragement inhibits effort. Discouragement inhibits effort. Therefore, leasing contracts usage.
+Correct Answer: B
+Good Type: Modus Ponens
+Bad Type: Affirming the Consequent
+
+--------------------------------------------------
+
+Question 5:
+Option A: Love creates bonds guarantees cooperation enables teamwork. Love creates bonds. Thus, cooperation enables teamwork.
+Option B: Cooperation enables teamwork if love creates bonds. Cooperation enables teamwork. Thus, love creates bonds.
+Correct Answer: A
+Good Type: Modus Ponens
+Bad Type: Affirming the Consequent
+
+--------------------------------------------------
+
+Question 6:
+Option A: Telling shares knowledge implies cycling builds endurance. Telling shares knowledge is not the case. So, not cycling builds endurance.
+Option B: Cycling builds endurance if telling shares knowledge. Not cycling builds endurance. Therefore, telling shares knowledge is not the case.
+Correct Answer: B
+Good Type: Modus Tollens
+Bad Type: Denying the Antecedent
+
+--------------------------------------------------
+
+Question 7:
+Option A: If liberty protects rights, then gains increase holdings. Not liberty protects rights. Therefore, gains increase holdings is not true.
+Option B: Liberty protects rights implies gains increase holdings. Gains increase holdings is not true. Thus, not liberty protects rights.
+Correct Answer: B
+Good Type: Modus Tollens
+Bad Type: Denying the Antecedent
+
+--------------------------------------------------
+
+Question 8:
+Option A: The moon appears in daylight sometimes implies pliers pinch skin sometimes. The moon appears in daylight sometimes is not true. Therefore, not pliers pinch skin sometimes.
+Option B: If the moon appears in daylight sometimes, then pliers pinch skin sometimes. Not pliers pinch skin sometimes. Hence, the moon appears in daylight sometimes is not true.
+Correct Answer: B
+Good Type: Modus Tollens
+Bad Type: Denying the Antecedent
+
+--------------------------------------------------
+
+Question 9:
+Option A: Objectivity eliminates bias if books collect dust on shelves. Not books collect dust on shelves. Therefore, objectivity eliminates bias is not the case.
+Option B: Books collect dust on shelves implies objectivity eliminates bias. Objectivity eliminates bias is not the case. Hence, not books collect dust on shelves.
+Correct Answer: B
+Good Type: Modus Tollens
+Bad Type: Denying the Antecedent
+
+--------------------------------------------------
+
+Question 10:
+Option A: Invention creates solutions implies jumping demonstrates agility. Invention creates solutions is not the case. So, jumping demonstrates agility is false.
+Option B: Jumping demonstrates agility if invention creates solutions. Jumping demonstrates agility is false. Thus, invention creates solutions is not the case.
+Correct Answer: B
+Good Type: Modus Tollens
+Bad Type: Denying the Antecedent
+
+--------------------------------------------------
+
+Question 11:
+Option A: Precision ensures accuracy or vigor strengthens efforts. Precision ensures accuracy. Therefore, vigor strengthens efforts is false.
+Option B: Precision ensures accuracy or vigor strengthens efforts. Precision ensures accuracy is not the case. Therefore, vigor strengthens efforts.
+Correct Answer: B
+Good Type: Disjunctive Syllogism
+Bad Type: Affirming a Disjunct
+
+--------------------------------------------------
+
+Question 12:
+Option A: Encouragement motivates action, or alternatively hate destroys relationships. Not encouragement motivates action. Therefore, hate destroys relationships.
+Option B: Either encouragement motivates action or hate destroys relationships. Encouragement motivates action. Thus, not hate destroys relationships.
+Correct Answer: A
+Good Type: Disjunctive Syllogism
+Bad Type: Affirming a Disjunct
+
+--------------------------------------------------
+
+Question 13:
+Option A: Either disapproval criticizes decisions or fish swim against strong currents. Disapproval criticizes decisions. Therefore, fish swim against strong currents is not true.
+Option B: Disapproval criticizes decisions or fish swim against strong currents. Disapproval criticizes decisions is false. Thus, fish swim against strong currents.
+Correct Answer: B
+Good Type: Disjunctive Syllogism
+Bad Type: Affirming a Disjunct
+
+--------------------------------------------------
+
+Question 14:
+Option A: Democracy empowers citizens or soldiers follow strict schedules. Democracy empowers citizens is not the case. Thus, soldiers follow strict schedules.
+Option B: Democracy empowers citizens or soldiers follow strict schedules. Democracy empowers citizens. Therefore, not soldiers follow strict schedules.
+Correct Answer: A
+Good Type: Disjunctive Syllogism
+Bad Type: Affirming a Disjunct
+
+--------------------------------------------------
+
+Question 15:
+Option A: Interest motivates learning or farmers check weather forecasts obsessively. Interest motivates learning is not true. Hence, farmers check weather forecasts obsessively.
+Option B: Interest motivates learning or farmers check weather forecasts obsessively. Interest motivates learning. Therefore, farmers check weather forecasts obsessively is not the case.
+Correct Answer: A
+Good Type: Disjunctive Syllogism
+Bad Type: Affirming a Disjunct
+
+--------------------------------------------------
+
+Question 16:
+Option A: Lethargy drains energy. Thus, lethargy drains energy and books collect dust on shelves.
+Option B: Lethargy drains energy. Books collect dust on shelves. Therefore, both lethargy drains energy and books collect dust on shelves.
+Correct Answer: B
+Good Type: Conjunction Introduction
+Bad Type: False Conjunction
+
+--------------------------------------------------
+
+Question 17:
+Option A: Parades march through streets. Thus, parades march through streets and finding discovers objects.
+Option B: Parades march through streets. Finding discovers objects. Hence, parades march through streets and finding discovers objects.
+Correct Answer: B
+Good Type: Conjunction Introduction
+Bad Type: False Conjunction
+
+--------------------------------------------------
+
+Question 18:
+Option A: Cardboard boxes hoard random junk. Criticism identifies flaws. Hence, both cardboard boxes hoard random junk and criticism identifies flaws.
+Option B: Cardboard boxes hoard random junk. Thus, both cardboard boxes hoard random junk and criticism identifies flaws.
+Correct Answer: A
+Good Type: Conjunction Introduction
+Bad Type: False Conjunction
+
+--------------------------------------------------
+
+Question 19:
+Option A: Thermometers show uncomfortable temperatures. Forks drop food frequently. Hence, thermometers show uncomfortable temperatures as well as forks drop food frequently.
+Option B: Thermometers show uncomfortable temperatures. Therefore, thermometers show uncomfortable temperatures and forks drop food frequently.
+Correct Answer: A
+Good Type: Conjunction Introduction
+Bad Type: False Conjunction
+
+--------------------------------------------------
+
+Question 20:
+Option A: Spoons catapult soup accidentally. Therefore, spoons catapult soup accidentally and playing encourages creativity.
+Option B: Spoons catapult soup accidentally. Playing encourages creativity. Thus, spoons catapult soup accidentally as well as playing encourages creativity.
+Correct Answer: B
+Good Type: Conjunction Introduction
+Bad Type: False Conjunction
+
+--------------------------------------------------
+
+Question 21:
+Option A: Both friendship builds connections and builders take longer than estimated. Thus, complicating increases difficulty.
+Option B: Friendship builds connections as well as builders take longer than estimated. Hence, friendship builds connections.
+Correct Answer: B
+Good Type: Conjunction Elimination
+Bad Type: Composition Fallacy
+
+--------------------------------------------------
+
+Question 22:
+Option A: Tradition maintains customs as well as cities bustle with activity. Therefore, tradition maintains customs.
+Option B: Tradition maintains customs and cities bustle with activity. Therefore, scarcity creates limitations.
+Correct Answer: A
+Good Type: Conjunction Elimination
+Bad Type: Composition Fallacy
+
+--------------------------------------------------
+
+Question 23:
+Option A: Both rockets explode sometimes and phones die at crucial moments. Therefore, swimming strengthens muscles.
+Option B: Rockets explode sometimes as well as phones die at crucial moments. Thus, rockets explode sometimes.
+Correct Answer: B
+Good Type: Conjunction Elimination
+Bad Type: Composition Fallacy
+
+--------------------------------------------------
+
+Question 24:
+Option A: Cardboard boxes hoard random junk as well as parades march through streets. Therefore, cardboard boxes hoard random junk.
+Option B: Both cardboard boxes hoard random junk and parades march through streets. Thus, ranches raise livestock.
+Correct Answer: A
+Good Type: Conjunction Elimination
+Bad Type: Composition Fallacy
+
+--------------------------------------------------
+
+Question 25:
+Option A: Disapproval criticizes decisions as well as losing accepts defeat. Thus, disapproval criticizes decisions.
+Option B: Both disapproval criticizes decisions and losing accepts defeat. Thus, artists struggle to pay rent.
+Correct Answer: A
+Good Type: Conjunction Elimination
+Bad Type: Composition Fallacy
+
+--------------------------------------------------
+
+Question 26:
+Option A: Gains increase holdings. Thus, gains increase holdings or jungles teem with life.
+Option B: Gains increase holdings. This means that gains increase holdings and additionally jungles teem with life.
+Correct Answer: A
+Good Type: Disjunction Introduction
+Bad Type: Invalid Conjunction Introduction
+
+--------------------------------------------------
+
+Question 27:
+Option A: Forgetting releases memories. Hence, both forgetting releases memories and bondage restricts options.
+Option B: Forgetting releases memories. Thus, forgetting releases memories or alternatively bondage restricts options.
+Correct Answer: B
+Good Type: Disjunction Introduction
+Bad Type: Invalid Conjunction Introduction
+
+--------------------------------------------------
+
+Question 28:
+Option A: Criticism identifies flaws. This means that criticism identifies flaws together with swimming strengthens muscles.
+Option B: Criticism identifies flaws. Hence, criticism identifies flaws or swimming strengthens muscles.
+Correct Answer: B
+Good Type: Disjunction Introduction
+Bad Type: Invalid Conjunction Introduction
+
+--------------------------------------------------
+
+Question 29:
+Option A: Locks secure entrances. Hence, locks secure entrances as well as incorrectness invalidates responses.
+Option B: Locks secure entrances. Therefore, locks secure entrances or incorrectness invalidates responses.
+Correct Answer: B
+Good Type: Disjunction Introduction
+Bad Type: Invalid Conjunction Introduction
+
+--------------------------------------------------
+
+Question 30:
+Option A: Authority commands respect. It follows that authority commands respect together with rigidity resists modification.
+Option B: Authority commands respect. Therefore, authority commands respect or rigidity resists modification.
+Correct Answer: B
+Good Type: Disjunction Introduction
+Bad Type: Invalid Conjunction Introduction
+
+--------------------------------------------------
+
+Question 31:
+Option A: Finishing completes tasks or vitality sustains life. If finishing completes tasks, then democracy empowers citizens. If vitality sustains life, then democracy empowers citizens. Hence, democracy empowers citizens.
+Option B: Finishing completes tasks or vitality sustains life. Finishing completes tasks implies democracy empowers citizens. Therefore, democracy empowers citizens.
+Correct Answer: A
+Good Type: Disjunction Elimination
+Bad Type: Invalid Disjunction Elimination
+
+--------------------------------------------------
+
+Question 32:
+Option A: Either taking acquires possession or nurses work twelve-hour shifts. Taking acquires possession implies facts support arguments. If nurses work twelve-hour shifts, then facts support arguments. Hence, facts support arguments.
+Option B: Taking acquires possession or nurses work twelve-hour shifts. If taking acquires possession, then facts support arguments. Therefore, facts support arguments.
+Correct Answer: A
+Good Type: Disjunction Elimination
+Bad Type: Invalid Disjunction Elimination
+
+--------------------------------------------------
+
+Question 33:
+Option A: Either duties obligate citizens or ice melts in warm drinks. If duties obligate citizens, then departing begins journeys. Therefore, departing begins journeys.
+Option B: Duties obligate citizens or ice melts in warm drinks. If duties obligate citizens, then departing begins journeys. If ice melts in warm drinks, then departing begins journeys. Therefore, departing begins journeys.
+Correct Answer: B
+Good Type: Disjunction Elimination
+Bad Type: Invalid Disjunction Elimination
+
+--------------------------------------------------
+
+Question 34:
+Option A: Either disorder disrupts systems or engineers overthink simple problems. Disorder disrupts systems implies restaurants serve food slowly. Thus, restaurants serve food slowly.
+Option B: Disorder disrupts systems or engineers overthink simple problems. Disorder disrupts systems implies restaurants serve food slowly. Engineers overthink simple problems implies restaurants serve food slowly. Therefore, restaurants serve food slowly.
+Correct Answer: B
+Good Type: Disjunction Elimination
+Bad Type: Invalid Disjunction Elimination
+
+--------------------------------------------------
+
+Question 35:
+Option A: Progress advances forward implies intuition guides instincts. Intuition guides instincts implies playgrounds entertain children. Thus, Progress advances forward implies playgrounds entertain children.
+Option B: Ambiguity creates uncertainty. Thus, elevators transport vertically.
+Correct Answer: A
+Good Type: Hypothetical Syllogism
+Bad Type: Non Sequitur
+
+--------------------------------------------------
+
+Question 36:
+Option A: Keys unlock doors implies ignorance lacks knowledge. If ignorance lacks knowledge, then frowning shows displeasure. Therefore, Keys unlock doors implies frowning shows displeasure.
+Option B: Teaching shares wisdom. Thus, bowls hide under mountains of dishes.
+Correct Answer: A
+Good Type: Hypothetical Syllogism
+Bad Type: Non Sequitur
+
+--------------------------------------------------
+
+Question 37:
+Option A: If malls house retailers, then wrenches slip off bolts. Wrenches slip off bolts implies hope inspires perseverance. Thus, Malls house retailers implies hope inspires perseverance.
+Option B: Progress advances forward. Thus, intuition guides instincts.
+Correct Answer: A
+Good Type: Hypothetical Syllogism
+Bad Type: Non Sequitur
+
+--------------------------------------------------
+
+Question 38:
+Option A: Keys unlock doors. Therefore, ignorance lacks knowledge.
+Option B: If departing begins journeys, then loyalty maintains allegiance. If loyalty maintains allegiance, then dancing expresses emotion. Thus, If departing begins journeys, then dancing expresses emotion.
+Correct Answer: B
+Good Type: Hypothetical Syllogism
+Bad Type: Non Sequitur
+
+--------------------------------------------------
+
+Question 39:
+Option A: Assuming eating provides nutrition, we can derive motorcycles make loud noises. Thus, eating provides nutrition implies motorcycles make loud noises.
+Option B: Assuming eating provides nutrition, motorcycles make loud noises is derivable. Thus, if eating provides nutrition, then motorcycles make loud noises and order organizes elements.
+Correct Answer: A
+Good Type: Material Conditional Introduction
+Bad Type: Invalid Material Conditional Introduction
+
+--------------------------------------------------
+
+Question 40:
+Option A: Assuming competition drives excellence, we can derive winning achieves victory. Thus, if competition drives excellence, then winning achieves victory.
+Option B: Assuming competition drives excellence, winning achieves victory is derivable. Therefore, if competition drives excellence, then winning achieves victory and factories manufacture products.
+Correct Answer: A
+Good Type: Material Conditional Introduction
+Bad Type: Invalid Material Conditional Introduction
+
+--------------------------------------------------
+
