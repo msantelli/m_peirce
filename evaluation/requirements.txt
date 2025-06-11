@@ -1,0 +1,12 @@
+# Core Requirements (always needed)
+requests>=2.25.0
+tqdm>=4.65.0
+
+# Optional: HuggingFace Models
+# Uncomment if using --type huggingface
+# transformers>=4.30.0
+# torch>=2.0.0
+# accelerate>=0.20.0
+
+# Optional: Progress bars and utilities  
+# numpy>=1.21.0
