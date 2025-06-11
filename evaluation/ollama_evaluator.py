@@ -396,6 +396,7 @@ Answer: """
             for stats in all_stats:
                 f.write(f"## {stats.model_name} - {stats.dataset_name}\n\n")
                 f.write(f"**Overall Accuracy**: {stats.accuracy:.1f}% ({stats.correct_answers}/{stats.total_questions})\n")
+                # add standard deviation
                 f.write(f"**Average Response Time**: {stats.avg_response_time:.2f}s\n")
                 f.write(f"**Unclear Responses**: {stats.unclear_responses}\n\n")
                 
