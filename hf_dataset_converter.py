@@ -175,6 +175,17 @@ class StreamlinedDatasetConverter:
         self._save_readme(output_dir, language, generator.get_statistics(), 
                          total_pairs, shared_sentences, complexity, style)
         
+        # Generate HuggingFace dataset card
+        try:
+            from create_hf_dataset_card import create_dataset_card
+            print("Generating HuggingFace dataset card...")
+            create_dataset_card(output_dir, dataset_name=self.dataset_name)
+            print("✅ HuggingFace dataset card created")
+        except ImportError:
+            print("⚠ Could not import dataset card generator - skipping HF card creation")
+        except Exception as e:
+            print(f"⚠ Warning: Failed to create HuggingFace dataset card: {e}")
+        
         print(f"✅ Dataset saved to {output_dir}")
     
     def _save_split(self, 
@@ -421,9 +432,10 @@ def main():
             print(f"Error: {e}")
             return
     
-    # Generate dataset
+    # Generate dataset with meaningful name
+    dataset_name = output_dir.name if output_dir.name != "streamlined_dataset" else f"logical_arguments_{language}"
     converter = StreamlinedDatasetConverter(
-        dataset_name=f"logical_arguments_{language}",
+        dataset_name=dataset_name,
         format_type=format_type
     )
     

@@ -113,6 +113,7 @@ Answer: """
     def parse_model_answer(self, response: str) -> Tuple[str, str]:
         """
         Parse model response to extract answer choice.
+        Handles reasoning models with thinking tags like <think>, <reasoning>, etc.
         
         Returns:
             Tuple of (parsed_answer, parsing_method)
@@ -120,32 +121,97 @@ Answer: """
         if not response:
             return "UNCLEAR", "empty_response"
         
+        original_response = response.strip()
         response = response.strip().upper()
         
         # Method 1: Direct A or B
         if response in ['A', 'B']:
             return response, "direct"
         
-        # Method 2: "Answer: A" or "Answer: B"
+        # Method 2: Remove thinking tags and parse the final answer
+        # Common thinking tags: <think>, <reasoning>, <analysis>, etc.
+        thinking_tags = [
+            r'<THINK>.*?</THINK>',
+            r'<THINKING>.*?</THINKING>', 
+            r'<REASONING>.*?</REASONING>',
+            r'<ANALYSIS>.*?</ANALYSIS>',
+            r'<THOUGHT>.*?</THOUGHT>',
+            r'<INTERNAL>.*?</INTERNAL>'
+        ]
+        
+        filtered_response = response
+        for tag_pattern in thinking_tags:
+            filtered_response = re.sub(tag_pattern, '', filtered_response, flags=re.DOTALL)
+        
+        # Try parsing the filtered response (without thinking content)
+        if filtered_response != response:
+            # Method 2a: Direct A or B in filtered response
+            filtered_clean = filtered_response.strip()
+            if filtered_clean in ['A', 'B']:
+                return filtered_clean, "filtered_direct"
+            
+            # Method 2b: Answer patterns in filtered response
+            answer_match = re.search(r'ANSWER:\s*([AB])', filtered_response)
+            if answer_match:
+                return answer_match.group(1), "filtered_answer_prefix"
+            
+            # Method 2c: Final answer patterns
+            final_patterns = [
+                r'FINAL ANSWER:\s*([AB])',
+                r'CONCLUSION:\s*([AB])',
+                r'RESULT:\s*([AB])',
+                r'MY ANSWER:\s*([AB])'
+            ]
+            for pattern in final_patterns:
+                match = re.search(pattern, filtered_response)
+                if match:
+                    return match.group(1), "filtered_final_pattern"
+        
+        # Method 3: "Answer: A" or "Answer: B" (original logic)
         answer_match = re.search(r'ANSWER:\s*([AB])', response)
         if answer_match:
             return answer_match.group(1), "answer_prefix"
         
-        # Method 3: First occurrence of A or B
-        first_match = re.search(r'\b([AB])\b', response)
-        if first_match:
-            return first_match.group(1), "first_occurrence"
+        # Method 4: Final answer patterns (in full response)
+        final_patterns = [
+            r'FINAL ANSWER:\s*([AB])',
+            r'CONCLUSION:\s*([AB])',
+            r'RESULT:\s*([AB])',
+            r'MY ANSWER:\s*([AB])',
+            r'THE ANSWER IS:\s*([AB])',
+            r'I CHOOSE:\s*([AB])'
+        ]
+        for pattern in final_patterns:
+            match = re.search(pattern, response)
+            if match:
+                return match.group(1), "final_pattern"
         
-        # Method 4: "Option A" or "Option B"
+        # Method 5: "Option A" or "Option B"
         option_match = re.search(r'OPTION\s+([AB])', response)
         if option_match:
             return option_match.group(1), "option_prefix"
         
-        # Method 5: Choice indicators
+        # Method 6: Choice indicators
         if any(phrase in response for phrase in ['CHOICE A', 'CHOOSE A', 'SELECT A']):
             return "A", "choice_indicator"
         if any(phrase in response for phrase in ['CHOICE B', 'CHOOSE B', 'SELECT B']):
             return "B", "choice_indicator"
+        
+        # Method 7: Last occurrence of A or B (better than first for reasoning models)
+        # Look for A or B that appears after common conclusion words
+        conclusion_patterns = [
+            r'(?:THEREFORE|THUS|HENCE|SO|FINALLY|IN CONCLUSION|ULTIMATELY).*?\b([AB])\b',
+            r'(?:THE ANSWER|MY CHOICE|I SELECT|I CHOOSE).*?\b([AB])\b'
+        ]
+        for pattern in conclusion_patterns:
+            matches = re.findall(pattern, response)
+            if matches:
+                return matches[-1], "conclusion_context"
+        
+        # Method 8: Last occurrence of A or B in the response (fallback)
+        all_matches = re.findall(r'\b([AB])\b', response)
+        if all_matches:
+            return all_matches[-1], "last_occurrence"
         
         return "UNCLEAR", "no_match"
     
@@ -166,8 +232,26 @@ Answer: """
     def evaluate_single_question(self, question: Dict[str, Any], prompt_style: str) -> EvaluationResult:
         """Evaluate a single question."""
         question_id = question.get('question_id', 0)
-        options = question.get('options', [])
-        correct_answer = question.get('correct_answer', '')
+        
+        # Handle both old and new dataset formats
+        if 'options' in question:
+            # Old format: simple list of options
+            options = question.get('options', [])
+            correct_answer = question.get('correct_answer', '')
+        elif 'test_options' in question:
+            # New format: complex structure with randomized options
+            test_options = question.get('test_options', {})
+            options = test_options.get('randomized', [])
+            correct_answer_info = question.get('correct_answer', {})
+            # Convert randomized index to A/B format
+            if isinstance(correct_answer_info, dict) and 'randomized_index' in correct_answer_info:
+                correct_answer = 'A' if correct_answer_info['randomized_index'] == 0 else 'B'
+            else:
+                correct_answer = str(correct_answer_info)
+        else:
+            options = []
+            correct_answer = ''
+        
         good_type = question.get('good_argument_type', 'Unknown')
         bad_type = question.get('bad_argument_type', 'Unknown')
         
