@@ -1,35 +1,56 @@
 # 🤗 HuggingFace Dataset Upload Guide
 
-This guide walks you through uploading your logical reasoning datasets to HuggingFace Hub.
+This guide walks you through the **streamlined process** for uploading logical reasoning datasets to HuggingFace Hub. Dataset cards are now **automatically generated** during dataset creation.
+
+## 🚀 Quick Start (2 Steps)
+
+### 1. Generate Dataset (includes HuggingFace card automatically)
+```bash
+# Creates JSONL files + README.md with YAML metadata automatically
+python hf_dataset_converter.py data/sentences_english.txt 1000 outputs/my_dataset en
+```
+
+### 2. Upload to HuggingFace Hub
+```bash
+# Install HuggingFace Hub
+pip install huggingface_hub
+
+# Login (get token from https://huggingface.co/settings/tokens)
+huggingface-cli login
+
+# Upload dataset
+python upload_to_huggingface.py outputs/my_dataset "logical-reasoning-en" your_username
+```
 
 ## 📋 What You Need
 
-1. **Generated Dataset**: A complete dataset in `outputs/` directory
-2. **HuggingFace Account**: Sign up at [huggingface.co](https://huggingface.co)
-3. **API Token**: Get from [Settings > Access Tokens](https://huggingface.co/settings/tokens)
+1. **HuggingFace Account**: [huggingface.co](https://huggingface.co)
+2. **API Token**: [Settings > Access Tokens](https://huggingface.co/settings/tokens)
+3. **Dataset**: Generated with integrated card creation (automatic)
 
-## 🔧 YAML Files Explained
+## 🔧 YAML Metadata (Auto-Generated)
 
-### What are YAML Files?
-
-YAML (Yet Another Markup Language) files contain **metadata** that describes your dataset:
+The system automatically creates YAML frontmatter in `README.md` that describes your dataset:
 
 ```yaml
 dataset_info:
-  features:           # What fields your data has
+  features:           # Auto-detected from your JSONL
     - name: question_id
       dtype: int64
-  splits:            # Train/validation/test splits
+    - name: test_options
+      dtype:
+        randomized: sequence: string
+  splits:            # Auto-calculated from files
     - name: train
       num_examples: 800
-language:            # Supported languages
+      num_bytes: 792361
+language:            # Auto-detected from data
   - en
-  - es
-task_categories:     # What the dataset is for
+task_categories:     # Auto-assigned
   - question-answering
-tags:               # Search tags
+tags:               # Auto-generated
   - logical-reasoning
-  - philosophy
+  - argument-evaluation
 ```
 
 ### Why YAML Matters
@@ -38,47 +59,6 @@ tags:               # Search tags
 - **Integration**: Allows automatic loading with `load_dataset()`
 - **Documentation**: Describes structure and usage
 - **Validation**: Ensures data format consistency
-
-## 🚀 Step-by-Step Upload Process
-
-### 1. Install Dependencies
-
-```bash
-pip install huggingface_hub
-```
-
-### 2. Generate Dataset Card
-
-```bash
-# Create YAML metadata + documentation
-python create_hf_dataset_card.py outputs/your_dataset --name "logical-reasoning-en"
-
-# This creates outputs/your_dataset/README.md with:
-# - YAML frontmatter (metadata)
-# - Dataset description
-# - Usage examples
-# - Citation information
-```
-
-### 3. Login to HuggingFace
-
-```bash
-# Option A: Use CLI
-huggingface-cli login
-
-# Option B: Set environment variable  
-export HF_TOKEN=your_token_here
-```
-
-### 4. Upload Dataset
-
-```bash
-# Upload to HuggingFace Hub
-python upload_to_huggingface.py outputs/your_dataset "logical-reasoning-en" your_username
-
-# For private datasets:
-python upload_to_huggingface.py outputs/your_dataset "logical-reasoning-en" your_username --private
-```
 
 ## 📊 YAML Interaction with Your Datasets
 
@@ -161,19 +141,22 @@ Your dataset becomes searchable by:
 - **Tags**: "logical-reasoning", "philosophy", "critical-thinking"
 - **Size**: Automatic categorization by dataset size
 
-## 🔄 Workflow Integration
+## 🔄 Streamlined Workflow
 
-### Complete Pipeline
+### Complete Pipeline (2 Steps)
 ```bash
-# 1. Generate dataset
-python hf_dataset_converter.py data/sentences_english.txt 1000 outputs/my_dataset en paired mixed balanced
+# 1. Generate dataset (creates JSONL + HuggingFace card automatically)
+python hf_dataset_converter.py data/sentences_english.txt 1000 outputs/my_dataset en
 
-# 2. Create HuggingFace card
-python create_hf_dataset_card.py outputs/my_dataset --name "logical-reasoning-en-balanced"
-
-# 3. Upload to HuggingFace
-python upload_to_huggingface.py outputs/my_dataset "logical-reasoning-en-balanced" your_username
+# 2. Upload to HuggingFace (ready immediately)
+python upload_to_huggingface.py outputs/my_dataset "logical-reasoning-en" your_username
 ```
+
+### What Gets Created Automatically:
+- `train.jsonl`, `validation.jsonl`, `test.jsonl` - Data files
+- `train.txt`, `validation.txt`, `test.txt` - Human-readable versions
+- `README.md` - **With YAML frontmatter + documentation**
+- `dataset_info.json` - Metadata summary
 
 ### User Experience
 ```python
@@ -270,12 +253,12 @@ license: mit
 
 ## 🎉 Benefits Summary
 
-1. **Automatic Metadata**: YAML files describe your dataset structure automatically
-2. **Easy Discovery**: Users find datasets through HuggingFace search
-3. **Seamless Integration**: `load_dataset()` works instantly with your data
-4. **Documentation**: Rich documentation with examples generated automatically
-5. **Validation**: YAML ensures data format consistency
-6. **Version Control**: HuggingFace tracks dataset versions
-7. **Community**: Share with the research community easily
+1. **One-Step Generation**: Dataset + HuggingFace card created together
+2. **Automatic Metadata**: YAML frontmatter describes dataset structure automatically
+3. **Instant Upload Ready**: No manual card creation needed
+4. **Easy Discovery**: Users find datasets through HuggingFace search
+5. **Seamless Integration**: `load_dataset()` works instantly with your data
+6. **Rich Documentation**: Examples and usage generated automatically
+7. **Research Ready**: Share with the research community in 2 simple steps
 
-The YAML files act as a "bridge" between your generated datasets and the HuggingFace ecosystem, making your logical reasoning datasets instantly usable by researchers worldwide! 🌍
+The integrated workflow makes your logical reasoning datasets instantly HuggingFace-ready! 🌍

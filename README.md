@@ -8,14 +8,14 @@ This streamlined dataset generator produces synthetic datasets to test basic log
 ## 🚀 Quick Start
 
 ```bash
-# Generate English dataset with shared sentences (recommended)
-python hf_dataset_converter.py data/sentences_english.txt 100 outputs/english_eval en paired mixed true
+# Generate dataset with HuggingFace card (automatic)
+python hf_dataset_converter.py data/sentences_english.txt 100 outputs/english_eval en
 
 # Generate Spanish dataset  
-python hf_dataset_converter.py data/sentences_spanish.txt 50 outputs/spanish_eval es paired basic true
+python hf_dataset_converter.py data/sentences_spanish.txt 50 outputs/spanish_eval es
 
-# Generate with separate sentences for variety
-python hf_dataset_converter.py data/sentences_english.txt 100 outputs/english_variety en paired mixed false
+# Upload to HuggingFace Hub (ready immediately)
+python upload_to_huggingface.py outputs/english_eval "logical-reasoning-en" your_username
 ```
 
 ```python
@@ -34,7 +34,7 @@ print(f"Invalid: {invalid_arg.text}")
 - **11 Logical Rules**: Valid inference forms and their corresponding fallacies  
 - **Shared vs. Separate Sentences**: Choose between true minimal pairs or content variety
 - **4 Complexity Levels**: From basic premise-first to advanced logical structures
-- **HuggingFace Integration**: Ready-to-use dataset export with JSONL/TXT formats
+- **HuggingFace Integration**: Auto-generates YAML metadata cards during dataset creation
 - **Evaluation Ready**: Optimized for logical reasoning benchmarks
 
 ## 🔄 Shared vs. Separate Sentence Modes

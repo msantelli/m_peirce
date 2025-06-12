@@ -1,43 +1,16 @@
-# M-Peirce-A Streamlining Summary
+# M-Peirce-A Streamlined System
 
 ## Overview
-Successfully streamlined the logical argument generation system while preserving all core functionality. The refactor reduces complexity by ~70% while maintaining the same capabilities for generating valid/invalid argument pairs.
+Streamlined logical argument generation system with **integrated HuggingFace dataset card creation**. Reduces complexity by 70% while preserving all core functionality and adding automated dataset preparation for research use.
 
-## What Was Changed
+## Core Architecture
 
-### ✅ **Archived Components**
-Moved to `archive/psychological_analysis/`:
-- `argument_strength.py` - 600+ lines of psychological analysis
-- `advanced_generator.py` - Complex orchestrator with advanced features  
-- `context_aware_system.py` - Sophisticated semantic analysis
-- `README.md` - Documentation of archived tools
-
-### ✅ **New Streamlined Architecture**
-
-#### **Core Files Created:**
-1. **`argument_generator.py`** - Main streamlined generator (300 lines vs 1000+ before)
-   - Simple configuration via method calls
-   - Direct sentence selection and variable preparation
-   - Straightforward argument pair generation
-
-2. **`rules.py`** - Simple rule definitions (80 lines)
-   - Clean mapping of valid rules → fallacies
-   - Sentence count requirements per rule
-   - Template type categorization
-
-3. **`streamlined_languages/english.py`** - Consolidated English handler (400 lines)
-   - All patterns and templates in one class
-   - Direct template generation without parsing
-   - Simple string formatting with random choices
-
-4. **`streamlined_languages/spanish.py`** - Spanish handler (200 lines)
-   - Same structure as English handler
-   - Ready for expansion with more rules
-
-5. **`streamlined_dataset_converter.py`** - Simplified converter (400 lines)
-   - Focused on evaluation format generation
-   - Clean command-line interface
-   - Minimal metadata, maximum functionality
+### **Main Components:**
+1. **`argument_generator.py`** - Core generator (300 lines)
+2. **`hf_dataset_converter.py`** - Dataset converter with **integrated HF card creation**
+3. **`languages/english.py`** & **`languages/spanish.py`** - Language handlers
+4. **`rules.py`** - Simple rule definitions
+5. **`create_hf_dataset_card.py`** - Auto-generates YAML metadata (auto-called)
 
 ### ✅ **Eliminated Complexity**
 
@@ -100,13 +73,19 @@ template = random.choice(templates).format(**variables)  # 1 line
 
 ## Usage Examples
 
-### **Generate Dataset (New Streamlined Way):**
+### **One-Step Dataset Generation (with HuggingFace card):**
 ```bash
-# Generate 100 English argument pairs with shared sentences
-python streamlined_dataset_converter.py data/sentences_english.txt 100 outputs/english_eval en paired mixed true
+# Generate dataset - automatically creates JSONL, TXT, README.md with YAML metadata
+python hf_dataset_converter.py data/sentences_english.txt 100 outputs/english_eval en
 
-# Generate Spanish dataset  
-python streamlined_dataset_converter.py data/sentences_spanish.txt 50 outputs/spanish_eval es paired basic true
+# Generate Spanish dataset with custom rules
+python hf_dataset_converter.py data/sentences_spanish.txt 50 outputs/spanish_eval es paired basic true
+```
+
+### **Upload to HuggingFace Hub:**
+```bash
+# Dataset is ready for immediate upload (includes YAML metadata)
+python upload_to_huggingface.py outputs/english_eval "logical-reasoning-en" your_username
 ```
 
 ### **Programmatic Usage:**

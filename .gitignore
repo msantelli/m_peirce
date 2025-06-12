@@ -6,6 +6,7 @@ demos/
 .claude
 evaluation/evaluation_results/
 archive/
+STREAMLINING_SUMMARY.md
 
 # IDE files
 .vscode/
