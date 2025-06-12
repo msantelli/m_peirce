@@ -18,8 +18,11 @@ pip install huggingface_hub
 # Login (get token from https://huggingface.co/settings/tokens)
 huggingface-cli login
 
-# Upload dataset
+# Upload dataset (public)
 python upload_to_huggingface.py outputs/my_dataset "logical-reasoning-en" your_username
+
+# Upload as private dataset
+python upload_to_huggingface.py outputs/my_dataset "logical-reasoning-en" your_username --private
 ```
 
 ## 📋 What You Need
@@ -150,6 +153,7 @@ python hf_dataset_converter.py data/sentences_english.txt 1000 outputs/my_datase
 
 # 2. Upload to HuggingFace (ready immediately)
 python upload_to_huggingface.py outputs/my_dataset "logical-reasoning-en" your_username
+# or: --private for private datasets
 ```
 
 ### What Gets Created Automatically:

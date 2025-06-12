@@ -385,9 +385,9 @@ Answer: \"\"\"
 ```bibtex
 @dataset{{{dataset_name},
   title={{{dataset_name.replace('_', ' ').title()} Dataset}},
-  author={{Your Name}},
+  author={{Santelli, Mauro; Toranzo Calderón, Joaquín; Caso, Ramiro}},
   year={{{datetime.now().year}}},
-  url={{https://huggingface.co/datasets/your-username/{dataset_name}}}
+  url={{https://huggingface.co/datasets/mesantelli/{dataset_name}}}
 }}
 ```
 
