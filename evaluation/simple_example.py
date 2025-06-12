@@ -37,11 +37,11 @@ def run_example():
     examples = [
         {
             "name": "HuggingFace GPT-2 (CPU)",
-            "cmd": ["python", "unified_evaluator.py", "--type", "huggingface", "--models", "gpt2", "--datasets", datasets[0]]
+            "cmd": ["python", "evaluate.py", "--type", "huggingface", "--models", "gpt2", "--datasets", datasets[0]]
         },
         {
             "name": "Ollama (if available)",
-            "cmd": ["python", "unified_evaluator.py", "--type", "ollama", "--models", "llama3.1", "--datasets", datasets[0]]
+            "cmd": ["python", "evaluate.py", "--type", "ollama", "--models", "llama3.1", "--datasets", datasets[0]]
         }
     ]
     
@@ -57,7 +57,7 @@ def run_example():
     print("🧪 Running simple test with GPT-2...")
     try:
         result = subprocess.run([
-            "python", "unified_evaluator.py", 
+            "python", "evaluate.py", 
             "--type", "huggingface", 
             "--models", "gpt2",
             "--datasets", datasets[0],
@@ -74,14 +74,14 @@ def run_example():
     except subprocess.TimeoutExpired:
         print("⏱ Evaluation timed out (this is normal for first-time model loading)")
     except FileNotFoundError:
-        print("⚠ unified_evaluator.py not found. Run from evaluation/ directory.")
+        print("⚠ evaluate.py not found. Run from evaluation/ directory.")
     except Exception as e:
         print(f"⚠ Could not run example: {e}")
     
     print("\n📖 Next steps:")
     print("1. Install model-specific requirements (see README.md)")
     print("2. Start required services (ollama serve for Ollama)")
-    print("3. Run unified_evaluator.py with your preferred model type")
+    print("3. Run evaluate.py with your preferred model type")
     print("4. Check evaluation_results/ for detailed analysis")
 
 if __name__ == "__main__":
