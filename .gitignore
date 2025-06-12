@@ -5,6 +5,7 @@ venv
 demos/
 .claude
 evaluation/evaluation_results/
+archive/
 
 # IDE files
 .vscode/

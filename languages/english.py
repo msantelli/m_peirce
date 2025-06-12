@@ -1,1461 +1,479 @@
 """
-languages/english.py
-
-English language implementation for the argument generator.
+English language handler for streamlined argument generation.
+Contains all English patterns and templates in a single class.
 """
 
-from typing import Dict, List, Tuple, Optional, Set, Any
-import re
-from language_base import (
-    LanguageSpecificPattern, LanguageTemplates, 
-    LanguageGrammar, LanguageStyleGuide, LanguageAdapter
-)
-from linguistic_patterns import ComplexityLevel
-from template_system import TemplateBuilder, EnhancedTemplate
+import random
+from typing import Dict, List, Tuple
 
 
-class EnglishPattern(LanguageSpecificPattern):
-    """English-specific linguistic patterns."""
+class EnglishHandler:
+    """Simplified English language handler with all patterns and logic."""
     
     def __init__(self):
-        super().__init__("en")
-    
-    def _init_negation_patterns(self) -> Dict[str, List[str]]:
-        """Initialize English negation patterns."""
-        return {
-            "simple": [
-                "{sentence} is not the case",
-                "{sentence} is false",
-                "not {sentence}",
-                "{sentence} doesn't hold",
-                "{sentence} is not true"
+        self.language_code = "en"
+        self.language_name = "English"
+        
+        # Conclusion markers (how we introduce the conclusion)
+        self.conclusion_markers = {
+            'basic': ['Therefore', 'Thus', 'Hence', 'So', 'Consequently'],
+            'formal': ['Therefore', 'Thus', 'Hence', 'Consequently', 'It follows that'],
+            'casual': ['So', 'Thus', 'Therefore', 'Hence']
+        }
+        
+        # Conditional patterns (if-then structures) 
+        self.conditional_patterns = {
+            'basic': [
+                'If {p}, then {q}',
+                'If {p} then {q}',
+                '{q} if {p}',
+                'Given {p}, {q}'
             ],
-            "formal": [
-                "it is false that {sentence}",
-                "it is not the case that {sentence}",
-                "the proposition that {sentence} is false",
-                "it is not true that {sentence}",
-                "the claim that {sentence} is false"
+            'formal': [
+                'If {p}, then {q}',
+                'Given that {p}, {q}',
+                'Provided that {p}, {q}',
+                'On the condition that {p}, {q}'
             ],
-            "emphatic": [
-                "{sentence} is definitely false",
-                "{sentence} is certainly not the case",
-                "{sentence} is absolutely false",
-                "{sentence} is unquestionably false",
-                "there is no way that {sentence}"
+            'causal': [
+                '{p} implies {q}',
+                '{p} leads to {q}',
+                '{p} results in {q}',
+                '{p} causes {q}'
+            ]
+        }
+        
+        # Conjunction patterns (and structures)
+        self.conjunction_patterns = {
+            'basic': [
+                '{p} and {q}',
+                '{p}, and {q}',
+                'Both {p} and {q}',
+                '{p} as well as {q}'
             ],
-            "double": [
-                "it is not the case that {sentence} is false",
-                "it is false that {sentence} is not true",
-                "{sentence} is not not the case",
-                "it isn't false that {sentence}"
+            'formal': [
+                '{p} and {q}',
+                '{p} in conjunction with {q}',
+                'Both {p} and {q}',
+                '{p} together with {q}'
+            ]
+        }
+        
+        # Disjunction patterns (or structures)
+        self.disjunction_patterns = {
+            'inclusive': [
+                '{p} or {q}',
+                #'Either {p} or {q}',
+                            ],
+            'exclusive': [
+                'Either {p} or {q} but not both',
+                'Exactly one of {p} or {q}',
+                '{p} or {q}, but not both'
+            ]
+        }
+        
+        # Negation patterns
+        self.negation_patterns = {
+            'basic': [
+                'not {sentence}',
+                '{sentence} is false',
+                '{sentence} is not the case',
+                '{sentence} doesn\'t hold'
             ],
-            "colloquial": [
-                "{sentence} isn't true",
-                "{sentence} ain't happening",
-                "no way {sentence}",
-                "{sentence} is not a thing",
-                "forget about {sentence}"
-            ],
-            "semantic": [
-                "the opposite of {sentence} is true",
-                "{sentence} fails to be the case",
-                "the negation of {sentence} holds",
-                "{sentence} is absent",
-                "there is an absence of {sentence}"
-            ],
-            "contrastive": [
-                "contrary to {sentence}",
-                "rather than {sentence}",
-                "instead of {sentence}",
-                "not {sentence}, but its opposite",
-                "the reverse of {sentence}"
+            'formal': [
+                'it is not the case that {sentence}',
+                'it is false that {sentence}',
+                '{sentence} is not true',
+                'the negation of {sentence}'
             ]
         }
     
-    def _init_conjunction_patterns(self) -> Dict[str, List[str]]:
-        """Initialize English conjunction patterns."""
-        return {
-            "simple": [
-                "{p} and {q}",
-                "{p}, and {q}",
-                "both {p} and {q}",
-                "{p} as well as {q}",
-                "{p} along with {q}"
-            ],
-            "sequential": [
-                "{p}, and also {q}",
-                "{p}, moreover {q}",
-                "{p}, furthermore {q}",
-                "{p}, in addition {q}",
-                "{p}, plus {q}"
-            ],
-            "emphatic": [
-                "both {p} and {q}",
-                "not only {p} but also {q}",
-                "{p} and, equally, {q}",
-                "{p} together with {q}",
-                "{p} combined with {q}"
-            ],
-            "formal": [
-                "{p} in conjunction with {q}",
-                "{p} conjoined with {q}",
-                "the conjunction of {p} and {q}",
-                "{p} and simultaneously {q}",
-                "{p} concurrently with {q}"
-            ],
-            "causal": [
-                "{p}, and consequently {q}",
-                "{p}, and as a result {q}",
-                "{p}, which leads to {q}",
-                "{p}, thereby {q}",
-                "{p}, hence also {q}"
-            ],
-            "temporal": [
-                "{p}, and then {q}",
-                "{p}, followed by {q}",
-                "{p}, and subsequently {q}",
-                "{p}, after which {q}",
-                "first {p}, then {q}"
-            ],
-            "additive": [
-                "not only {p} but also {q}",
-                "{p}, and what's more, {q}",
-                "{p}, and additionally {q}",
-                "{p}, and on top of that {q}",
-                "{p}, and besides {q}"
-            ]
-        }
-    
-    def _init_disjunction_patterns(self) -> Dict[str, List[str]]:
-        """Initialize English disjunction patterns."""
-        return {
-            "inclusive": [
-                "{p} or {q}",
-                "{p}, or {q}",
-                "either {p} or {q} or both",
-                "{p} and/or {q}",
-                "{p} or alternatively {q}"
-            ],
-            "exclusive": [
-                "either {p} or {q} but not both",
-                "exactly one of {p} or {q}",
-                "{p} or {q}, but not both",
-                "either {p} or {q} (exclusive)",
-                "{p} xor {q}"
-            ],
-            "alternative": [
-                "{p}, alternatively {q}",
-                "{p}, or else {q}",
-                "{p}, otherwise {q}",
-                "{p}, or instead {q}",
-                "{p}, failing that {q}"
-            ],
-            "formal": [
-                "{p} or else {q}",
-                "the disjunction of {p} and {q}",
-                "{p} vel {q}",
-                "at least one of {p} or {q}",
-                "{p} or possibly {q}"
-            ],
-            "conditional": [
-                "{p}, unless {q}",
-                "{p} except if {q}",
-                "{p} if not {q}",
-                "{p} barring {q}",
-                "{p} save for {q}"
-            ],
-            "preferential": [
-                "{p}, or failing that, {q}",
-                "preferably {p}, otherwise {q}",
-                "{p} if possible, else {q}",
-                "ideally {p}, but {q} will do",
-                "first choice {p}, second choice {q}"
-            ],
-            "exhaustive": [
-                "it's either {p} or it's {q}",
-                "one of two things: {p} or {q}",
-                "the options are {p} or {q}",
-                "we have {p} or we have {q}",
-                "the choice is between {p} and {q}"
-            ]
-        }
-    
-    def _init_conditional_patterns(self) -> Dict[str, List[str]]:
-        """Initialize English conditional patterns."""
-        return {
-            "standard": [
-                "if {antecedent}, then {consequent}",
-                "if {antecedent} then {consequent}",
-                "{consequent} if {antecedent}",
-                "given {antecedent}, {consequent}",
-                "when {antecedent}, {consequent}"
-            ],
-            "temporal": [
-                "when {antecedent}, then {consequent}",
-                "whenever {antecedent}, {consequent}",
-                "once {antecedent}, {consequent}",
-                "as soon as {antecedent}, {consequent}",
-                "after {antecedent}, {consequent}"
-            ],
-            "causal": [
-                "because {antecedent}, {consequent}",
-                "{antecedent} causes {consequent}",
-                "{antecedent} leads to {consequent}",
-                "{antecedent} results in {consequent}",
-                "{antecedent} brings about {consequent}"
-            ],
-            "hypothetical": [
-                "supposing {antecedent}, {consequent}",
-                "assuming {antecedent}, {consequent}",
-                "provided that {antecedent}, {consequent}",
-                "on the condition that {antecedent}, {consequent}",
-                "in the event that {antecedent}, {consequent}"
-            ],
-            "necessity": [
-                "{consequent} is necessary for {antecedent}",
-                "{antecedent} requires {consequent}",
-                "without {consequent}, no {antecedent}",
-                "{antecedent} only if {consequent}",
-                "for {antecedent}, {consequent} is required"
-            ],
-            "sufficiency": [
-                "{antecedent} is sufficient for {consequent}",
-                "{antecedent} guarantees {consequent}",
-                "{antecedent} ensures {consequent}",
-                "{antecedent} implies {consequent}",
-                "{antecedent} entails {consequent}"
-            ],
-            "biconditional_hint": [
-                "{antecedent} exactly when {consequent}",
-                "{antecedent} if and only if {consequent}",
-                "{antecedent} just in case {consequent}",
-                "{antecedent} precisely when {consequent}",
-                "{antecedent} iff {consequent}"
-            ],
-            "probabilistic": [
-                "if {antecedent}, then probably {consequent}",
-                "if {antecedent}, then likely {consequent}",
-                "{antecedent} suggests {consequent}",
-                "{antecedent} indicates {consequent}",
-                "given {antecedent}, {consequent} is likely"
-            ]
-        }
-    
-    def _init_connectives(self) -> Dict[str, List[str]]:
-        """Initialize English logical connectives."""
-        return {
-            "conclusion": [
-                "therefore", "thus", "hence", "consequently",
-                "so", "accordingly", "as a result", "it follows that",
-                "we can conclude that", "this means that", "ergo"
-            ],
-            "premise": [
-                "since", "because", "as", "given that",
-                "considering that", "in light of", "due to",
-                "on account of", "for", "seeing that"
-            ],
-            "assumption": [
-                "suppose", "assume", "let's say", "imagine",
-                "consider", "posit", "grant that", "presuming"
-            ],
-            "contrast": [
-                "but", "however", "yet", "nevertheless",
-                "nonetheless", "still", "although", "though",
-                "despite", "in spite of"
-            ],
-            "addition": [
-                "and", "also", "moreover", "furthermore",
-                "additionally", "besides", "plus", "as well as",
-                "in addition", "what's more"
-            ]
-        }
-    
-    def format_sentence(self, sentence: str, formatting_type: str) -> str:
-        """Apply English-specific formatting."""
-        if formatting_type == "capitalize":
-            return self.capitalize_sentence(sentence)
-        elif formatting_type == "negate":
-            return self._simple_negate(sentence)
-        elif formatting_type == "question":
-            return self._make_question(sentence)
-        elif formatting_type == "emphasize":
-            return self._emphasize(sentence)
+    def format_sentence(self, sentence: str, style: str = "normal") -> str:
+        """Format a sentence according to style preferences."""
+        sentence = sentence.strip()
+        
+        # Remove any trailing punctuation first to avoid double punctuation
+        sentence = sentence.rstrip('.!?')
+        
+        # Ensure proper capitalization
+        if sentence and not sentence[0].isupper():
+            sentence = sentence[0].upper() + sentence[1:]
+        
+        # Don't add period here - let templates control punctuation
         return sentence
     
-    def normalize_sentence(self, sentence: str) -> str:
-        """Normalize an English sentence."""
-        # Remove trailing punctuation
-        sentence = sentence.rstrip('.!?;:,')
+    def negate_sentence(self, sentence: str, style: str = "basic") -> str:
+        """Create a negated version of a sentence."""
+        sentence = sentence.strip().rstrip('.!?')
         
-        # Convert to lowercase
-        sentence = sentence.lower()
+        # Ensure proper capitalization for the base sentence
+        if sentence and not sentence[0].isupper():
+            sentence = sentence[0].upper() + sentence[1:]
         
-        # Remove extra whitespace
-        sentence = ' '.join(sentence.split())
+        pattern = random.choice(self.negation_patterns.get(style, self.negation_patterns['basic']))
+        result = pattern.format(sentence=sentence)
         
-        return sentence
-    
-    def capitalize_sentence(self, sentence: str) -> str:
-        """Capitalize an English sentence properly."""
-        if not sentence:
-            return sentence
+        # Ensure the result starts with proper capitalization
+        if result and not result[0].isupper():
+            result = result[0].upper() + result[1:]
         
-        # Simple capitalization - first letter
-        # Could be enhanced to handle proper nouns, 'I', etc.
-        return sentence[0].upper() + sentence[1:]
+        return result
     
-    def _simple_negate(self, sentence: str) -> str:
-        """Apply simple negation to a sentence."""
-        # Very basic - could be enhanced with NLP
-        if " is " in sentence:
-            return sentence.replace(" is ", " is not ", 1)
-        elif " are " in sentence:
-            return sentence.replace(" are ", " are not ", 1)
-        elif " was " in sentence:
-            return sentence.replace(" was ", " was not ", 1)
-        elif " were " in sentence:
-            return sentence.replace(" were ", " were not ", 1)
-        else:
-            return f"it is not the case that {sentence}"
-    
-    def _make_question(self, sentence: str) -> str:
-        """Convert a statement to a question."""
-        # Very basic - could be enhanced
-        if sentence.startswith(("is ", "are ", "was ", "were ")):
-            return sentence + "?"
-        else:
-            return f"is it true that {sentence}?"
-    
-    def _emphasize(self, sentence: str) -> str:
-        """Add emphasis to a sentence."""
-        return f"certainly {sentence}"
-
-
-class EnglishTemplates(LanguageTemplates):
-    """English-specific argument templates."""
-    
-    def __init__(self, language_pattern: EnglishPattern):
-        super().__init__(language_pattern)
-    
-    def _init_templates(self) -> Dict[str, Dict[str, List[EnhancedTemplate]]]:
-        """Initialize English templates."""
+    def generate_templates(self, rule_name: str, is_valid: bool = True) -> Dict[str, List[str]]:
+        """Generate templates for a specific logical rule."""
         templates = {}
         
-        # Modus Ponens
-        templates["Modus Ponens"] = {
-            "valid": self._create_modus_ponens_valid(),
-            "invalid": self._create_modus_ponens_invalid()
-        }
+        if rule_name == "Modus Ponens":
+            if is_valid:
+                templates['premise_first'] = [
+                    '{Conditional}. {P}. {conclusion} {q}.',
+                    '{Conditional}. {P}. {conclusion}, {q}.',
+                    '{Conditional}. Since {p}, {conclusion} {q}.'
+                ]
+                templates['conclusion_first'] = [
+                    '{Q} because {p}. After all, {conditional}.',
+                    '{Q}, since {p}. Given that {conditional}.',
+                    '{Q}. This follows from {p} and the fact that {conditional}.'
+                ]
+            else:  # Affirming the Consequent
+                templates['premise_first'] = [
+                    '{Conditional}. {Q}. {conclusion} {p}.',
+                    '{Conditional}. {Q}. {conclusion}, {p}.',
+                    '{Conditional}. Since {q}, {conclusion} {p}.'
+                ]
+                templates['conclusion_first'] = [
+                    '{P} because {q}. After all, {conditional}.',
+                    '{P}, since {q}. Given that {conditional}.',
+                    '{P}. This follows from {q} and the fact that {conditional}.'
+                ]
         
-        # Modus Tollens
-        templates["Modus Tollens"] = {
-            "valid": self._create_modus_tollens_valid(),
-            "invalid": self._create_modus_tollens_invalid()
-        }
+        elif rule_name == "Modus Tollens":
+            if is_valid:
+                templates['premise_first'] = [
+                    '{Conditional}. {Negated_result}. {conclusion} {negated_premise}.',
+                    '{Conditional}. {Negated_result}. {conclusion}, {negated_premise}.',
+                    '{Conditional}. Since {negated_result}, {conclusion} {negated_premise}.'
+                ]
+                templates['conclusion_first'] = [
+                    '{Negated_premise} because {negated_result}. After all, {conditional}.',
+                    '{Negated_premise}, since {negated_result}. Given that {conditional}.',
+                    '{Negated_premise}. This follows from {negated_result} and the fact that {conditional}.'
+                ]
+            else:  # Denying the Antecedent
+                templates['premise_first'] = [
+                    '{Conditional}. {Negated_premise}. {conclusion} {negated_result}.',
+                    '{Conditional}. {Negated_premise}. {conclusion}, {negated_result}.',
+                    '{Conditional}. Since {negated_premise}, {conclusion} {negated_result}.'
+                ]
+                templates['conclusion_first'] = [
+                    '{Negated_result} because {negated_premise}. After all, {conditional}.',
+                    '{Negated_result}, since {negated_premise}. Given that {conditional}.',
+                    '{Negated_result}. This follows from {negated_premise} and the fact that {conditional}.'
+                ]
         
-        # Disjunctive Syllogism
-        templates["Disjunctive Syllogism"] = {
-            "valid": self._create_disjunctive_syllogism_valid(),
-            "invalid": self._create_disjunctive_syllogism_invalid()
-        }
+        elif rule_name == "Disjunctive Syllogism":
+            if is_valid:
+                templates['premise_first'] = [
+                    '{Disjunction}. {Negated_p}. {conclusion} {q}.',
+                    '{Disjunction}. {Negated_p}. {conclusion}, {q}.',
+                    '{Disjunction}. Since {negated_p}, {conclusion} {q}.'
+                ]
+                templates['conclusion_first'] = [
+                    '{Q} because {negated_p}. After all, {disjunction}.',
+                    '{Q}, since {negated_p}. Given that {disjunction}.',
+                    '{Q}. This follows from {negated_p} and the fact that {disjunction}.'
+                ]
+            else:  # Affirming a Disjunct
+                templates['premise_first'] = [
+                    '{Disjunction}. {P}. {conclusion} {negated_q}.',
+                    '{Disjunction}. {P}. {conclusion}, {negated_q}.',
+                    '{Disjunction}. Since {p}, {conclusion} {negated_q}.'
+                ]
+                templates['conclusion_first'] = [
+                    '{Negated_q} because {p}. After all, {disjunction}.',
+                    '{Negated_q}, since {p}. Given that {disjunction}.',
+                    '{Negated_q}. This follows from {p} and the fact that {disjunction}.'
+                ]
         
-        # Conjunction Introduction
-        templates["Conjunction Introduction"] = {
-            "valid": self._create_conjunction_introduction_valid(),
-            "invalid": self._create_conjunction_introduction_invalid()
-        }
+        elif rule_name == "Conjunction Introduction":
+            if is_valid:
+                templates['premise_first'] = [
+                    '{P}. {Q}. {conclusion} {conjunction}.',
+                    '{P}. {Q}. {conclusion}, {conjunction}.',
+                    '{P}. Also, {Q}. {conclusion} {conjunction}.'
+                ]
+                templates['conclusion_first'] = [
+                    '{Conjunction} because {p} and {q}.',
+                    '{Conjunction}, since both {p} and {q}.',
+                    '{Conjunction}. This follows from {p} and {q}.'
+                ]
+            else:  # False Conjunction  
+                templates['premise_first'] = [
+                    '{P}. {conclusion} {conjunction}.',
+                    '{P}. {conclusion}, {conjunction}.',
+                    'Since {p}, {conclusion} {conjunction}.'
+                ]
+                templates['conclusion_first'] = [
+                    '{Conjunction} because {p}.',
+                    '{Conjunction}, since {p}.',
+                    '{Conjunction}. This follows from {p}.'
+                ]
         
-        # Conjunction Elimination
-        templates["Conjunction Elimination"] = {
-            "valid": self._create_conjunction_elimination_valid(),
-            "invalid": self._create_conjunction_elimination_invalid()
-        }
+        elif rule_name == "Conjunction Elimination":
+            if is_valid:
+                templates['premise_first'] = [
+                    '{Conjunction}. {conclusion} {p}.',
+                    '{Conjunction}. {conclusion}, {p}.',
+                    'Since {conjunction}, {conclusion} {p}.'
+                ]
+                templates['conclusion_first'] = [
+                    '{P} because {conjunction}.',
+                    '{P}, since {conjunction}.',
+                    '{P}. This follows from {conjunction}.'
+                ]
+            else:  # Composition Fallacy
+                templates['premise_first'] = [
+                    'The group has the property that {p}. {conclusion} every member {p}.',
+                    'The team as a whole {p}. {conclusion}, each player {p}.',
+                    'The organization {p}. {conclusion} every employee {p}.'
+                ]
+                templates['conclusion_first'] = [
+                    'Every member {p} because the group has this property.',
+                    'Each individual {p}, since the collective {p}.',
+                    'All parts {p} because the whole {p}.'
+                ]
         
-        # Disjunction Introduction
-        templates["Disjunction Introduction"] = {
-            "valid": self._create_disjunction_introduction_valid(),
-            "invalid": self._create_invalid_conjunction_introduction()
-        }
+        elif rule_name == "Disjunction Introduction":
+            if is_valid:
+                templates['premise_first'] = [
+                    '{P}. {conclusion} {disjunction}.',
+                    '{P}. {conclusion}, {disjunction}.',
+                    'Since {p}, {conclusion} {disjunction}.'
+                ]
+                templates['conclusion_first'] = [
+                    '{Disjunction} because {p}.',
+                    '{Disjunction}, since {p}.',
+                    '{Disjunction}. This follows from {p}.'
+                ]
+            else:  # Invalid Conjunction Introduction
+                templates['premise_first'] = [
+                    '{P}. {conclusion} {conjunction}.',
+                    '{P}. {conclusion}, {conjunction}.',
+                    'Since {p}, {conclusion} {conjunction}.'
+                ]
+                templates['conclusion_first'] = [
+                    '{Conjunction} because {p}.',
+                    '{Conjunction}, since {p}.',
+                    '{Conjunction}. This follows from {p}.'
+                ]
         
-        # Hypothetical Syllogism
-        templates["Hypothetical Syllogism"] = {
-            "valid": self._create_hypothetical_syllogism_valid(),
-            "invalid": self._create_hypothetical_syllogism_invalid()
-        }
+        elif rule_name == "Disjunction Elimination":
+            if is_valid:
+                templates['premise_first'] = [
+                    '{Disjunction}. If {p}, then {r}. If {q}, then {r}. {conclusion} {r}.',
+                    '{Disjunction}. {P} implies {r}. {Q} implies {r}. {conclusion}, {r}.'
+                    'Either {p} or {q}. In both cases, {R}. {conclusion} {r}.'
+                ]
+                templates['conclusion_first'] = [
+                    '{R} because either way it follows. We know {disjunction}, and both {p} and {q} lead to {r}.',
+                    '{R}, since {disjunction} and both options imply {r}.',
+                    '{R}. This follows from {disjunction} and the fact that both {p} and {q} result in {r}.'
+                ]
+            else:  # Invalid Disjunction Elimination
+                templates['premise_first'] = [
+                    '{Disjunction}. If {p}, then {r}. {conclusion} {r}.',
+                    '{Disjunction}. {P} implies {r}. {conclusion}, {r}.',
+                    'Either {p} or {q}. {P} leads to {r}. {conclusion} {r}.'
+                ]
+                templates['conclusion_first'] = [
+                    '{R} because {p} implies it. We know {disjunction}.',
+                    '{R}, since {p} leads to it and we have {disjunction}.',
+                    '{R}. This follows from the possibility of {p} in {disjunction}.'
+                ]
         
-        # Disjunction Elimination
-        templates["Disjunction Elimination"] = {
-            "valid": self._create_disjunction_elimination_valid(),
-            "invalid": self._create_disjunction_elimination_invalid()
-        }
+        elif rule_name == "Hypothetical Syllogism":
+            if is_valid:
+                templates['premise_first'] = [
+                    '{Conditional1}. {Conditional2}. {conclusion} {conditional3}.',
+                    '{Conditional1}. Also, {Conditional2}. {conclusion}, {conditional3}.',
+                    'Given that {conditional1} and {conditional2}, {conclusion} {conditional3}.'
+                ]
+                templates['conclusion_first'] = [
+                    '{Conditional3} because {conditional1} and {conditional2}.',
+                    '{Conditional3}, since {conditional1} and {conditional2}.',
+                    '{Conditional3}. This follows from the chain: {conditional1} and {conditional2}.'
+                ]
+            else:  # Non Sequitur
+                templates['premise_first'] = [
+                    '{P}. {conclusion} {q}.',
+                    'Since {p}, {conclusion} {q}.',
+                    '{P}. {conclusion}, {q}.'
+                ]
+                templates['conclusion_first'] = [
+                    '{Q} because {p}.',
+                    '{Q}, since {p}.',
+                    '{Q}. This somehow follows from {p}.'
+                ]
         
-        # Material Conditional Introduction
-        templates["Material Conditional Introduction"] = {
-            "valid": self._create_material_conditional_introduction_valid(),
-            "invalid": self._create_material_conditional_introduction_invalid()
-        }
+        elif rule_name == "Material Conditional Introduction":
+            if is_valid:
+                templates['premise_first'] = [
+                    'Either {negated_p} or {q}. {conclusion} {conditional}.',
+                    '{Negated_p} or {q}. {conclusion}, {conditional}.',
+                    'Since either {negated_p} or {q}, {conclusion} {conditional}.'
+                ]
+                templates['conclusion_first'] = [
+                    '{Conditional} because either {negated_p} or {q}.',
+                    '{Conditional}, since {negated_p} or {q}.',
+                    '{Conditional}. This follows from either {negated_p} or {q}.'
+                ]
+            else:  # Invalid Material Conditional Introduction
+                templates['premise_first'] = [
+                    'Either {negated_p} or {q}. {conclusion} if {p}, then both {q} and {r}.',
+                    '{Negated_p} or {q}. {conclusion}, if {p} then {q} and {r}.',
+                    'Since either {negated_p} or {q}, {conclusion} {p} implies both {q} and {r}.'
+                ]
+                templates['conclusion_first'] = [
+                    'If {p}, then both {q} and {r} because either {negated_p} or {q}.',
+                    'If {p} then {q} and {r}, since {negated_p} or {q}.',
+                    '{P} implies both {q} and {r}. This follows from either {negated_p} or {q}.'
+                ]
         
-        # Constructive Dilemma
-        templates["Constructive Dilemma"] = {
-            "valid": self._create_constructive_dilemma_valid(),
-            "invalid": self._create_constructive_dilemma_invalid()
-        }
+        elif rule_name == "Constructive Dilemma":
+            if is_valid:
+                templates['premise_first'] = [
+                    '{Conditional1}. {Conditional2}. {Disjunction}. {conclusion} either {p} or {q} leads to {r}.',
+                    'If {p}, then {r}. If {q}, then {r}. Either {p} or {q}. {conclusion}, {r}.',
+                    '{Conditional1} and {conditional2}. Since {disjunction}, {conclusion} {r}.'
+                ]
+                templates['conclusion_first'] = [
+                    '{R} because {disjunction}. Given {conditional1} and {conditional2}.',
+                    '{R}, since {disjunction}. We know {conditional1} and {conditional2}.',
+                    '{R}. This follows from {disjunction} and the conditionals {conditional1} and {conditional2}.'
+                ]
+            else:  # False Dilemma
+                templates['premise_first'] = [
+                    'Either {p} or {q}. {conclusion} one of these must be true.',
+                    '{p} or {q}. {conclusion}, these are the only options.',
+                    'Since either {p} or {q}, {conclusion} no other possibility exists.'
+                ]
+                templates['conclusion_first'] = [
+                    'One of these must be true because either {p} or {q}.',
+                    'These are the only options, since {p} or {q}.',
+                    'No other possibility exists. Either {p} or {q} covers all cases.'
+                ]
         
-        # Destructive Dilemma
-        templates["Destructive Dilemma"] = {
-            "valid": self._create_destructive_dilemma_valid(),
-            "invalid": self._create_destructive_dilemma_invalid()
-        }
-        
-        # Invalid forms
-        templates["Affirming the Consequent"] = {
-            "invalid": self._create_modus_ponens_invalid()
-        }
-        
-        templates["Denying the Antecedent"] = {
-            "invalid": self._create_modus_tollens_invalid()
-        }
-        
-        templates["Affirming a Disjunct"] = {
-            "invalid": self._create_disjunctive_syllogism_invalid()
-        }
-        
-        templates["False Conjunction"] = {
-            "invalid": self._create_conjunction_introduction_invalid()
-        }
-        
-        templates["Composition Fallacy"] = {
-            "invalid": self._create_conjunction_elimination_invalid()
-        }
-        
-        templates["Invalid Conjunction Introduction"] = {
-            "invalid": self._create_invalid_conjunction_introduction()
-        }
-        
-        templates["Non Sequitur"] = {
-            "invalid": self._create_non_sequitur_invalid()
-        }
-        
-        templates["Invalid Disjunction Elimination"] = {
-            "invalid": self._create_disjunction_elimination_invalid()
-        }
-        
-        templates["Invalid Material Conditional Introduction"] = {
-            "invalid": self._create_material_conditional_introduction_invalid()
-        }
-        
-        return templates
-    
-    def _create_modus_ponens_valid(self) -> List[EnhancedTemplate]:
-        """Create valid Modus Ponens templates."""
-        templates = []
-        
-        # Basic template with variations
-        builder = TemplateBuilder()
-        builder.add_variation('conditional', [
-            'If {p}, then {q}',
-            '{Q} if {p}',
-            '{P} implies {q}',
-            '{P} leads to {q}',
-            '{P} guarantees {q}'
-        ])
-        builder.add_static('. ')
-        builder.add_variable('P')
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Therefore',
-            'Thus',
-            'Hence',
-            'So',
-            'Consequently'
-        ])
-        builder.add_static(', ')
-        builder.add_variable('q')
-        builder.add_static('.')
-        builder.set_metadata('complexity', ComplexityLevel.BASIC)
-        
-        templates.append(builder.build())
-        
-        # Conclusion-first variation
-        builder2 = TemplateBuilder()
-        builder2.add_variable('Q')
-        builder2.add_static(' ')
-        builder2.add_variation('because', [
-            'because',
-            'since',
-            'as',
-            'given that'
-        ])
-        builder2.add_static(' ')
-        builder2.add_variable('p')
-        builder2.add_static('. ')
-        builder2.add_variation('also', [
-            'Also',
-            'Moreover',
-            'Furthermore',
-            'Additionally'
-        ])
-        builder2.add_static(', ')
-        builder2.add_variation('conditional', [
-            'if {p}, then {q}',
-            '{P} implies {q}',
-            '{P} leads to {q}'
-        ])
-        builder2.add_static('.')
-        builder2.set_metadata('complexity', ComplexityLevel.INTERMEDIATE)
-        
-        templates.append(builder2.build())
-        
-        return templates
-    
-    def _create_modus_ponens_invalid(self) -> List[EnhancedTemplate]:
-        """Create invalid Modus Ponens templates (Affirming the Consequent)."""
-        templates = []
-        
-        builder = TemplateBuilder()
-        builder.add_variation('conditional', [
-            'If {p}, then {q}',
-            '{Q} if {p}',
-            '{P} implies {q}'
-        ])
-        builder.add_static('. ')
-        builder.add_variable('Q')
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Therefore',
-            'Thus',
-            'So'
-        ])
-        builder.add_static(', ')
-        builder.add_variable('p')
-        builder.add_static('.')
-        builder.set_metadata('complexity', ComplexityLevel.BASIC)
-        
-        templates.append(builder.build())
-        
-        return templates
-    
-    def _create_modus_tollens_valid(self) -> List[EnhancedTemplate]:
-        """Create valid Modus Tollens templates."""
-        templates = []
-        
-        builder = TemplateBuilder()
-        builder.add_variation('conditional', [
-            'If {p}, then {q}',
-            '{Q} if {p}',
-            '{P} implies {q}'
-        ])
-        builder.add_static('. ')
-        builder.add_variable('not_Q')
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Therefore',
-            'Thus',
-            'Hence'
-        ])
-        builder.add_static(', ')
-        builder.add_variable('not_p')
-        builder.add_static('.')
-        
-        templates.append(builder.build())
-        
-        return templates
-    
-    def _create_modus_tollens_invalid(self) -> List[EnhancedTemplate]:
-        """Create invalid Modus Tollens templates (Denying the Antecedent)."""
-        templates = []
-        
-        builder = TemplateBuilder()
-        builder.add_variation('conditional', [
-            'If {p}, then {q}',
-            '{Q} if {p}',
-            '{P} implies {q}'
-        ])
-        builder.add_static('. ')
-        builder.add_variable('not_P')
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Therefore',
-            'Thus',
-            'So'
-        ])
-        builder.add_static(', ')
-        builder.add_variable('not_q')
-        builder.add_static('.')
-        
-        templates.append(builder.build())
-        
-        return templates
-    
-    def _create_disjunctive_syllogism_valid(self) -> List[EnhancedTemplate]:
-        """Create valid Disjunctive Syllogism templates."""
-        templates = []
-        
-        builder = TemplateBuilder()
-        builder.add_variation('disjunction', [
-            '{P} or {q}',
-            'Either {p} or {q}',
-            '{P}, or alternatively {q}'
-        ])
-        builder.add_static('. ')
-        builder.add_variable('not_P')
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Therefore',
-            'Thus',
-            'Hence'
-        ])
-        builder.add_static(', ')
-        builder.add_variable('q')
-        builder.add_static('.')
-        
-        templates.append(builder.build())
-        return templates
-    
-    def _create_disjunctive_syllogism_invalid(self) -> List[EnhancedTemplate]:
-        """Create invalid Disjunctive Syllogism templates (Affirming a Disjunct)."""
-        templates = []
-        
-        builder = TemplateBuilder()
-        builder.add_variation('disjunction', [
-            '{P} or {q}',
-            'Either {p} or {q}'
-        ])
-        builder.add_static('. ')
-        builder.add_variable('P')
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Therefore',
-            'Thus'
-        ])
-        builder.add_static(', ')
-        builder.add_variable('not_q')
-        builder.add_static('.')
-        
-        templates.append(builder.build())
-        return templates
-    
-    def _create_conjunction_introduction_valid(self) -> List[EnhancedTemplate]:
-        """Create valid Conjunction Introduction templates."""
-        templates = []
-        
-        builder = TemplateBuilder()
-        builder.add_variable('P')
-        builder.add_static('. ')
-        builder.add_variable('Q')
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Therefore',
-            'Thus',
-            'Hence'
-        ])
-        builder.add_static(', ')
-        builder.add_variation('conjunction', [
-            '{p} and {q}',
-            'both {p} and {q}',
-            '{p} as well as {q}'
-        ])
-        builder.add_static('.')
-        
-        templates.append(builder.build())
-        return templates
-    
-    def _create_conjunction_introduction_invalid(self) -> List[EnhancedTemplate]:
-        """Create invalid Conjunction Introduction templates (False Conjunction)."""
-        templates = []
-        
-        builder = TemplateBuilder()
-        builder.add_variable('P')
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Therefore',
-            'Thus'
-        ])
-        builder.add_static(', ')
-        builder.add_variation('conjunction', [
-            '{p} and {q}',
-            'both {p} and {q}'
-        ])
-        builder.add_static('.')
-        
-        templates.append(builder.build())
-        return templates
-    
-    def _create_conjunction_elimination_valid(self) -> List[EnhancedTemplate]:
-        """Create valid Conjunction Elimination templates."""
-        templates = []
-        
-        builder = TemplateBuilder()
-        builder.add_variation('conjunction', [
-            '{P} and {q}',
-            'Both {p} and {q}',
-            '{P} as well as {q}'
-        ])
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Therefore',
-            'Thus',
-            'Hence'
-        ])
-        builder.add_static(', ')
-        builder.add_variable('p')
-        builder.add_static('.')
-        
-        templates.append(builder.build())
-        return templates
-    
-    def _create_conjunction_elimination_invalid(self) -> List[EnhancedTemplate]:
-        """Create invalid Conjunction Elimination templates (Composition Fallacy)."""
-        templates = []
-        
-        builder = TemplateBuilder()
-        builder.add_variation('conjunction', [
-            '{P} and {q}',
-            'Both {p} and {q}'
-        ])
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Therefore',
-            'Thus'
-        ])
-        builder.add_static(', ')
-        builder.add_variable('r')
-        builder.add_static('.')
-        
-        templates.append(builder.build())
-        return templates
-    
-    def _create_disjunction_introduction_valid(self) -> List[EnhancedTemplate]:
-        """Create valid Disjunction Introduction templates."""
-        templates = []
-        
-        builder = TemplateBuilder()
-        builder.add_variable('P')
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Therefore',
-            'Thus',
-            'Hence'
-        ])
-        builder.add_static(', ')
-        builder.add_variation('disjunction', [
-            '{p} or {q}',
-            'either {p} or {q}',
-            '{p} or alternatively {q}'
-        ])
-        builder.add_static('.')
-        
-        templates.append(builder.build())
-        return templates
-    
-    def _create_invalid_conjunction_introduction(self) -> List[EnhancedTemplate]:
-        """Create Invalid Conjunction Introduction templates (A / Therefore, A and B)."""
-        templates = []
-        
-        # Basic invalid conjunction introduction
-        builder = TemplateBuilder()
-        builder.add_variable('P')
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Therefore',
-            'Thus',
-            'Hence',
-            'So'
-        ])
-        builder.add_static(', ')
-        builder.add_variation('conjunction', [
-            '{p} and {q}',
-            'both {p} and {q}',
-            '{p} as well as {q}'
-        ])
-        builder.add_static('.')
-        builder.set_metadata('complexity', ComplexityLevel.BASIC)
-        templates.append(builder.build())
-        
-        # Intermediate version with more sophisticated language
-        builder2 = TemplateBuilder()
-        builder2.add_variable('P')
-        builder2.add_static('. ')
-        builder2.add_variation('conclusion', [
-            'It follows that',
-            'We can conclude that',
-            'This means that'
-        ])
-        builder2.add_static(' ')
-        builder2.add_variation('conjunction', [
-            'not only {p} but also {q}',
-            '{p} and additionally {q}',
-            '{p} together with {q}'
-        ])
-        builder2.add_static('.')
-        builder2.set_metadata('complexity', ComplexityLevel.INTERMEDIATE)
-        templates.append(builder2.build())
+        elif rule_name == "Destructive Dilemma":
+            if is_valid:
+                templates['premise_first'] = [
+                    '{Conditional1}. {Conditional2}. Either {negated_result1} or {negated_result2}. {conclusion} either {negated_p} or {negated_q}.',
+                    'If {p}, then {r}. If {q}, then {r}. Either {negated_result1} or {negated_result2}. {conclusion}, either {negated_p} or {negated_q}.',
+                    '{Conditional1} and {conditional2}. Since either {negated_result1} or {negated_result2}, {conclusion} either {negated_p} or {negated_q}.'
+                ]
+                templates['conclusion_first'] = [
+                    'Either {negated_p} or {negated_q} because either {negated_result1} or {negated_result2}. Given {conditional1} and {conditional2}.',
+                    'Either {negated_p} or {negated_q}, since either {negated_result1} or {negated_result2}. We know {conditional1} and {conditional2}.',
+                    'Either {negated_p} or {negated_q}. This follows from either {negated_result1} or {negated_result2} and the conditionals {conditional1} and {conditional2}.'
+                ]
+            else:  # Non Sequitur
+                templates['premise_first'] = [
+                    '{P}. {conclusion} {q}.',
+                    'Since {p}, {conclusion} {q}.',
+                    '{P}. {conclusion}, {q}.'
+                ]
+                templates['conclusion_first'] = [
+                    '{Q} because {p}.',
+                    '{Q}, since {p}.',
+                    '{Q}. This somehow follows from {p}.'
+                ]
         
         return templates
     
-    def _create_hypothetical_syllogism_valid(self) -> List[EnhancedTemplate]:
-        """Create valid Hypothetical Syllogism templates."""
-        templates = []
+    def create_conditional(self, p: str, q: str, style: str = "basic") -> str:
+        """Create a conditional statement."""
+        pattern = random.choice(self.conditional_patterns.get(style, self.conditional_patterns['basic']))
+        # Clean up the inputs - remove punctuation and extra spaces
+        p_clean = p.strip().rstrip('.!?')
+        q_clean = q.strip().rstrip('.!?')
         
-        builder = TemplateBuilder()
-        builder.add_variation('conditional1', [
-            'If {p}, then {q}',
-            '{P} implies {q}'
-        ])
-        builder.add_static('. ')
-        builder.add_variation('conditional2', [
-            'If {q}, then {r}',
-            '{Q} implies {r}'
-        ])
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Therefore',
-            'Thus',
-            'Hence'
-        ])
-        builder.add_static(', ')
-        builder.add_variation('conditional3', [
-            'If {p}, then {r}',
-            '{P} implies {r}'
-        ])
-        builder.add_static('.')
+        # Handle capitalization based on conditional pattern
+        if pattern.startswith('If {p}'):
+            # For "If P, then Q" patterns, P should be lowercase (not sentence start)
+            if p_clean and p_clean[0].isupper() and not self._is_proper_noun(p_clean):
+                p_clean = p_clean[0].lower() + p_clean[1:]
+            # Q should also be lowercase in "then Q" context
+            if q_clean and q_clean[0].isupper() and not self._is_proper_noun(q_clean):
+                q_clean = q_clean[0].lower() + q_clean[1:]
+        elif pattern.startswith('{q} if {p}'):
+            # For "Q if P" patterns, P should be lowercase  
+            if p_clean and p_clean[0].isupper() and not self._is_proper_noun(p_clean):
+                p_clean = p_clean[0].lower() + p_clean[1:]
+        elif pattern.startswith('Given {p}') or 'Given {p}' in pattern:
+            # For "Given P, Q" patterns, P should be lowercase
+            if p_clean and p_clean[0].isupper() and not self._is_proper_noun(p_clean):
+                p_clean = p_clean[0].lower() + p_clean[1:]
+        elif pattern.startswith('Given {q}') or 'Given {q}' in pattern:
+            # For "Given Q, ..." patterns, Q should be lowercase  
+            if q_clean and q_clean[0].isupper() and not self._is_proper_noun(q_clean):
+                q_clean = q_clean[0].lower() + q_clean[1:]
         
-        templates.append(builder.build())
-        return templates
+        return pattern.format(p=p_clean, q=q_clean)
     
-    def _create_hypothetical_syllogism_invalid(self) -> List[EnhancedTemplate]:
-        """Create invalid Hypothetical Syllogism templates (Non Sequitur)."""
-        templates = []
-        
-        builder = TemplateBuilder()
-        builder.add_variation('conditional1', [
-            'If {p}, then {q}',
-            '{P} implies {q}'
-        ])
-        builder.add_static('. ')
-        builder.add_variation('conditional2', [
-            'If {q}, then {r}',
-            '{Q} implies {r}'
-        ])
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Therefore',
-            'Thus'
-        ])
-        builder.add_static(', ')
-        builder.add_variable('not_p')
-        builder.add_static('.')
-        
-        templates.append(builder.build())
-        return templates
+    def _is_proper_noun(self, text: str) -> bool:
+        """Check if text starts with a proper noun that should remain capitalized."""
+        # Simple heuristic: common proper nouns or words that should stay capitalized
+        proper_indicators = ['I ', 'I\'', 'Mr.', 'Mrs.', 'Dr.', 'Monday', 'Tuesday', 'Wednesday', 
+                           'Thursday', 'Friday', 'Saturday', 'Sunday', 'January', 'February', 
+                           'March', 'April', 'May', 'June', 'July', 'August', 'September', 
+                           'October', 'November', 'December']
+        return any(text.startswith(indicator) for indicator in proper_indicators)
     
-    def _create_disjunction_elimination_valid(self) -> List[EnhancedTemplate]:
-        """Create valid Disjunction Elimination templates."""
-        templates = []
+    def create_conjunction(self, p: str, q: str, style: str = "basic") -> str:
+        """Create a conjunction statement."""
+        pattern = random.choice(self.conjunction_patterns.get(style, self.conjunction_patterns['basic']))
+        # Clean up the inputs - remove punctuation and extra spaces  
+        p_clean = p.strip().rstrip('.!?')
+        q_clean = q.strip().rstrip('.!?')
         
-        builder = TemplateBuilder()
-        builder.add_variation('disjunction', [
-            '{P} or {q}',
-            'Either {p} or {q}'
-        ])
-        builder.add_static('. ')
-        builder.add_variation('conditional1', [
-            'If {p}, then {r}',
-            '{P} implies {r}'
-        ])
-        builder.add_static('. ')
-        builder.add_variation('conditional2', [
-            'If {q}, then {r}',
-            '{Q} implies {r}'
-        ])
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Therefore',
-            'Thus',
-            'Hence'
-        ])
-        builder.add_static(', ')
-        builder.add_variable('r')
-        builder.add_static('.')
+        # Handle capitalization context for conjunctions  
+        if pattern.startswith('{p} and {q}') or pattern.startswith('{p}, and {q}'):
+            # For "p and q" patterns, q should be lowercase (not sentence start)
+            if q_clean and q_clean[0].isupper() and not self._is_proper_noun(q_clean):
+                q_clean = q_clean[0].lower() + q_clean[1:]
+        elif pattern.startswith('Both {p} and {q}'):
+            # For "Both p and q" patterns, both should be lowercase
+            if p_clean and p_clean[0].isupper() and not self._is_proper_noun(p_clean):
+                p_clean = p_clean[0].lower() + p_clean[1:]
+            if q_clean and q_clean[0].isupper() and not self._is_proper_noun(q_clean):
+                q_clean = q_clean[0].lower() + q_clean[1:]
+        elif pattern.startswith('{p} as well as {q}') or pattern.startswith('{p} together with {q}') or pattern.startswith('{p} in conjunction with {q}'):
+            # For patterns with connecting phrases, q should be lowercase
+            if q_clean and q_clean[0].isupper() and not self._is_proper_noun(q_clean):
+                q_clean = q_clean[0].lower() + q_clean[1:]
         
-        templates.append(builder.build())
-        return templates
+        return pattern.format(p=p_clean, q=q_clean)
     
-    def _create_disjunction_elimination_invalid(self) -> List[EnhancedTemplate]:
-        """Create invalid Disjunction Elimination templates."""
-        templates = []
+    def create_disjunction(self, p: str, q: str, style: str = "inclusive") -> str:
+        """Create a disjunction statement.""" 
+        pattern = random.choice(self.disjunction_patterns.get(style, self.disjunction_patterns['inclusive']))
+        # Clean up the inputs - remove punctuation and extra spaces
+        p_clean = p.strip().rstrip('.!?')
+        q_clean = q.strip().rstrip('.!?')
         
-        builder = TemplateBuilder()
-        builder.add_variation('disjunction', [
-            '{P} or {q}',
-            'Either {p} or {q}'
-        ])
-        builder.add_static('. ')
-        builder.add_variation('conditional1', [
-            'If {p}, then {r}',
-            '{P} implies {r}'
-        ])
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Therefore',
-            'Thus'
-        ])
-        builder.add_static(', ')
-        builder.add_variable('r')
-        builder.add_static('.')
+        # Handle capitalization context for disjunctions
+        if pattern.startswith('{p} or {q}'):
+            # For "p or q" patterns, q should be lowercase (not sentence start)
+            if q_clean and q_clean[0].isupper() and not self._is_proper_noun(q_clean):
+                q_clean = q_clean[0].lower() + q_clean[1:]
+        elif pattern.startswith('Either {p} or {q}'):
+            # For "Either p or q" patterns, both should be lowercase
+            if p_clean and p_clean[0].isupper() and not self._is_proper_noun(p_clean):
+                p_clean = p_clean[0].lower() + p_clean[1:]
+            if q_clean and q_clean[0].isupper() and not self._is_proper_noun(q_clean):
+                q_clean = q_clean[0].lower() + q_clean[1:]
         
-        templates.append(builder.build())
-        return templates
+        return pattern.format(p=p_clean, q=q_clean)
     
-    def _create_material_conditional_introduction_valid(self) -> List[EnhancedTemplate]:
-        """Create valid Material Conditional Introduction templates."""
-        templates = []
-        
-        # Template 1: Original formal style
-        builder1 = TemplateBuilder()
-        builder1.add_static('Assuming ')
-        builder1.add_variable('p')
-        builder1.add_static(', we can derive ')
-        builder1.add_variable('q')
-        builder1.add_static('. ')
-        builder1.add_variation('conclusion', [
-            'Therefore',
-            'Thus',
-            'Hence'
-        ])
-        builder1.add_static(', ')
-        builder1.add_variation('conditional', [
-            'if {p}, then {q}',
-            '{p} implies {q}'
-        ])
-        builder1.add_static('.')
-        templates.append(builder1.build())
-        
-        # Template 2: Natural supposition style
-        builder2 = TemplateBuilder()
-        builder2.add_variation('suppose', [
-            'When we suppose {p}',
-            'If we grant that {p}',
-            'Given {p} as a premise'
-        ])
-        builder2.add_static(', ')
-        builder2.add_variation('follows', [
-            'it follows that {q}',
-            'we get {q}',
-            'we obtain {q}'
-        ])
-        builder2.add_static('. ')
-        builder2.add_variation('establishes', [
-            'This establishes that',
-            'We can conclude that',
-            'This shows that'
-        ])
-        builder2.add_static(' ')
-        builder2.add_variation('conditional', [
-            '{p} implies {q}',
-            'if {p}, then {q}',
-            '{p} leads to {q}'
-        ])
-        builder2.add_static('.')
-        templates.append(builder2.build())
-        
-        # Template 3: Proof-style format
-        builder3 = TemplateBuilder()
-        builder3.add_variation('proof_start', [
-            'Suppose {p}',
-            'Let {p} be given',
-            'Assume {p} for argument'
-        ])
-        builder3.add_static('. ')
-        builder3.add_variation('derivation', [
-            'From this, {q} follows',
-            'Then {q} must hold',
-            'This yields {q}'
-        ])
-        builder3.add_static('. ')
-        builder3.add_variation('conclusion', [
-            'Therefore',
-            'Hence',
-            'Thus'
-        ])
-        builder3.add_static(', ')
-        builder3.add_variation('conditional', [
-            '{p} → {q}',
-            'if {p}, then {q}',
-            '{p} entails {q}'
-        ])
-        builder3.add_static('.')
-        templates.append(builder3.build())
-        
-        # Template 4: Reverse order (conclusion-first)
-        builder4 = TemplateBuilder()
-        builder4.add_static('We establish that ')
-        builder4.add_variation('conditional', [
-            '{p} implies {q}',
-            'if {p}, then {q}',
-            '{p} guarantees {q}'
-        ])
-        builder4.add_static(' ')
-        builder4.add_variation('justification', [
-            'because assuming {p} leads to {q}',
-            'since supposing {p} results in {q}',
-            'given that {p} yields {q}'
-        ])
-        builder4.add_static('.')
-        templates.append(builder4.build())
-        
-        return templates
-    
-    def _create_material_conditional_introduction_invalid(self) -> List[EnhancedTemplate]:
-        """Create invalid Material Conditional Introduction templates."""
-        templates = []
-        
-        # Invalid pattern: Assume P, derive Q, but conclude invalid conditional with extra variable
-        builder = TemplateBuilder()
-        builder.add_static('Assuming ')
-        builder.add_variable('p')
-        builder.add_static(', ')
-        builder.add_variable('q')
-        builder.add_static(' is derivable. ')
-        builder.add_variation('conclusion', [
-            'Thus',
-            'Therefore',
-            'Hence'
-        ])
-        builder.add_static(', ')
-        builder.add_variation('conditional', [
-            'if {p} then {q} and {r}',
-            'if {p}, then {q} and {r}'
-        ])
-        builder.add_static('.')
-        
-        templates.append(builder.build())
-        return templates
-    
-    def _create_constructive_dilemma_valid(self) -> List[EnhancedTemplate]:
-        """Create valid Constructive Dilemma templates."""
-        templates = []
-        
-        builder = TemplateBuilder()
-        builder.add_variation('conditional1', [
-            'If {p}, then {q}',
-            '{P} implies {q}'
-        ])
-        builder.add_static('. ')
-        builder.add_variation('conditional2', [
-            'If {r}, then {s}',
-            '{R} implies {s}'
-        ])
-        builder.add_static('. ')
-        builder.add_variation('disjunction', [
-            '{P} or {r}',
-            'Either {p} or {r}'
-        ])
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Therefore',
-            'Thus',
-            'Hence'
-        ])
-        builder.add_static(', ')
-        builder.add_variation('conclusion_disjunction', [
-            '{q} or {s}',
-            'Either {q} or {s}'
-        ])
-        builder.add_static('.')
-        
-        templates.append(builder.build())
-        return templates
-    
-    def _create_constructive_dilemma_invalid(self) -> List[EnhancedTemplate]:
-        """Create invalid Constructive Dilemma templates (False Dilemma)."""
-        templates = []
-        
-        builder = TemplateBuilder()
-        builder.add_variation('conditional1', [
-            'If {p}, then {q}',
-            '{p} implies {q}'
-        ])
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Therefore',
-            'Thus'
-        ])
-        builder.add_static(', ')
-        builder.add_variation('false_disjunction', [
-            'either {p} or {r}',
-            'it must be {p} or {r}'
-        ])
-        builder.add_static('.')
-        
-        templates.append(builder.build())
-        return templates
-    
-    def _create_destructive_dilemma_valid(self) -> List[EnhancedTemplate]:
-        """Create valid Destructive Dilemma templates."""
-        templates = []
-        
-        builder = TemplateBuilder()
-        builder.add_variation('conditional1', [
-            'If {p}, then {q}',
-            '{P} implies {q}'
-        ])
-        builder.add_static('. ')
-        builder.add_variation('conditional2', [
-            'If {r}, then {s}',
-            '{R} implies {s}'
-        ])
-        builder.add_static('. ')
-        builder.add_variation('disjunction', [
-            '{not_q} or {not_s}',
-            'Either {not_q} or {not_s}'
-        ])
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Therefore',
-            'Thus',
-            'Hence'
-        ])
-        builder.add_static(', ')
-        builder.add_variation('conclusion_disjunction', [
-            '{not_p} or {not_r}',
-            'Either {not_p} or {not_r}'
-        ])
-        builder.add_static('.')
-        
-        templates.append(builder.build())
-        return templates
-    
-    def _create_destructive_dilemma_invalid(self) -> List[EnhancedTemplate]:
-        """Create invalid Destructive Dilemma templates (Non Sequitur)."""
-        templates = []
-        
-        builder = TemplateBuilder()
-        builder.add_variation('conditional1', [
-            'If {p}, then {q}',
-            '{P} implies {q}'
-        ])
-        builder.add_static('. ')
-        builder.add_variation('conditional2', [
-            'If {r}, then {s}',
-            '{R} implies {s}'
-        ])
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Therefore',
-            'Thus'
-        ])
-        builder.add_static(', ')
-        builder.add_variable('not_p')
-        builder.add_static('.')
-        
-        templates.append(builder.build())
-        return templates
-    
-    def _create_non_sequitur_invalid(self) -> List[EnhancedTemplate]:
-        """Create Non Sequitur templates (generic invalid reasoning)."""
-        templates = []
-        
-        builder = TemplateBuilder()
-        builder.add_variable('P')
-        builder.add_static('. ')
-        builder.add_variation('conclusion', [
-            'Therefore',
-            'Thus',
-            'So'
-        ])
-        builder.add_static(', ')
-        builder.add_variable('q')
-        builder.add_static('.')
-        
-        templates.append(builder.build())
-        return templates
-    
-    def get_required_sentences(self, rule_name: str) -> int:
-        """Get required sentences for a rule."""
-        requirements = {
-            "Modus Ponens": 2,
-            "Modus Tollens": 2,
-            "Disjunctive Syllogism": 2,
-            "Conjunction Introduction": 3,
-            "Conjunction Elimination": 3,
-            "Disjunction Introduction": 2,
-            "Disjunction Elimination": 4,
-            "Hypothetical Syllogism": 3,
-            "Material Conditional Introduction": 3,
-            "Constructive Dilemma": 4,
-            "Destructive Dilemma": 4
-        }
-        return requirements.get(rule_name, 2)
-    
-    def get_template_variables(self, rule_name: str) -> Set[str]:
-        """Get variables used in templates for a rule."""
-        # This would analyze templates to extract variables
-        # For now, returning common ones
-        basic_vars = {'p', 'q', 'P', 'Q'}
-        
-        if rule_name in ["Modus Tollens", "Destructive Dilemma"]:
-            basic_vars.update({'not_p', 'not_q', 'not_P', 'not_Q'})
-        
-        if rule_name in ["Hypothetical Syllogism", "Constructive Dilemma"]:
-            basic_vars.update({'r', 'R'})
-        
-        if rule_name in ["Disjunction Elimination", "Destructive Dilemma"]:
-            basic_vars.update({'s', 'S'})
-        
-        return basic_vars
-
-
-class EnglishGrammar(LanguageGrammar):
-    """English grammar rules."""
-    
-    def __init__(self):
-        super().__init__("en")
-    
-    def apply_agreement(self, subject: str, verb: str, 
-                       object: Optional[str] = None) -> Tuple[str, str, Optional[str]]:
-        """Apply subject-verb agreement."""
-        # Simplified - would need more sophisticated NLP
-        # Check if subject is plural
-        if subject.endswith('s') and not subject.endswith(('ss', 'us')):
-            # Likely plural
-            if verb == "is":
-                verb = "are"
-            elif verb == "was":
-                verb = "were"
-            elif verb == "has":
-                verb = "have"
-        
-        return subject, verb, object
-    
-    def apply_article_rules(self, noun: str, definite: bool = False) -> str:
-        """Apply article rules."""
-        if definite:
-            return f"the {noun}"
-        else:
-            # Check if noun starts with vowel sound
-            if noun and noun[0].lower() in 'aeiou':
-                return f"an {noun}"
-            else:
-                return f"a {noun}"
-    
-    def apply_word_order(self, components: Dict[str, str]) -> str:
-        """Apply English SVO word order."""
-        # Standard order: Subject Verb Object
-        parts = []
-        
-        if 'subject' in components:
-            parts.append(components['subject'])
-        if 'verb' in components:
-            parts.append(components['verb'])
-        if 'object' in components:
-            parts.append(components['object'])
-        
-        # Add other components
-        for key, value in components.items():
-            if key not in ['subject', 'verb', 'object']:
-                parts.append(value)
-        
-        return ' '.join(parts)
-    
-    def pluralize(self, word: str, count: int = 2) -> str:
-        """Pluralize a word."""
-        if count == 1:
-            return word
-        
-        # Basic pluralization rules
-        if word.endswith(('s', 'ss', 'sh', 'ch', 'x', 'z')):
-            return word + 'es'
-        elif word.endswith('y') and len(word) > 1 and word[-2] not in 'aeiou':
-            return word[:-1] + 'ies'
-        elif word.endswith('f'):
-            return word[:-1] + 'ves'
-        elif word.endswith('fe'):
-            return word[:-2] + 'ves'
-        else:
-            return word + 's'
-    
-    def apply_case(self, word: str, case: str) -> str:
-        """English doesn't have cases like other languages."""
-        # English only has case for pronouns
-        pronoun_cases = {
-            'I': {'nominative': 'I', 'accusative': 'me', 'possessive': 'my'},
-            'you': {'nominative': 'you', 'accusative': 'you', 'possessive': 'your'},
-            'he': {'nominative': 'he', 'accusative': 'him', 'possessive': 'his'},
-            'she': {'nominative': 'she', 'accusative': 'her', 'possessive': 'her'},
-            'it': {'nominative': 'it', 'accusative': 'it', 'possessive': 'its'},
-            'we': {'nominative': 'we', 'accusative': 'us', 'possessive': 'our'},
-            'they': {'nominative': 'they', 'accusative': 'them', 'possessive': 'their'}
-        }
-        
-        if word.lower() in pronoun_cases:
-            return pronoun_cases[word.lower()].get(case, word)
-        
-        return word
-
-
-class EnglishStyleGuide(LanguageStyleGuide):
-    """English style guide."""
-    
-    def __init__(self):
-        super().__init__("en")
-    
-    def _init_formality_levels(self) -> Dict[str, Dict[str, Any]]:
-        """Initialize formality levels."""
-        return {
-            "casual": {
-                "contractions": True,
-                "slang": True,
-                "idioms": True,
-                "sentence_starters": ["So", "Well", "Anyway", "Look"],
-                "connectives": ["and", "but", "so", "'cause"]
-            },
-            "neutral": {
-                "contractions": False,
-                "slang": False,
-                "idioms": True,
-                "sentence_starters": [],
-                "connectives": ["and", "but", "therefore", "because"]
-            },
-            "formal": {
-                "contractions": False,
-                "slang": False,
-                "idioms": False,
-                "sentence_starters": ["Furthermore", "Moreover", "Additionally"],
-                "connectives": ["and", "however", "therefore", "because", "consequently"]
-            },
-            "academic": {
-                "contractions": False,
-                "slang": False,
-                "idioms": False,
-                "passive_voice": True,
-                "hedging": True,
-                "sentence_starters": ["It can be argued that", "Research suggests that"],
-                "connectives": ["furthermore", "however", "therefore", "thus", "consequently"]
-            }
-        }
-    
-    def apply_formality(self, text: str, formality_level: str) -> str:
-        """Apply formality transformations."""
-        if formality_level not in self.formality_levels:
-            return text
-        
-        rules = self.formality_levels[formality_level]
-        
-        # Apply contractions
-        if not rules.get("contractions", True):
-            text = self._expand_contractions(text)
-        
-        # Apply hedging for academic style
-        if rules.get("hedging", False):
-            text = self._add_hedging(text)
-        
-        return text
-    
-    def get_domain_specific_style(self, domain: str) -> Dict[str, Any]:
-        """Get domain-specific style preferences."""
-        domain_styles = {
-            "legal": {
-                "precision": "high",
-                "qualifiers": ["pursuant to", "notwithstanding", "whereas"],
-                "avoid": ["probably", "maybe", "sort of"],
-                "prefer_passive": True
-            },
-            "scientific": {
-                "precision": "high",
-                "objectivity": True,
-                "avoid_personal": True,
-                "prefer_passive": True,
-                "units": "metric"
-            },
-            "everyday": {
-                "precision": "medium",
-                "contractions": True,
-                "idioms": True,
-                "prefer_active": True
-            },
-            "literary": {
-                "metaphors": True,
-                "varied_vocabulary": True,
-                "emotional_language": True,
-                "prefer_active": True
-            }
-        }
-        
-        return domain_styles.get(domain, {})
-    
-    def apply_rhetorical_emphasis(self, text: str, emphasis_type: str) -> str:
-        """Apply rhetorical emphasis."""
-        emphasis_patterns = {
-            "strong": lambda t: f"It is absolutely certain that {t}",
-            "subtle": lambda t: f"It would seem that {t}",
-            "questioning": lambda t: f"Is it not the case that {t}?",
-            "dramatic": lambda t: f"Indeed, {t}!",
-            "understated": lambda t: f"One might say that {t}"
-        }
-        
-        if emphasis_type in emphasis_patterns:
-            return emphasis_patterns[emphasis_type](text)
-        
-        return text
-    
-    def _expand_contractions(self, text: str) -> str:
-        """Expand contractions."""
-        contractions = {
-            "isn't": "is not",
-            "aren't": "are not",
-            "wasn't": "was not",
-            "weren't": "were not",
-            "haven't": "have not",
-            "hasn't": "has not",
-            "hadn't": "had not",
-            "won't": "will not",
-            "wouldn't": "would not",
-            "don't": "do not",
-            "doesn't": "does not",
-            "didn't": "did not",
-            "can't": "cannot",
-            "couldn't": "could not",
-            "shouldn't": "should not",
-            "mightn't": "might not",
-            "mustn't": "must not"
-        }
-        
-        for contraction, expansion in contractions.items():
-            text = text.replace(contraction, expansion)
-            text = text.replace(contraction.capitalize(), expansion.capitalize())
-        
-        return text
-    
-    def _add_hedging(self, text: str) -> str:
-        """Add academic hedging."""
-        hedges = [
-            "it appears that",
-            "it seems that",
-            "arguably",
-            "possibly",
-            "it could be argued that"
-        ]
-        
-        # Simple implementation - prepend hedge
-        import random
-        hedge = random.choice(hedges)
-        return f"{hedge} {text}"
-
-
-class EnglishLanguageAdapter(LanguageAdapter):
-    """Complete English language adapter."""
-    
-    def __init__(self):
-        pattern = EnglishPattern()
-        templates = EnglishTemplates(pattern)
-        grammar = EnglishGrammar()
-        style_guide = EnglishStyleGuide()
-        
-        super().__init__(pattern, templates, grammar, style_guide)
-
-
-# Register the English adapter
-from language_base import LanguageFactory
-LanguageFactory.register_language("en", EnglishLanguageAdapter)
+    def get_conclusion_marker(self, style: str = "basic") -> str:
+        """Get a random conclusion marker."""
+        return random.choice(self.conclusion_markers.get(style, self.conclusion_markers['basic']))
